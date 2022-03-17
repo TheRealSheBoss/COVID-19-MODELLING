@@ -1,3 +1,7 @@
+## This script cleans the data files we provide to users of the code, and generates a master dataset that
+## analysis can be performed on. This dataset is then downloaded as an excel file. 
+
+
 ## ADDING RELEVANT PACKAGES
 
 import pandas as pd
