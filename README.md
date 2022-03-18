@@ -1,4 +1,4 @@
-# EMAT10006COURSE (Daniel Joinson, Kate E)
+# EMAT10006COURSE (Daniel Joinson, Kate E, Tim A. , Adetutu S. )
 This repository contains a simulation titled , 'THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL'.
 The codes for the simulation have been tested using PyCharm and the video was downloaded. Ensure you have the required encoder to view and download the created simulation.
 The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
