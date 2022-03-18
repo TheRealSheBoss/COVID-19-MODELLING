@@ -5,7 +5,7 @@ The ffmpeg encoder is one of the most popular. Else, please run the code on PyCh
 
 **FIRST PART**
 //
-**SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL:**
+**SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN THE UK:**
 1. A class containing several reusable functions was created
 2. Population was set to 10,000 and it could be extrapolated to fit a larger population (The population density in the raw dataset was extremely heavy and led to RunTime errors and poor indexing, hence the choice for an arbitrary figure)
 3. Parameters representing infected persons, as well as the first, second and third dose of the vaccine were set
