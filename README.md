@@ -3,6 +3,7 @@ This repository contains a simulation titled , 'THE PROGRESSIVE ACCEPTANCE OF VA
 The codes for the simulation have been tested using PyCharm and the video was downloaded. Ensure you have the required encoder to view and download the created simulation.
 The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
 
+**FIRST PART**
 **SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL:**
 1. A class containing several reusable functions was created
 2. Population was set to 10,000 and it could be extrapolated to fit a larger population
@@ -18,6 +19,11 @@ It generates a 2D-spiral algorithm.
 11.The generator function acts as short cut to build iterations as frames for the plot. It is totally dependent on the number of vaccinated persons being less than infectious persons.
 12.The class was assigned to a variabe covid, after the COVID_19 parameter had been passed, the animate function was called. And the simulation appeared
 
+
+**SECOND PART**
+
+
+**RESPONSIBILITIES**
 
 
 
