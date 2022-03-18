@@ -296,7 +296,7 @@ class Vaccine():
         # And then a decline in infectious rates
         self.animation = ani.FuncAnimation(self.fig, self.Vaccine_share, frames = self.gen , repeat=True)
 
-#
+
 def Main_function():
     covid = Vaccine(COVID_19)
     covid.animate()
