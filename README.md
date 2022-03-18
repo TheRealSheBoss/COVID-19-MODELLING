@@ -4,6 +4,7 @@ The codes for the simulation have been tested using PyCharm and the video was do
 The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
 
 **FIRST PART**
+//
 **SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL:**
 1. A class containing several reusable functions was created
 2. Population was set to 10,000 and it could be extrapolated to fit a larger population
