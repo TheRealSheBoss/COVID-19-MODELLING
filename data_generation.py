@@ -121,6 +121,23 @@ master_data.drop_duplicates()
 
 ## EXPORTING DATAFRAME TO EXCEL
 
+df = pd.DataFrame(master_data)
+
+#check for missing values
+
+df.isnull
+
+#drop missing values
+
+df.dropna(axis = "index", how = "any")
+
+#assign new data to a variable
+
+master_data = df.dropna(axis = "index", how = "any")
+
+## EXPORTING DATAFRAME TO EXCEL
+
 save_location = input("Where would you like to save the data?")
 
 master_data.to_csv(f'{save_location}\Master Data.csv', index = False')
+
