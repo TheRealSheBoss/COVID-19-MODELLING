@@ -62,10 +62,6 @@ depri_data = pd.read_csv('f'{file_location}/Deprivation.csv')
 master_data = master_data.merge(depri_data, left_on='areaCode_x', right_on='Area Code')
 
 
-## REMOVING DUPLICATE DATA
-
-master_data.drop_duplicates()
-
 ## DROPPING REPEATED COLUMNS
 
 master_data.drop('areaType_x', axis=1, inplace=True) 
@@ -118,6 +114,10 @@ master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(
 master_data["Cumulative Cases"] = master_data["Cumulative Cases"].astype(float)
 
 master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(float)
+
+## REMOVING DUPLICATE DATA
+
+master_data.drop_duplicates()
 
 ## EXPORTING DATAFRAME TO EXCEL
 
