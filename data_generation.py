@@ -104,6 +104,20 @@ master_data.drop('date_x', axis=1, inplace=True)
 
 master_data.drop('date_y', axis=1, inplace=True)
 
+master_data.drop('areaCode_x', axis=1, inplace = True)
+
+master_data.drop('Region code_x', axis=1, inplace = True)
+
+## RENAMING VARIABLES
+
+master_data = master_data.rename(columns={"areaName": "Local Authority Name", "cumCasesByPublishDate": "Cumulative Cases", "Average Score":"Deprivation Score", "cumPeopleVaccinatedFirstByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
+
+## CHANGING DATA TYPES
+master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(',', '').astype(float)
+
+master_data["Cumulative Cases"] = master_data["Cumulative Cases"].astype(float)
+
+master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(float)
 
 ## EXPORTING DATAFRAME TO EXCEL
 
