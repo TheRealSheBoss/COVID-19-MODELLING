@@ -123,4 +123,4 @@ master_data.drop_duplicates()
 
 save_location = input("Where would you like to save the data?")
 
-master_data.to_excel(f'{save_location}\Master Data.xlsx', index = False')
+master_data.to_csv(f'{save_location}\Master Data.csv', index = False')
