@@ -9,7 +9,6 @@ from matplotlib.animation import FuncAnimation
 import matplotlib.animation as ani
 
 
-#get_ipython().run_line_magic('matplotlib', 'inline')
 pop = 10000
 
 # set colours for animation representation using RGB tuples
@@ -34,8 +33,6 @@ COVID_19 = {
 }
 
 # # Create a class to Hold all functionality
-
-# In[ ]:
 
 #A class was created to contain several different functions
 # The class was first initialized with a sample polar plot with size 5, and certain hypothetical parameters were created

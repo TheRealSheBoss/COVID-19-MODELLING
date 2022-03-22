@@ -1,5 +1,5 @@
 ## This script cleans the data files we provide to users of the code, and generates a master dataset that
-## analysis can be performed on. This dataset is then downloaded as an excel file. 
+## analysis can be performed on. This dataset is then downloaded as an excel file.
 
 
 ## ADDING RELEVANT PACKAGES
@@ -104,9 +104,21 @@ master_data.drop('date_x', axis=1, inplace=True)
 
 master_data.drop('date_y', axis=1, inplace=True)
 
+#check for missing values
+df = pd.DataFrame(master_data)
+df.isnull
 
-## EXPORTING DATAFRAME TO EXCEL
+#drop missing values
+df.dropna(axis = "index", how = "any")
+
+#assign new data to master data variable
+master_data = df.dropna(axis = "index", how = "any")
+
+## Export dataframe to excel
 
 save_location = input("Where would you like to save the data?")
 
+#Input file path
 master_data.to_excel(f'{save_location}\Master Data.xlsx', index = False)
+
+#Master Data is CLEAN!!!
