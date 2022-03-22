@@ -119,25 +119,22 @@ master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(f
 
 master_data.drop_duplicates()
 
-## EXPORTING DATAFRAME TO EXCEL
-
-df = pd.DataFrame(master_data)
-
 #check for missing values
-
-df.isnull
+master_data.isnull
 
 #drop missing values
 
 df.dropna(axis = "index", how = "any")
 
-#assign new data to a variable
+#assign new data to master_data variable
 
 master_data = df.dropna(axis = "index", how = "any")
 
 ## EXPORTING DATAFRAME TO EXCEL
 
 save_location = input("Where would you like to save the data?")
+
+#input file path
 
 master_data.to_csv(f'{save_location}\Master Data.csv', index = False')
 
