@@ -1,4 +1,4 @@
-# Basic Data Exploration without comparisons
+# Basic Data Exploration of COVID-19 Dataset without comparisons
 # !pip install pandas-profiling if not on system
 from pandas_profiling import ProfileReport
 import pandas_profiling as pdp
