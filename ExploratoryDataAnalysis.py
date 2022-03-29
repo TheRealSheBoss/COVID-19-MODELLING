@@ -61,13 +61,24 @@ class ExploreMasterData:
         plt.savefig('Master Data.png')
         plt.show()
 
-
+    def barchart_master_data(self):
+        for all, column in enumerate(master_data.columns):
+            plt.subplot(4, 6, all + 1)
+            sea.barplot(data=master_data[column])
+            plt.title(column)
+            
+        plt.savefig('Barplots of all variables.png')
+        plt.tight_layout()
+        plt.show()  
+        
 View_charts = ExploreMasterData(master_data)
 View_charts.master_data_profile()
 View_charts.histplot_master_data()
 View_charts.lineplot_master_data()
 View_charts.scatterplot_master_data()
 View_charts.heatmap_master_data()
+View_charts.barchart_master_data()
+
 
 
 
