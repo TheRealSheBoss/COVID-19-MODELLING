@@ -37,6 +37,9 @@ MP4 video of the simulation
 **PHOTOS**
 Pictures of the graphs plotted
 
+**DATA GENERATION**
+The data is pre-processed, cleaned and stored in the users desired path
+
 
 
 
