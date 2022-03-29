@@ -44,7 +44,7 @@ class ExploreMasterData:
         plt.tight_layout()
         plt.show()
 
-    def scatterplot_master_data(Self):
+    def scatterplot_master_data(self):
         for all, column in enumerate(master_data.columns):
             plt.subplot(4, 6, all + 1)
             sea.scatterplot(data=master_data[column])
