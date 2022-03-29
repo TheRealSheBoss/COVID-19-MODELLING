@@ -29,7 +29,13 @@ It generates a 2D-spiral algorithm.
 **GRAPHS**
 1. A variety of graphs would be generated from the functions in the class
 2. Like the EDA, users are free to select their input data
+3. The Boxplot function was written independently in order to prevent errors in the general class, in which functions were required to have two variables
 
+**SIMULATION VIDEO**
+MP4 video of the simulation
+
+**PHOTOS**
+Pictures of the graphs plotted
 
 
 
