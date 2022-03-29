@@ -3,7 +3,7 @@ This repository contains a simulation titled , 'THE PROGRESSIVE ACCEPTANCE OF VA
 The codes for the simulation have been tested using PyCharm and the video was downloaded. Ensure you have the required encoder to view and download the created simulation.
 The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
 
-//
+//SIMULATION.py
 **SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN THE UK:**
 1. A class containing several reusable functions was created
 2. Population was set to 10,000 and it could be extrapolated to fit a larger population (The population density in the raw dataset was extremely heavy and led to RunTime errors and poor indexing, hence the choice for an arbitrary figure)
@@ -20,11 +20,15 @@ It generates a 2D-spiral algorithm.
 12.The class was assigned to a variabe covid, after the COVID_19 parameter had been passed, the animate function was called. And the simulation appeared
 
 
-**SECOND PART**
+**EXPLORATORY DATA ANALYSIS**
+1. Users are permitted to enter any dataset of their choice in .csv format
+2. There are six functions, each would independently generate a graph or chart when called
+3. A data profile of the dataset could be generated: (a profile is a set of statistics that describe how often and how long parts of a program are executed)
+4. There are no comparisons contained in this class...
 
-
-**RESPONSIBILITIES**
-
+**GRAPHS**
+1. A variety of graphs would be generated from the functions in the class
+2. Like the EDA, users are free to select their input data
 
 
 
