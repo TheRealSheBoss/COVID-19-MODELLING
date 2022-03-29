@@ -1,9 +1,9 @@
 # # THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL
 
+import matplotlib.pyplot as plt
 #these codes represent the simultaneous spread of COVID-19 with the adoption of vaccines over 50days in BRISTOL
 
 
-import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as ani
@@ -301,3 +301,5 @@ def Main_function():
 
 if __name__ == '__main__':
     Main_function()
+    
+#simulation complete 
