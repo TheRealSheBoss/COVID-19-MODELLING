@@ -10,13 +10,21 @@ master_data = pd.read_csv(master_data_input)
 
 
 ## Ask the user to select the X and Y variable of interest
-X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
-Y_var = input("Which y variable do you want to look at (enter exact from Parameter names): ")
 
-## Assign the data of the chosen X_var and Y_var from the DataFrame, master_data, to variables X and Y.
-X = master_data[X_var]
-Y = master_data[Y_var]
 
+
+
+
+
+plot_type = input("Do you want to plot a one variable (1) or two variable (2) graph? ")
+if int(plot_type) == 1:
+    X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
+    X = master_data[X_var]
+elif int(plot_type) == 2:
+    X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
+    Y_var = input("Which y variable do you want to look at (enter exact from Parameter names): ")
+    X = master_data[X_var]
+    Y = master_data[Y_var]
 
 class Data_Visualization:
     def scatterplots(x_variable, y_variable):
