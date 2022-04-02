@@ -47,7 +47,7 @@ if int(plot_type) == 2:
             plt.xlabel(xlabel)#Plot the given x-axis label
             plt.ylabel(ylabel) #Plot the given y-axis label
             plt.show()
-​
+
         def linegraph(self):
             """
             Function to produce line graph for given input values. 
@@ -78,7 +78,7 @@ if int(plot_type) == 2:
             plt.xlabel(xlabel)#Plot the given x-axis label
             plt.ylabel(ylabel) #Plot the given y-axis label
             plt.show()
-​
+
         def bargraph(self):
             """
             Function to produce bar graph for given input values.
