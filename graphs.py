@@ -21,8 +21,13 @@ elif int(plot_type) == 2:
     X = master_data[X_var]
     Y = master_data[Y_var]
 
-class Data_Visualization:
-    def scatterplots(x_variable, y_variable):
+class Data_Visualization():
+    
+    def __init__(self, X, Y):
+        self.X = X
+        self.Y = Y
+        
+    def scatterplots(self):
         """
         Function to create a scatter plot for the variables of interest.
         The function should be called on the X and Y variables previously defined by the user.
@@ -34,13 +39,13 @@ class Data_Visualization:
         title = input("Enter figure title: ") #Ask user to input title for figure
         xlabel = input("Enter label for x axis: ") #Ask user to input x-axis label
         ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
-        ax.scatter(x_variable, y_variable, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
+        ax.scatter(self.X, self.Y, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
         plt.title(title) #Plot the given title
         plt.xlabel(xlabel)#Plot the given x-axis label
         plt.ylabel(ylabel) #Plot the given y-axis label
         plt.show()
 
-    def linegraph(x_variables, y_variable):
+    def linegraph(self):
         """
         Function to produce line graph for given input values. 
         x_variables should be a 1-D or multi-D array. 
@@ -59,19 +64,19 @@ class Data_Visualization:
         ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
         title = input("Enter figure title: ") #Ask user to input title for figure
         if number_x_vars == '1':
-            plt.plot(x_variables, y_variable, alpha=0.3)
+            plt.plot(self.X, self.Y, alpha=0.3)
             plt.title(title)
         else:
-            for i in x_variables:
+            for i in self.X:
                 label = input("Enter label for line for x variable in list position {index(i)} : ")
-                plt.plot(i, y_variable, label=label, alpha=0.3)
+                plt.plot(i, self.Y, label=label, alpha=0.3)
                 ax.set(title=title) #Plot the given title
                 plt.legend()
         plt.xlabel(xlabel)#Plot the given x-axis label
         plt.ylabel(ylabel) #Plot the given y-axis label
         plt.show()
 
-    def bargraph(x_variables, y_variable):
+    def bargraph(self):
         """
         Function to produce bar graph for given input values.
         the x_variables will be plotted against the y-variable,
@@ -85,12 +90,13 @@ class Data_Visualization:
         ylabel = input("Enter label for y axis: ")  # Ask user to input y-axis label
         title = input("Enter figure title: ")  # Ask user to input title for figure
 
-        x_bar_y = pd.concat([x_variables, y_variable], axis=1)
+        x_bar_y = pd.concat([self.X, self.Y], axis=1)
         x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
         ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
         plt.show()
 
-View_Charts = Data_Visualization()
+View_Charts = Data_Visualization(X,Y)
+
 
 # How to call the functions above:
 # bargraph function: Data_Visualization.bargraph(X,Y)
@@ -125,21 +131,17 @@ def Boxplot():
     # For Covid-19 dataset BoxPlots can be created to compare infections/deaths/keyworkers/deprivation rate
     # by vaccination dose
     # % matplotlib inline (uncomment if using Jupyter NB)
-
     plt.figure(figsize=(25, 15))
     variables = input(f'Enter columns as specified in dataset: ')
     # separate columns with commas and place in quotation marks
-
     master_data_use = pd.DataFrame(columns=[variables])
     for all, column in enumerate(master_data_use.columns):
         plt.subplot(4, 6, all + 1)
         sea.boxplot(data=master_data_use[column])
         plt.title(column)
-
     plt.savefig(input('Enter figure title: '.png))
     plt.tight_layout()
     plt.show()
-
 Boxplot()
 """
 
@@ -152,11 +154,11 @@ if int(plot_type) == 1:
 elif int(plot_type) == 2:
     bar_line_scatter = input("Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ")
     if bar_line_scatter == "B":
-        View_Charts.bargraph(X,Y)
+        View_Charts.bargraph()
     elif bar_line_scatter == "L":
-        View_Charts.linegraph(X,Y)
+        View_Charts.linegraph()
     elif bar_line_scatter == "S":
-        View_Charts.scatterplots(X,Y)
+        View_Charts.scatterplots()
 
 
 
