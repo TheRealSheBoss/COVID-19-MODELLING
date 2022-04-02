@@ -5,136 +5,138 @@
 
 ## ADDING RELEVANT PACKAGES
 
-import pandas as pd
+def data_generation():
 
-file_location = input("Where have you saved the data?")
+  import pandas as pd
 
+  file_location = input("Where have you saved the data?")
 
-## ADDING COVID-19 CASE DATA
 
-case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
+  ## ADDING COVID-19 CASE DATA
 
-case_data
+  case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
 
-case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
+  case_data
 
-## ADDING COVID-19 DEATH AND VACCINATION DATA
+  case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
 
-vax_death_data = pd.read_csv(f'{file_location}/Vaccination and Death.csv')
+  ## ADDING COVID-19 DEATH AND VACCINATION DATA
 
-## MERGING CASE, DEATH AND VACCINATION DATAFRAMES TOGETHER
+  vax_death_data = pd.read_csv(f'{file_location}/Vaccination and Death.csv')
 
-master_data = case_data.merge(vax_death_data, left_on='areaName', right_on='areaName')
+  ## MERGING CASE, DEATH AND VACCINATION DATAFRAMES TOGETHER
 
-## ADDING AND MERGING AGE AND DENSITY DATA
+  master_data = case_data.merge(vax_death_data, left_on='areaName', right_on='areaName')
 
-demo_data = pd.read_csv(f'{file_location}/Age and Density.csv')
+  ## ADDING AND MERGING AGE AND DENSITY DATA
 
-master_data = master_data.merge(demo_data, left_on='areaCode_x', right_on='Area code')
+  demo_data = pd.read_csv(f'{file_location}/Age and Density.csv')
 
-## ADDING AND MERGING ETHNICITY DATA
+  master_data = master_data.merge(demo_data, left_on='areaCode_x', right_on='Area code')
 
-eth_data = pd.read_csv(f'{file_location}/Ethnicity.csv')
+  ## ADDING AND MERGING ETHNICITY DATA
 
-master_data = master_data.merge(eth_data, left_on='areaCode_x', right_on='Area code')
+  eth_data = pd.read_csv(f'{file_location}/Ethnicity.csv')
 
-## ADDING AND MERGING KEY WORKER DATA
+  master_data = master_data.merge(eth_data, left_on='areaCode_x', right_on='Area code')
 
-key_data = pd.read_csv(f'{file_location}/Key Worker.csv')
+  ## ADDING AND MERGING KEY WORKER DATA
 
-master_data = master_data.merge(key_data, left_on='areaCode_x', right_on='Area code')
+  key_data = pd.read_csv(f'{file_location}/Key Worker.csv')
 
-## ADDING AND MERGING EMPLOYMENT DATA
+  master_data = master_data.merge(key_data, left_on='areaCode_x', right_on='Area code')
 
-employ_data = pd.read_csv(f'{file_location}/Employment.csv')
+  ## ADDING AND MERGING EMPLOYMENT DATA
 
-master_data = master_data.merge(employ_data, left_on='areaCode_x', right_on='Area code')
+  employ_data = pd.read_csv(f'{file_location}/Employment.csv')
 
-## ADDING AND MERGING CHILD DATA
+  master_data = master_data.merge(employ_data, left_on='areaCode_x', right_on='Area code')
 
-child_data = pd.read_csv(f'{file_location}/Children.csv')
+  ## ADDING AND MERGING CHILD DATA
 
-master_data = master_data.merge(child_data, left_on='areaCode_x', right_on='Area code')
+  child_data = pd.read_csv(f'{file_location}/Children.csv')
 
-## ADDING AND MERGING DEPRIVATION DATA
+  master_data = master_data.merge(child_data, left_on='areaCode_x', right_on='Area code')
 
-depri_data = pd.read_csv(f'{file_location}/Deprivation.csv')
+  ## ADDING AND MERGING DEPRIVATION DATA
 
-master_data = master_data.merge(depri_data, left_on='areaCode_x', right_on='Area Code')
+  depri_data = pd.read_csv(f'{file_location}/Deprivation.csv')
 
+  master_data = master_data.merge(depri_data, left_on='areaCode_x', right_on='Area Code')
 
-## DROPPING REPEATED COLUMNS
 
-master_data.drop('areaType_x', axis=1, inplace=True) 
+  ## DROPPING REPEATED COLUMNS
 
-master_data.drop('areaType_y', axis=1, inplace=True) 
+  master_data.drop('areaType_x', axis=1, inplace=True) 
 
-master_data.drop('areaCode_y', axis=1, inplace=True) 
+  master_data.drop('areaType_y', axis=1, inplace=True) 
 
-master_data.drop('Area name ', axis=1, inplace=True) 
+  master_data.drop('areaCode_y', axis=1, inplace=True) 
 
-master_data.drop('Region code', axis=1, inplace=True) 
+  master_data.drop('Area name ', axis=1, inplace=True) 
 
-master_data.drop('Area code', axis=1, inplace=True) 
+  master_data.drop('Region code', axis=1, inplace=True) 
 
-master_data.drop('Region Name', axis=1, inplace=True) 
+  master_data.drop('Area code', axis=1, inplace=True) 
 
-master_data.drop('Area Code', axis=1, inplace=True) 
+  master_data.drop('Region Name', axis=1, inplace=True) 
 
-master_data.drop('Area Name ', axis=1, inplace=True)
+  master_data.drop('Area Code', axis=1, inplace=True) 
 
-master_data.drop('Area code_x', axis=1, inplace=True) 
+  master_data.drop('Area Name ', axis=1, inplace=True)
 
-master_data.drop('Region code_y', axis=1, inplace=True) 
+  master_data.drop('Area code_x', axis=1, inplace=True) 
 
-master_data.drop('Area code_y', axis=1, inplace=True) 
+  master_data.drop('Region code_y', axis=1, inplace=True) 
 
-master_data.drop('Area name _y', axis=1, inplace=True)
+  master_data.drop('Area code_y', axis=1, inplace=True) 
 
-master_data.drop('Area name _x', axis=1, inplace=True)
+  master_data.drop('Area name _y', axis=1, inplace=True)
 
-master_data.drop('Region name_y', axis=1, inplace=True)
+  master_data.drop('Area name _x', axis=1, inplace=True)
 
-master_data.drop('Region name_x', axis=1, inplace=True)
+  master_data.drop('Region name_y', axis=1, inplace=True)
 
-master_data.drop('date_x', axis=1, inplace=True)
+  master_data.drop('Region name_x', axis=1, inplace=True)
 
-master_data.drop('date_y', axis=1, inplace=True)
+  master_data.drop('date_x', axis=1, inplace=True)
 
-master_data.drop('areaCode_x', axis=1, inplace = True)
+  master_data.drop('date_y', axis=1, inplace=True)
 
-master_data.drop('Region code_x', axis=1, inplace = True)
+  master_data.drop('areaCode_x', axis=1, inplace = True)
 
-## RENAMING VARIABLES
+  master_data.drop('Region code_x', axis=1, inplace = True)
 
-master_data = master_data.rename(columns={"areaName": "Local Authority Name", "cumCasesByPublishDate": "Cumulative Cases", "Average Score":"Deprivation Score", "cumPeopleVaccinatedFirstByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
+  ## RENAMING VARIABLES
 
-## CHANGING DATA TYPES
-master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(',', '').astype(float)
+  master_data = master_data.rename(columns={"areaName": "Local Authority Name", "cumCasesByPublishDate": "Cumulative Cases", "Average Score":"Deprivation Score", "cumPeopleVaccinatedFirstByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
 
-master_data["Cumulative Cases"] = master_data["Cumulative Cases"].astype(float)
+  ## CHANGING DATA TYPES
+  master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(',', '').astype(float)
 
-master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(float)
+  master_data["Cumulative Cases"] = master_data["Cumulative Cases"].astype(float)
 
-## REMOVING DUPLICATE DATA
+  master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(float)
 
-master_data.drop_duplicates()
+  ## REMOVING DUPLICATE DATA
 
-#check for missing values
-master_data.isnull
+  master_data.drop_duplicates()
 
-#drop missing values
+  #check for missing values
+  master_data.isnull
 
-master_data.dropna(axis = "index", how = "any")
+  #drop missing values
 
-#assign new data to master_data variable
+  master_data.dropna(axis = "index", how = "any")
 
-master_data = master_data.dropna(axis = "index", how = "any")
+  #assign new data to master_data variable
 
-## EXPORTING DATAFRAME TO EXCEL
+  master_data = master_data.dropna(axis = "index", how = "any")
 
-save_location = input("Where would you like to save the data?")
+  ## EXPORTING DATAFRAME TO EXCEL
 
-#input file path
+  save_location = input("Where would you like to save the data?")
 
-master_data.to_csv(f'{save_location}Master Data.csv', index = False)
+  #input file path
+
+  master_data.to_csv(f'{save_location}Master Data.csv', index = False)
