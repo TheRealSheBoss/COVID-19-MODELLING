@@ -6,4 +6,4 @@ def info():
 
     master_data = pd.read_csv(file_location)
 
-    master_data.info
+    print(master_data.info)
