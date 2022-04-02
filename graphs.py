@@ -5,20 +5,20 @@ import numpy as np
 import seaborn as sea
 ​
 ## Asking user to input where file location is saved
-master_data_input = input("Please enter dataset path in csv: ")
+master_data_input = input('Please enter dataset path in csv: ')
 ## Read the csv file to create a DataFrame
 master_data = pd.read_csv(master_data_input)
 ​
 ​
 ## Ask the user to select the X and Y variable of interest
 ​
-plot_type = input("Do you want to plot a one variable (1) or two variable (2) graph? ")
+plot_type = input('Do you want to plot a one variable (1) or two variable (2) graph? ')
 if int(plot_type) == 1:
-    X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
+    X_var = input('Which x variable do you want to look at (enter exact from Parameter names): ')
     X = master_data[X_var]
 elif int(plot_type) == 2:
-    X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
-    Y_var = input("Which y variable do you want to look at (enter exact from Parameter names): ")
+    X_var = input('Which x variable do you want to look at (enter exact from Parameter names): ')
+    Y_var = input('Which y variable do you want to look at (enter exact from Parameter names): ')
     X = master_data[X_var]
     Y = master_data[Y_var]
     
@@ -40,9 +40,9 @@ if int(plot_type) == 2:
             The function then outputs the defined scatter plot.
             """
             fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
-            title = input("Enter figure title: ") #Ask user to input title for figure
-            xlabel = input("Enter label for x axis: ") #Ask user to input x-axis label
-            ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
+            title = input('Enter figure title: ') #Ask user to input title for figure
+            xlabel = input('Enter label for x axis: ') #Ask user to input x-axis label
+            ylabel = input('Enter label for y axis: ') #Ask user to input y-axis label
             ax.scatter(self.X, self.Y, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
             plt.title(title) #Plot the given title
             plt.xlabel(xlabel)#Plot the given x-axis label
@@ -63,16 +63,16 @@ if int(plot_type) == 2:
             When called, the function returns a single linegraph plot.
             """
             fig, ax = plt.subplots(figsize = (15,5))
-            number_x_vars = input("How many x variables are you looking at? Enter integer only: ")
-            xlabel = input("Enter label for x axis: ") #Ask user to input x-axis label
-            ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
-            title = input("Enter figure title: ") #Ask user to input title for figure
+            number_x_vars = input('How many x variables are you looking at? Enter integer only: ')
+            xlabel = input('Enter label for x axis: ') #Ask user to input x-axis label
+            ylabel = input('Enter label for y axis: ') #Ask user to input y-axis label
+            title = input('Enter figure title: ') #Ask user to input title for figure
             if number_x_vars == '1':
                 plt.plot(self.X, self.Y, alpha=0.3)
                 plt.title(title)
             else:
                 for i in self.X:
-                    label = input("Enter label for line for x variable in list position {index(i)} : ")
+                    label = input('Enter label for line for x variable in list position {index(i)} : ')
                     plt.plot(i, self.Y, label=label, alpha=0.3)
                     ax.set(title=title) #Plot the given title
                     plt.legend()
@@ -90,9 +90,9 @@ if int(plot_type) == 2:
             """
             fig, ax = plt.subplots(figsize=(15, 5))
 ​
-            xlabel = input("Enter label for x axis: ")  # Ask user to input x-axis label
-            ylabel = input("Enter label for y axis: ")  # Ask user to input y-axis label
-            title = input("Enter figure title: ")  # Ask user to input title for figure
+            xlabel = input('Enter label for x axis: ')  # Ask user to input x-axis label
+            ylabel = input('Enter label for y axis: ')  # Ask user to input y-axis label
+            title = input('Enter figure title: ')  # Ask user to input title for figure
 ​
             x_bar_y = pd.concat([self.X, self.Y], axis=1)
             x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
@@ -114,15 +114,15 @@ elif int(plot_type) == 1:
 ​
         def histogram(self):
             plt.hist(self.X, bins=30)
-            title = input("Enter figure title: ") #Ask user to input title for figure
+            title = input('Enter figure title: ') #Ask user to input title for figure
             plt.title(title) #Plot the given title   
             plt.show()
 ​
         def boxplot(self):
             plt.boxplot(self.X)
-            title = input("Enter figure title: ") #Ask user to input title for figure
-            xlabel = input("Enter label for x axis: ") #Ask user to input x-axis label
-            ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
+            title = input('Enter figure title: ') #Ask user to input title for figure
+            xlabel = input('Enter label for x axis: ') #Ask user to input x-axis label
+            ylabel = input('Enter label for y axis: ') #Ask user to input y-axis label
             plt.title(title) #Plot the given title   
             plt.xlabel(xlabel)#Plot the given x-axis label
             plt.ylabel(ylabel) #Plot the given y-axis label
@@ -150,17 +150,17 @@ Boxplot()
 ​
 if int(plot_type) == 1:
     View_charts = Histo_Boxplot(X)
-    histo_or_boxplot = input("Do you want to plot a histogram (H) or boxplot (B)? ")
-    if histo_or_boxplot == "H":
+    histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
+    if histo_or_boxplot == 'H':
         View_charts.histogram()
-    elif histo_or_boxplot == "B":    
+    elif histo_or_boxplot == 'B':    
         View_charts.boxplot()
 elif int(plot_type) == 2:
     View_Charts = Data_Visualization(X,Y)
-    bar_line_scatter = input("Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ")
-    if bar_line_scatter == "B":
+    bar_line_scatter = input('Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ')
+    if bar_line_scatter == 'B':
         View_Charts.bargraph()
-    elif bar_line_scatter == "L":
+    elif bar_line_scatter == 'L':
         View_Charts.linegraph()
-    elif bar_line_scatter == "S":
+    elif bar_line_scatter == 'S':
         View_Charts.scatterplots()
