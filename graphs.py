@@ -11,11 +11,6 @@ master_data = pd.read_csv(master_data_input)
 
 ## Ask the user to select the X and Y variable of interest
 
-
-
-
-
-
 plot_type = input("Do you want to plot a one variable (1) or two variable (2) graph? ")
 if int(plot_type) == 1:
     X_var = input("Which x variable do you want to look at (enter exact from Parameter names): ")
