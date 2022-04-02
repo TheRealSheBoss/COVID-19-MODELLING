@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 ## This script cleans the data files we provide to users of the code, and generates a master dataset that
 ## analysis can be performed on. This dataset is then downloaded as an excel file. 
 
@@ -33,31 +34,31 @@ master_data = master_data.merge(demo_data, left_on='areaCode_x', right_on='Area 
 
 ## ADDING AND MERGING ETHNICITY DATA
 
-eth_data = pd.read_csv('f'{file_location}/Ethnicity.csv')
+eth_data = pd.read_csv(f'{file_location}/Ethnicity.csv')
 
 master_data = master_data.merge(eth_data, left_on='areaCode_x', right_on='Area code')
 
 ## ADDING AND MERGING KEY WORKER DATA
 
-key_data = pd.read_csv('f'{file_location}/Key Worker.csv')
+key_data = pd.read_csv(f'{file_location}/Key Worker.csv')
 
 master_data = master_data.merge(key_data, left_on='areaCode_x', right_on='Area code')
 
 ## ADDING AND MERGING EMPLOYMENT DATA
 
-employ_data = pd.read_csv('f'{file_location}/Employment.csv')
+employ_data = pd.read_csv(f'{file_location}/Employment.csv')
 
 master_data = master_data.merge(employ_data, left_on='areaCode_x', right_on='Area code')
 
 ## ADDING AND MERGING CHILD DATA
 
-child_data = pd.read_csv('f'{file_location}/Children.csv')
+child_data = pd.read_csv(f'{file_location}/Children.csv')
 
 master_data = master_data.merge(child_data, left_on='areaCode_x', right_on='Area code')
 
 ## ADDING AND MERGING DEPRIVATION DATA
 
-depri_data = pd.read_csv('f'{file_location}/Deprivation.csv')
+depri_data = pd.read_csv(f'{file_location}/Deprivation.csv')
 
 master_data = master_data.merge(depri_data, left_on='areaCode_x', right_on='Area Code')
 
@@ -124,11 +125,11 @@ master_data.isnull
 
 #drop missing values
 
-df.dropna(axis = "index", how = "any")
+master_data.dropna(axis = "index", how = "any")
 
 #assign new data to master_data variable
 
-master_data = df.dropna(axis = "index", how = "any")
+master_data = master_data.dropna(axis = "index", how = "any")
 
 ## EXPORTING DATAFRAME TO EXCEL
 
@@ -136,5 +137,4 @@ save_location = input("Where would you like to save the data?")
 
 #input file path
 
-master_data.to_csv(f'{save_location}\Master Data.csv', index = False')
-
+master_data.to_csv(f'{save_location}Master Data.csv', index = False)
