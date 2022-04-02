@@ -90,13 +90,37 @@ class Data_Visualization:
         ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
         plt.show()
 
+View_Charts = Data_Visualization()
 
 # How to call the functions above:
 # bargraph function: Data_Visualization.bargraph(X,Y)
 # linegraph function: Data_Visualization.linegraph(X,Y)
 # scatterplots function: Data_Visualization.scatterplots(X,Y)
 
+class Histo_Boxplot():
+    
+    def __init__(self, X):
+        self.X = X
 
+    def histogram(self):
+        plt.hist(self.X, bins=30)
+        title = input("Enter figure title: ") #Ask user to input title for figure
+        plt.title(title) #Plot the given title   
+        plt.show()
+    
+    def boxplot(self):
+        plt.boxplot(self.X)
+        title = input("Enter figure title: ") #Ask user to input title for figure
+        xlabel = input("Enter label for x axis: ") #Ask user to input x-axis label
+        ylabel = input("Enter label for y axis: ") #Ask user to input y-axis label
+        plt.title(title) #Plot the given title   
+        plt.xlabel(xlabel)#Plot the given x-axis label
+        plt.ylabel(ylabel) #Plot the given y-axis label
+        plt.show()
+        
+View_charts = Histo_Boxplot(X)
+
+"""
 def Boxplot():
     # For Covid-19 dataset BoxPlots can be created to compare infections/deaths/keyworkers/deprivation rate
     # by vaccination dose
@@ -117,7 +141,22 @@ def Boxplot():
     plt.show()
 
 Boxplot()
-View_Charts = Data_Visualization()
-View_Charts.bargraph(X_var,Y_var)
-View_Charts.linegraph(X_var,Y_var)
-View_Charts.scatterplots(X_var,Y_var)
+"""
+
+if int(plot_type) == 1:
+    histo_or_boxplot = input("Do you want to plot a histogram (H) or boxplot (B)? ")
+    if histo_or_boxplot == "H":
+        View_charts.histogram()
+    elif histo_or_boxplot == "B":    
+        View_charts.boxplot()
+elif int(plot_type) == 2:
+    bar_line_scatter = input("Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ")
+    if bar_line_scatter == "B":
+        View_Charts.bargraph(X,Y)
+    elif bar_line_scatter == "L":
+        View_Charts.linegraph(X,Y)
+    elif bar_line_scatter == "S":
+        View_Charts.scatterplots(X,Y)
+
+
+
