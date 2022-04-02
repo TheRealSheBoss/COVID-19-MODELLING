@@ -79,6 +79,8 @@ View_charts.scatterplot_master_data()
 View_charts.heatmap_master_data()
 View_charts.barchart_master_data()
 
+~
+
 
 
 
