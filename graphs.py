@@ -3,15 +3,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import seaborn as sea
-​
+
 ## Asking user to input where file location is saved
 master_data_input = input('Please enter dataset path in csv: ')
 ## Read the csv file to create a DataFrame
 master_data = pd.read_csv(master_data_input)
-​
-​
+
 ## Ask the user to select the X and Y variable of interest
-​
+
 plot_type = input('Do you want to plot a one variable (1) or two variable (2) graph? ')
 if int(plot_type) == 1:
     X_var = input('Which x variable do you want to look at (enter exact from Parameter names): ')
@@ -24,7 +23,7 @@ elif int(plot_type) == 2:
     
     
 if int(plot_type) == 2:
-​
+
     class Data_Visualization():
     
         def __init__(self, X, Y):
@@ -89,35 +88,34 @@ if int(plot_type) == 2:
             represents bars as high or low as its count.
             """
             fig, ax = plt.subplots(figsize=(15, 5))
-​
+
             xlabel = input('Enter label for x axis: ')  # Ask user to input x-axis label
             ylabel = input('Enter label for y axis: ')  # Ask user to input y-axis label
             title = input('Enter figure title: ')  # Ask user to input title for figure
-​
+
             x_bar_y = pd.concat([self.X, self.Y], axis=1)
             x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
             ax.set(title=title, xlabel=xlabel, ylabel=ylabel)
             plt.show()
-​
-​
+
 # How to call the functions above:
 # bargraph function: Data_Visualization.bargraph(X,Y)
 # linegraph function: Data_Visualization.linegraph(X,Y)
 # scatterplots function: Data_Visualization.scatterplots(X,Y)
-​
+
 elif int(plot_type) == 1:
-​
+
     class Histo_Boxplot():
     
         def __init__(self, X):
             self.X = X
-​
+
         def histogram(self):
             plt.hist(self.X, bins=30)
             title = input('Enter figure title: ') #Ask user to input title for figure
             plt.title(title) #Plot the given title   
             plt.show()
-​
+
         def boxplot(self):
             plt.boxplot(self.X)
             title = input('Enter figure title: ') #Ask user to input title for figure
@@ -127,7 +125,7 @@ elif int(plot_type) == 1:
             plt.xlabel(xlabel)#Plot the given x-axis label
             plt.ylabel(ylabel) #Plot the given y-axis label
             plt.show()
-​
+
     
 """
 def Boxplot():
@@ -147,7 +145,7 @@ def Boxplot():
     plt.show()
 Boxplot()
 """
-​
+
 if int(plot_type) == 1:
     View_charts = Histo_Boxplot(X)
     histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
