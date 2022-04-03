@@ -27,10 +27,10 @@ while function != "stop":
     if function == "I":
         info()
         continue
+    if function == "stop":
+	print("Stopping")
+	break
     else:
         print("Invalid input")
-	continue    
-	
-else:
-    print("Stopping")
+        continue 
     
