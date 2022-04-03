@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
-def graphs():
+def graphs(file_location):
     import matplotlib.pyplot as plt
     import pandas as pd
     import numpy as np
     import seaborn as sea
 
     ## Asking user to input where file location is saved
-    master_data_input = input('Please enter dataset path in csv: ')
+    
     ## Read the csv file to create a DataFrame
-    master_data = pd.read_csv(master_data_input)
+    master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
     ## Ask the user to select the X and Y variable of interest
 
