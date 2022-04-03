@@ -28,8 +28,8 @@ while function != "stop":
         info()
         continue
     if function == "stop":
-	print("Stopping")
-	break
+        print("Stopping")
+        break
     else:
         print("Invalid input")
         continue 
