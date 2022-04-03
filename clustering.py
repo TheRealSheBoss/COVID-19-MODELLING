@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr  3 15:43:04 2022
-
-@author: danieljoinson
-"""
-
 def clustering(file_location):
     
     import matplotlib.pyplot as plt
