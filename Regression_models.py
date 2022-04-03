@@ -49,6 +49,7 @@ def regression(file_location):
         print(f'Training R2 score is {r2_score(ypred_train, Ytr)}')
         
         plt.scatter(ypred_test, Ytest,color='black')
+        plt.show()
         
     regression_type = input("Do you want to use a linear regression model (L)? ")
     if regression_type == "L":
