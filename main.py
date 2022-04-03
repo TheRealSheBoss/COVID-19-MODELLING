@@ -10,7 +10,9 @@ from graphs import graphs
 from data_generation import data_generation
 from info import info
 
-data_generation()
+file_location = input("Where have you saved the non-master data?")
+
+data_generation(file_location)
 
 function = ""
 
@@ -20,7 +22,7 @@ while function != "stop":
     function = input("What do you want to do? ")
     print(f'Input was {function}')
     if function == "G":
-        graphs()
+        graphs(file_location)
         continue
     if function == "I":
         info()
