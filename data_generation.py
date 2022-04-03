@@ -5,12 +5,9 @@
 
 ## ADDING RELEVANT PACKAGES
 
-def data_generation():
+def data_generation(file_location):
 
   import pandas as pd
-
-  file_location = input("Where have you saved the non-master data?")
-
 
   ## ADDING COVID-19 CASE DATA
 
