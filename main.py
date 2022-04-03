@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr  2 16:05:36 2022
-
-@author: danieljoinson
-"""
-
 from graphs import graphs
 from data_generation import data_generation
 from info import info
@@ -36,5 +28,5 @@ while function != "stop":
         break
     else:
         print("Invalid input")
-        continue 
+        break 
     
