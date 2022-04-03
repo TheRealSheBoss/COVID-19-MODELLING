@@ -9,7 +9,7 @@ def data_generation():
 
   import pandas as pd
 
-  file_location = input("Where have you saved the data?")
+  file_location = input("Where have you saved the non-master data?")
 
 
   ## ADDING COVID-19 CASE DATA
@@ -135,8 +135,6 @@ def data_generation():
 
   ## EXPORTING DATAFRAME TO EXCEL
 
-  save_location = input("Where would you like to save the data?")
-
-  #input file path
-
-  master_data.to_csv(f'{save_location}Master Data.csv', index = False)
+  master_data.to_csv(f'{file_location}/Master Data.csv', index = False)
+  
+  print('Master Data has been saved in folder with previous data')
