@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def regression(file_location):
     
     import matplotlib.pyplot as plt
