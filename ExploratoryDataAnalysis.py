@@ -24,7 +24,7 @@ def eda(file_location):
                                     #missing_diagrams={
                                         #'heatmap': True,
                                        # 'dendrogram': False,
-                                    })
+                                    #})
             #PROFILE.to_file(output_file="Master Data.html")
 
         def histplot_master_data(self):
