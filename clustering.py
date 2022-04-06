@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def clustering(file_location):
     
     import matplotlib.pyplot as plt
