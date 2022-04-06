@@ -81,7 +81,7 @@ def eda(file_location):
     View_charts.heatmap_master_data()
     View_charts.barchart_master_data()
 
-    ~
+    
 
 
 
