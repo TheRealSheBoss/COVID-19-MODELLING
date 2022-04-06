@@ -1,4 +1,6 @@
- def eda(file_location):
+
+#!/usr/bin/env python
+def eda(file_location):
     
     # Basic Data Exploration of COVID-19 Dataset without comparisons
     # !pip install pandas-profiling if not on system
