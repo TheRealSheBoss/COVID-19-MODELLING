@@ -106,7 +106,7 @@ def data_generation(file_location):
 
   ## RENAMING VARIABLES
 
-  master_data = master_data.rename(columns={"areaName": "Local Authority Name", "cumCasesByPublishDate": "Cumulative Cases", "Average Score":"Deprivation Score", "cumPeopleVaccinatedFirstByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
+  master_data = master_data.rename(columns={"areaName": "Local Authority Name", "cumCasesByPublishDate": "Cumulative Cases", "Average Score ":"Deprivation Score", "cumPeopleVaccinatedFirstByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
 
   ## CHANGING DATA TYPES
   master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(',', '').astype(float)
