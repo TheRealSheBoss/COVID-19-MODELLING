@@ -4,8 +4,8 @@ def eda(file_location):
     
     # Basic Data Exploration of COVID-19 Dataset without comparisons
     # !pip install pandas-profiling if not on system
-    from pandas_profiling import ProfileReport
-    import pandas_profiling as pdp
+    #from pandas_profiling import ProfileReport
+    #import pandas_profiling as pdp
     import matplotlib.pyplot as plt
     import seaborn as sea
     import pandas as pd
@@ -19,13 +19,13 @@ def eda(file_location):
         def __init__(self, x):
             self.x = x
 
-        def master_data_profile(self):
-            PROFILE = ProfileReport(self.x, title='Profiling Report of COVID-19 data', minimal=True, progress_bar=False,
-                                    missing_diagrams={
-                                        'heatmap': True,
-                                        'dendrogram': False,
+        #def master_data_profile(self):
+            #PROFILE = ProfileReport(self.x, title='Profiling Report of COVID-19 data', minimal=True, progress_bar=False,
+                                    #missing_diagrams={
+                                        #'heatmap': True,
+                                       # 'dendrogram': False,
                                     })
-            PROFILE.to_file(output_file="Master Data.html")
+            #PROFILE.to_file(output_file="Master Data.html")
 
         def histplot_master_data(self):
             for all, column in enumerate(master_data.columns):
@@ -74,7 +74,7 @@ def eda(file_location):
             plt.show()  
 
     View_charts = ExploreMasterData(master_data)
-    View_charts.master_data_profile()
+    #View_charts.master_data_profile()
     View_charts.histplot_master_data()
     View_charts.lineplot_master_data()
     View_charts.scatterplot_master_data()
