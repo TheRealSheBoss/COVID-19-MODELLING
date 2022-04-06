@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def model_choice(file_location):
 
     ai_type = input("Do you want to use a regression model (R) or clustering model (C)? ")
