@@ -1,9 +1,12 @@
-def info():
+def info(file_location):
 
     import pandas as pd
 
-    file_location = input("Where have you saved the data?")
-
-    master_data = pd.read_csv(file_location)
-
-    print(master_data.info)
+    master_data = pd.read_csv(f'{file_location}/Master Data.csv')
+    
+    info_choice = input("What information would you like to know? (N for column names) ")
+    
+    if info_choice == "N":
+        print(master_data.columns)
+           
+    
