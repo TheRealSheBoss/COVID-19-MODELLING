@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def graphs(file_location):
     import matplotlib.pyplot as plt
     import pandas as pd
