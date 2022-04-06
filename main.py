@@ -20,7 +20,7 @@ while function != "stop":
         graphs(file_location)
         continue
     if function == "I":
-        info()
+        info(file_location)
         continue
     if function == "A":
         model_choice(file_location)
