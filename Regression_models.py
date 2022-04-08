@@ -12,6 +12,7 @@ def regression(file_location):
     from sklearn.model_selection import train_test_split
     import numpy as np
     import variable_finder as VF
+    import graphs 
     
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
