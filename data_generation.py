@@ -11,15 +11,23 @@ def data_generation(file_location):
 
   ## ADDING COVID-19 CASE DATA
 
-  case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
-
-  case_data
-
-  case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
+  while True:
+    try:
+        case_data = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")
 
   ## ADDING COVID-19 DEATH AND VACCINATION DATA
 
-  vax_death_data = pd.read_csv(f'{file_location}/Vaccination and Death.csv')
+  while True:
+    try:
+        vax_death_data = pd.read_csv(f'{file_location}/Vaccination and Death.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")
 
   ## MERGING CASE, DEATH AND VACCINATION DATAFRAMES TOGETHER
 
@@ -27,37 +35,74 @@ def data_generation(file_location):
 
   ## ADDING AND MERGING AGE AND DENSITY DATA
 
-  demo_data = pd.read_csv(f'{file_location}/Age and Density.csv')
+  while True:
+    try:
+        demo_data = pd.read_csv(f'{file_location}/Age and Density.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")
 
   master_data = master_data.merge(demo_data, left_on='areaCode_x', right_on='Area code')
 
   ## ADDING AND MERGING ETHNICITY DATA
 
-  eth_data = pd.read_csv(f'{file_location}/Ethnicity.csv')
+  while True:
+    try:
+        eth_data = pd.read_csv(f'{file_location}/Ethnicity.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")	
 
   master_data = master_data.merge(eth_data, left_on='areaCode_x', right_on='Area code')
 
   ## ADDING AND MERGING KEY WORKER DATA
 
-  key_data = pd.read_csv(f'{file_location}/Key Worker.csv')
+  while True:
+    try:
+        key_data = pd.read_csv(f'{file_location}/Key Worker.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")	
+        file_location = input("Where have you saved the non-master data?")
 
   master_data = master_data.merge(key_data, left_on='areaCode_x', right_on='Area code')
 
   ## ADDING AND MERGING EMPLOYMENT DATA
-
-  employ_data = pd.read_csv(f'{file_location}/Employment.csv')
+  
+  while True:
+    try:
+        employ_data = pd.read_csv(f'{file_location}/Employment.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")	
 
   master_data = master_data.merge(employ_data, left_on='areaCode_x', right_on='Area code')
 
   ## ADDING AND MERGING CHILD DATA
 
-  child_data = pd.read_csv(f'{file_location}/Children.csv')
+  while True:
+    try:
+        child_data = pd.read_csv(f'{file_location}/Children.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")
 
   master_data = master_data.merge(child_data, left_on='areaCode_x', right_on='Area code')
 
   ## ADDING AND MERGING DEPRIVATION DATA
 
-  depri_data = pd.read_csv(f'{file_location}/Deprivation.csv')
+  while True:
+    try:
+        depri_data = pd.read_csv(f'{file_location}/Deprivation.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("Where have you saved the non-master data?")
+
 
   master_data = master_data.merge(depri_data, left_on='areaCode_x', right_on='Area Code')
 
