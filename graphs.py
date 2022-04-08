@@ -5,6 +5,8 @@ def graphs(file_location):
     import pandas as pd
     import numpy as np
     import seaborn as sea
+    import variable_finder
+    from variable_finder import Variable_Finder
 
     ## Asking user to input where file location is saved
     
@@ -13,16 +15,21 @@ def graphs(file_location):
 
     ## Ask the user to select the X and Y variable of interest
 
-    plot_type = input('Do you want to plot a one variable (1) or two variable (2) graph? ')
-    if int(plot_type) == 1:
-        X_var = input('Which x variable do you want to look at (enter exact from Parameter names): ')
-        X = master_data[X_var]
-    elif int(plot_type) == 2:
-        X_var = input('Which x variable do you want to look at (enter exact from Parameter names): ')
-        Y_var = input('Which y variable do you want to look at (enter exact from Parameter names): ')
-        X = master_data[X_var]
-        Y = master_data[Y_var]
-
+    while True:
+        plot_type = input('Do you want to plot a one variable (1) or two variable (2) graph? ')
+        if plot_type == "1":
+            var_choice = Variable_Finder("", master_data)          
+            X = var_choice.variable_finder()         
+            break
+        elif plot_type == "2":
+            var_choice = Variable_Finder("x", master_data)          
+            X = var_choice.variable_finder()  
+            var_choice = Variable_Finder("y", master_data)          
+            Y = var_choice.variable_finder()  
+            break
+        else:
+            print("Invalid input")
+            continue
 
     if int(plot_type) == 2:
 
@@ -149,18 +156,29 @@ def graphs(file_location):
     """
 
     if int(plot_type) == 1:
-        View_charts = Histo_Boxplot(X)
-        histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
-        if histo_or_boxplot == 'H':
-            View_charts.histogram()
-        elif histo_or_boxplot == 'B':    
-            View_charts.boxplot()
+         View_charts = Histo_Boxplot(X)
+         while True:
+             histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
+             if histo_or_boxplot == 'H':
+                 View_charts.histogram()
+                 break
+             elif histo_or_boxplot == 'B':    
+                 View_charts.boxplot()
+                 break
+             else:
+                 print("Invalid input")
+                 continue
     elif int(plot_type) == 2:
-        View_Charts = Data_Visualization(X,Y)
-        bar_line_scatter = input('Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ')
-        if bar_line_scatter == 'B':
-            View_Charts.bargraph()
-        elif bar_line_scatter == 'L':
-            View_Charts.linegraph()
-        elif bar_line_scatter == 'S':
-            View_Charts.scatterplots()
+         View_Charts = Data_Visualization(X,Y)
+         while True:
+             bar_line_scatter = input('Do you want to plot a bar chart (B) or scatterplot (S)? ')
+             if bar_line_scatter == 'B':
+                 View_Charts.bargraph()
+                 break
+             elif bar_line_scatter == 'S':
+                 View_Charts.scatterplots()
+                 break
+             else:
+                 print("invalid input")
+                 continue
+        		
