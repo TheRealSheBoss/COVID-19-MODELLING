@@ -40,6 +40,43 @@ Pictures of the graphs plotted
 **DATA GENERATION**
 The data is pre-processed, cleaned and stored in the users desired path
 
+**HOW TO RUN THE PROGRAM FROM YOUR TERMINAL**
+    *First step is to clone the github repository:* 
+git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
+
+
+    *Enter the following into the terminal to run the program:*  
+./main.py 
+
+ 
+    *Install relevant libraries using pip install*
+e.g.  
+pip install virtualenv 
+virtualenv venv 
+source venv/bin/activate 
+pip install pandas 
+pip install matplotlib 
+pip install numpy
+pip install seaborn
+pip install sklearn
+
+ 
+    *Generating Masterdata*
+You have to have downloaded the CSV files folder we used to generate Masterdata.  
+Once the program asks where have you saved the non-master data?, enter the folder in which the CSV folder is contained in. e.g.,   
+/Users/adetutusadiq/Downloads (you have to have downloaded the CSV files). Click Enter.  
+
+Master Data should have been saved in folder with the CSV folder.
+
+ 
+    *Program functionality/tasks you can ask it to do:*  
+Program will give you the following options: 
+Type G for graph function, I for variable information, A for AI modelling, E for eda(Exploratory Data Analysis) or type stop to quit the program 
+
+ 
+Keep entering inputs relevant to task you want to perform (e.g. A for AI modelling)
+In some cases, graph images will mostly be produced as results  
+
 
 
 
