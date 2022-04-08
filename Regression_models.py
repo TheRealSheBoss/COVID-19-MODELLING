@@ -26,19 +26,6 @@ def regression(file_location):
         return Xtr, Xtest, Ytr, Ytest 
 
     def linear(Xtr, Xtest, Ytr, Ytest):
-        #Y_var = input('Which Y variable do you want to predict (enter exact from Parameter names): ')
-        #Y = master_data[Y_var]
-    
-        #master_data_copy = master_data.copy()
-        #X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
-        
-        #split_data = traintestsplit(X, Y)
-        
-        #Xtr = split_data[0]
-        #Xtest = split_data[1]
-        #Ytr = split_data[2]
-        #Ytest = split_data[3]
-    
         regr = linear_model.LinearRegression()
         regr_model = regr.fit(Xtr, Ytr)
     
@@ -61,19 +48,6 @@ def regression(file_location):
     
     
     def DecisionTree(Xtr, Xtest, Ytr, Ytest):
-        #Y_var = input('Which Y variable do you want to predict (enter exact from Parameter names): ')
-        #Y = master_data[Y_var]
-    
-        #master_data_copy = master_data.copy()
-        #X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
-        
-        #split_data = traintestsplit(X, Y)
-        
-        #Xtr = split_data[0]
-        #Xtest = split_data[1]
-        #Ytr = split_data[2]
-        #Ytest = split_data[3]
-        
         DTR = DecisionTreeRegressor()
         DTR_model = DTR.fit(Xtr, Ytr)
         ypred_train = DTR_model.predict(Xtr)
@@ -87,34 +61,6 @@ def regression(file_location):
         return DTR
     
     def CompareAllModels(Xtr, Xtest, Ytr, Ytest):
-# =============================================================================
-#         Y_var = input('Which Y variable do you want to predict (enter exact from Parameter names): ')
-#         Y = master_data[Y_var]
-#     
-#         master_data_copy = master_data.copy()
-#         X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
-# =============================================================================
-        
-# =============================================================================
-#         split_data = traintestsplit(X, Y)
-#         
-#         Xtr = split_data[0]
-#         Xtest = split_data[1]
-#         Ytr = split_data[2]
-#         Ytest = split_data[3]
-# =============================================================================
-# =============================================================================
-#         size_test = input("What test size do you want? ")
-#     
-#         state_random = input("What random state do you want? ")
-#     
-#         Xtr, Xtest, Ytr, Ytest = train_test_split(X, Y, test_size = float(size_test), random_state = int(state_random))
-#         cv = KFold(n_splits=10, shuffle=True)
-#         Xtr = Xtr.to_numpy()
-#         Xtest = Xtest.to_numpy()
-#         Ytr = Ytr.to_numpy()
-#         Ytest = Ytest.to_numpy()
-# =============================================================================
         mse_LR = []
         r2_LR = []
         mse_DTR = []
@@ -154,7 +100,7 @@ def regression(file_location):
         X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
         return X, Y
     
-    #SelectTargetVariable()
+
     Parameters, Target = SelectTargetVariable()
     
     Xtraining, Xtesting, Ytraining, Ytesting = traintestsplit(Parameters, Target)
