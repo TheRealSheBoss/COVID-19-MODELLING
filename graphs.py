@@ -156,16 +156,29 @@ def graphs(file_location):
     """
 
     if int(plot_type) == 1:
-        View_charts = Histo_Boxplot(X)
-        histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
-        if histo_or_boxplot == 'H':
-            View_charts.histogram()
-        elif histo_or_boxplot == 'B':    
-            View_charts.boxplot()
+         View_charts = Histo_Boxplot(X)
+         while True:
+             histo_or_boxplot = input('Do you want to plot a histogram (H) or boxplot (B)? ')
+             if histo_or_boxplot == 'H':
+                 View_charts.histogram()
+                 break
+             elif histo_or_boxplot == 'B':    
+                 View_charts.boxplot()
+                 break
+             else:
+                 print("Invalid input")
+                 continue
     elif int(plot_type) == 2:
-        View_Charts = Data_Visualization(X,Y)
-        bar_line_scatter = input('Do you want to plot a bar chart (B) or scatterplot (S)? ')
-        if bar_line_scatter == 'B':
-            View_Charts.bargraph()
-        elif bar_line_scatter == 'S':
-            View_Charts.scatterplots()
+         View_Charts = Data_Visualization(X,Y)
+         while True:
+             bar_line_scatter = input('Do you want to plot a bar chart (B) or scatterplot (S)? ')
+             if bar_line_scatter == 'B':
+                 View_Charts.bargraph()
+                 break
+             elif bar_line_scatter == 'S':
+                 View_Charts.scatterplots()
+                 break
+             else:
+                 print("invalid input")
+                 continue
+        		
