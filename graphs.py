@@ -157,10 +157,8 @@ def graphs(file_location):
             View_charts.boxplot()
     elif int(plot_type) == 2:
         View_Charts = Data_Visualization(X,Y)
-        bar_line_scatter = input('Do you want to plot a bar chart (B), linegraph (L) or scatterplot (S)? ')
+        bar_line_scatter = input('Do you want to plot a bar chart (B) or scatterplot (S)? ')
         if bar_line_scatter == 'B':
             View_Charts.bargraph()
-        elif bar_line_scatter == 'L':
-            View_Charts.linegraph()
         elif bar_line_scatter == 'S':
             View_Charts.scatterplots()
