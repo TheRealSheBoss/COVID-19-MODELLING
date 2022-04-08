@@ -11,6 +11,7 @@ def regression(file_location):
     from scipy.stats import ttest_rel
     from sklearn.model_selection import train_test_split
     import numpy as np
+    import variable_finder as VF
     
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
@@ -94,11 +95,12 @@ def regression(file_location):
         print(f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}')
     
     def SelectTargetVariable():
-        Y_var = input('Which Y variable do you want to predict (enter exact from Parameter names): ')
-        Y = master_data[Y_var]
+        var_choice = VF.Variable_Finder("", master_data)
+        Y_var = var_choice.variable_finder()
         master_data_copy = master_data.copy()
-        X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
-        return X, Y
+        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority Name', 'Region name'])
+        return X, Y_var
+    
     
 
     Parameters, Target = SelectTargetVariable()
