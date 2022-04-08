@@ -62,12 +62,42 @@ def regression(file_location):
         
         plt.scatter(ypred_test, Ytest,color='black')
         plt.show()
+    
+    
+    def DecisionTree():
+        Y_var = input('Which Y variable do you want to predict (enter exact from Parameter names): ')
+        Y = master_data[Y_var]
+    
+        master_data_copy = master_data.copy()
+        X = master_data_copy.drop(columns=[Y_var, 'Local Authority Name', 'Region name'])
         
-    regression_type = input("Do you want to use a linear regression model (L)? ")
+        split_data = traintestsplit(X, Y)
+        
+        Xtr = split_data[0]
+        Xtest = split_data[1]
+        Ytr = split_data[2]
+        Ytest = split_data[3]
+        
+        from sklearn.tree import DecisionTreeRegressor
+        DTR = DecisionTreeRegressor()
+        DTR_model = DTR.fit(Xtr, Ytr)
+        ypred_train = DTR_model.predict(Xtr)
+        print(f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
+        print(f'Training R2 score is {r2_score(ypred_train, Ytr)}')
+        
+        ypred_test = DTR_model.predict(Xtest)
+        print(f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
+        print(f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
+        
+        
+        
+    regression_type = input("Do you want to use a linear regression model (L) or Decision Tree Regression (D)? ")
     if regression_type == "L":
         linear()
+    elif regression_type == "D":
+        DecisionTree()
             
     
     
-
-    
+import pandas as pd
+data = pd.read_csv(f'/Users/kemond/Documents/Masters/Digital Health/FurProg/Assessment/Cumulative Cases.csv')   
