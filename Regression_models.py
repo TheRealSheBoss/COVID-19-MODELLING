@@ -51,7 +51,6 @@ def regression(file_location):
         
         plt.scatter(ypred_test, Ytest,color='black')
         plt.show()
-        return regr
         
 
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
@@ -81,6 +80,7 @@ def regression(file_location):
         plt.ylabel('MSE')
         plt.xlabel('Degree')
         plt.legend()
+        plt.show()
         
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
         print('and test data. Please identify it.')
@@ -91,8 +91,6 @@ def regression(file_location):
         print('variable with Linear Regression. Which MSE is lower, that is the better model for that specific prediction')
         
         
-        
-    
     
     def DecisionTree(Xtr, Xtest, Ytr, Ytest):
         DTR = DecisionTreeRegressor()
@@ -104,17 +102,19 @@ def regression(file_location):
         ypred_test = DTR_model.predict(Xtest)
         print(f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
         print(f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
-        
-        return DTR
+    
     
     def CompareAllModels(Xtr, Xtest, Ytr, Ytest):
         mse_LR = []
         r2_LR = []
         mse_DTR = []
         r2_DTR = []
+        mse_poly = []
+        r2_poly = []
         
         regr = linear_model.LinearRegression()
         DTR = DecisionTreeRegressor()
+        poly = PolynomialFeatures()
         cv = KFold(n_splits=10, shuffle=True)
         for train_index, test_index in cv.split(Xtr):
             Xtrain, Xtst = Xtr[train_index], Xtr[test_index]
@@ -129,16 +129,32 @@ def regression(file_location):
             DTR_pred = model_DTR.predict(Xtst)
             mse_DTR.append(mean_squared_error(Ytst, DTR_pred))
             r2_DTR.append(r2_score(Ytst, DTR_pred))
+            
+            Xtrain_new = poly.fit_transform(Xtrain)
+            Xtst_new = poly.fit_transform(Xtst)
+            model_poly = regr.fit(Xtrain_new, Ytrain) #fit transformed data and target to regression model 
+            poly_pred = model_poly.predict(Xtst_new)
+            mse_poly.append(mean_squared_error(Ytst, poly_pred))
+            r2_poly.append(r2_score(Ytst, poly_pred))
+        
+        box_plot_data=[mse_LR,mse_DTR, mse_poly]
+        plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression'])
+        plt.rcParams["figure.figsize"] = [7.50, 3.50]
+        plt.rcParams["figure.autolayout"] = True
+        plt.title('Comparison of AI model performances', fontsize=18) #Plot the given title   
+        plt.xlabel('AI models', fontsize=14)#Plot the given x-axis label
+        plt.ylabel('Mean Squared Error', fontsize=14) #Plot the given y-axis label
+        plt.show()
+        
+# =============================================================================
+#         Boxplot = Histo_Boxplot.boxplot()
+#         Boxplot([mse_LR, mse_DTR])
+# =============================================================================
         
         print(f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
         print(f'LR r2: mean={np.mean(r2_LR)}, sd={np.std(r2_LR)}')
         print(f'DTR mse: mean={np.mean(mse_DTR)}, sd={np.std(mse_DTR)}')
         print(f'DTR r2: mean={np.mean(r2_DTR)}, sd={np.std(r2_DTR)}') 
-        
-        box_plot_data=[mse_LR,mse_DTR]
-        plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegressor'])
-        plt.show()
-        
         print(f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}')
     
     def SelectTargetVariable():
