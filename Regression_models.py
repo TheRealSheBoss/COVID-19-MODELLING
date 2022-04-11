@@ -81,6 +81,19 @@ def regression(file_location):
         plt.xlabel('Degree')
         plt.legend()
         plt.show()
+
+# =============================================================================
+#         AllXVars = np.vstack((MSE_train_data, MSE_test_data))
+#         print(len(AllXVars))
+#         y_var = list(range(1, poly_degree_test+1))
+#         labels = ['Training', 'Validation']
+#         xlabel = 'Degree'
+#         ylabel = 'MSE'
+#         title = 'Parameter optimisation and cross validation for Polynomial Regression'
+#         Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
+#         Plots.multi_line()
+# =============================================================================
+
         
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
         print('and test data. Please identify it.')
