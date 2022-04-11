@@ -71,7 +71,9 @@ Master Data should have been saved in folder with the CSV folder.
  
     *Program functionality/tasks you can ask it to do:*  
 Program will give you the following options: 
-Type G for graph function, I for variable information, A for AI modelling, E for eda(Exploratory Data Analysis) or type stop to quit the program 
+Type G for graph function, I for variable information, A for AI modelling, E for eda(Exploratory Data Analysis), S for Simulation, or type stop to quit the program.
+Note that this instruction is case sensitive. A while loop would run until the correct options are inputed.
+
 
  
 Keep entering inputs relevant to task you want to perform (e.g. A for AI modelling)
