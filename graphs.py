@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import seaborn as sea
+import variable_finder
+from variable_finder import Variable_Finder
+
 def graphs(file_location):
     import matplotlib.pyplot as plt
     import pandas as pd
@@ -149,7 +156,7 @@ def graphs(file_location):
 #                         label = input('Enter label for line for x variable in list position {index(i)} : ')
 #                         labels.append(label)
 #                         box_plot_data.append(i)
-#                     plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegressor'])
+#                     plt.boxplot(box_plot_data,labels=labels)
 #                     ax.set(title=title) #Plot the given title
 #                     plt.legend()    
 #                 plt.xlabel(xlabel)#Plot the given x-axis label
@@ -205,4 +212,193 @@ def graphs(file_location):
              else:
                  print("invalid input")
                  continue
-        		
+
+def graph_selection(file_location):
+    master_data = pd.read_csv(f'{file_location}/Master Data.csv')
+    View_Charts = Data_Viz()
+    while True:
+        no_x_vars = input('How many X variables do you want to visualise (must be integer greater than zero?): ')
+        try:
+            no_x_vars = int(no_x_vars)
+        except ValueError:
+            print("Invalid input")
+        if no_x_vars == "1":
+            var_choice = Variable_Finder("", master_data)          
+            x_variable = var_choice.variable_finder() 
+            x_label = input("Input x variable label: ")
+            while True:
+                no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
+                if no_y_vars == 'Y':
+                    var_choice = Variable_Finder("", master_data)
+                    y_variable = var_choice.variable_finder()
+                    y_label = input("Input y variable label: ")
+                    while True: 
+                        graph_type = input("Would you like to plot a scatter (S), line (L) or bar (B) graph?: ")
+                        if graph_type == "S":
+                            title = input("Enter title for scatter plot: ")
+                            View_Charts.scatter(x_variable, y_variable, x_label, x_label, y_label, title)
+                            break
+                        elif graph_type == "L":
+                            title = input("Enter title for line plot: ")
+                            View_Charts.single_line(x_variable, y_variable, x_label, x_label, y_label, title)
+                            break
+                        else:
+                            print("Invalid input")
+                            continue
+                elif no_y_vars == 'N':
+                    y_variable = None
+                    while True: 
+                        graph_type = input("Would you like to plot a histogram (H) or boxplot (B): ")
+                        if graph_type == "H":
+                            title = input("Enter title for histogram plot: ")
+                            y_label = 'Count'
+                            View_Charts.histogram(x_variable, y_variable, x_label, x_label, y_label, title)
+                            break
+                        elif graph_type == "B":
+                            title = input("Enter title for line plot: ")
+                            y_label = x_label
+                            View_Charts.single_line(x_variable, y_variable, x_label, x_label, y_label, title)
+                            break
+                        else:
+                            print("Invalid input")
+                            continue
+                else:
+                    print("Invalid input")
+                    continue
+        elif int(no_x_vars) > 1:
+            x_variables = []
+            x_variable_names = []
+            for i in range(int(no_x_vars)):
+               var_choice = Variable_Finder("", master_data)          
+               x_variable = var_choice.variable_finder() 
+               x_variables.append(x_variable.to_numpy())
+               x_label = input("Input x variable label: ")
+            x_variables = np.vstack(x_variables, axis = 0)
+            x_label = input("Enter x-axis label: ")
+            while True:
+                no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
+                if no_y_vars == 'Y':
+                    var_choice = Variable_Finder("", master_data)
+                    y_variable = var_choice.variable_finder()
+                    y_label = input("Input y variable label: ")
+                    title = input("Enter title for line plot: ")
+                    View_Charts.multi_line(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    break
+                    
+                elif no_y_vars == 'N':
+                    y_variable = None
+                    title = input("Enter title for boxplot: ")
+                    y_label = input("Enter y-axis label: ")
+                    View_Charts.multi_boxplot(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    break
+                else:
+                    print("Invalid input")
+                    continue
+        else:
+            print("Invalid input")
+            continue
+
+class Data_Viz():
+    def __init__(self, x_data, y_data, x_variable_names, x_label, y_label, title):
+        self.x_data = x_data
+        self.y_data = y_data
+        self.x_variable_names = x_variable_names
+        self.x_label = x_label
+        self.y_label = y_label
+        self.title = title
+        
+    def multi_boxplot(self):
+        plt.boxplot(self.x_data,labels=self.x_variable_names)
+        plt.rcParams["figure.figsize"] = [7.50, 3.50]
+        plt.rcParams["figure.autolayout"] = True 
+        plt.xlabel(self.x_label, fontsize=12)
+        plt.ylabel(self.y_label, fontsize=12) 
+        plt.title(self.title, fontsize=18) 
+        plt.show()
+        
+    def scatter(self):
+        """
+        Function to create a scatter plot for the variables of interest.
+        The function should be called on the X and Y variables previously defined by the user.
+        The function then creates the figure and axis on which to plot the scatter graph.
+        The user is asked to input the title for the figure and the x- and y-axis labels.
+        The function then outputs the defined scatter plot.
+        """
+        fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
+        ax.scatter(self.x_data, self.y_data, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
+        plt.title(self.title) #Plot the given title
+        plt.xlabel(self.x_label)#Plot the given x-axis label
+        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.show()
+    
+    def single_line(self):
+        """
+        Function to produce line graph for given input values. 
+        x_variable should be a 1-D array. 
+        y_variable should be a 1-D array.
+        The function creates a single figure and axis. 
+        The 1-D arrays of x_variables and y_variable are plotted on a single line graph. 
+        When called, the function returns a single linegraph plot.
+        """
+        fig, ax = plt.subplots(figsize = (15,5))
+        plt.plot(self.x_data, self.y_data, alpha=0.3)
+        plt.title(self.title)
+        plt.xlabel(self.x_label)#Plot the given x-axis label
+        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.show()
+        
+    def multi_line(self):
+        """
+        Function to produce line graph for given input values. 
+        x_variables should be a 1-D or multi-D array. 
+        y_variable should be a 1-D array.
+        The function creates a single figure and axis. 
+        The function asks the user how many x-variables are being looked at; if only 1 then the 1-D arrays of 
+        x_variables and y_variable are plotted on a single line graph. If more than 1 then the function iterates
+        through the arrays of x_variables, plotting each against the y_variable array.
+        The user is asked to input the label for each x_variable, the y_variable, the x- and y-axis labels 
+        and the title.
+        When called, the function returns a single linegraph plot.
+        """
+        fig, ax = plt.subplots(figsize = (15,5))
+        for i in self.x_data:
+            label = self.x_variable_names[i]
+            plt.plot(i, self.y_data, label=label, alpha=0.3)
+            ax.set(title=self.title) #Plot the given title
+            plt.legend()
+        plt.xlabel(self.x_label)#Plot the given x-axis label
+        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.show()
+        
+        
+    def histogram(self):
+        plt.hist(self.x_data, bins=30)
+        plt.xlabel(self.x_label)
+        plt.ylabel('Count')
+        plt.title(self.title)    
+        plt.show()
+        
+    def bargraph(self):
+        """
+        Function to produce bar graph for given input values.
+        the x_variables will be plotted against the y-variable,
+        x-variables are typically non-numerical variables such as area name, etc.
+        the y-variable which should be a numerical variable so our bar graph
+        represents bars as high or low as its count.
+        """
+        fig, ax = plt.subplots(figsize=(15, 5))
+        x_bar_y = pd.concat([self.x_data, self.y_data], axis=1)
+        x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
+        ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
+        plt.show()    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
