@@ -215,14 +215,13 @@ def graphs(file_location):
 
 def graph_selection(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
-    View_Charts = Data_Viz()
     while True:
         no_x_vars = input('How many X variables do you want to visualise (must be integer greater than zero?): ')
         try:
             no_x_vars = int(no_x_vars)
         except ValueError:
             print("Invalid input")
-        if no_x_vars == "1":
+        if no_x_vars == 1:
             var_choice = Variable_Finder("", master_data)          
             x_variable = var_choice.variable_finder() 
             x_label = input("Input x variable label: ")
@@ -236,11 +235,13 @@ def graph_selection(file_location):
                         graph_type = input("Would you like to plot a scatter (S), line (L) or bar (B) graph?: ")
                         if graph_type == "S":
                             title = input("Enter title for scatter plot: ")
-                            View_Charts.scatter(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts.scatter()
                             break
                         elif graph_type == "L":
                             title = input("Enter title for line plot: ")
-                            View_Charts.single_line(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts.single_line()
                             break
                         else:
                             print("Invalid input")
@@ -252,12 +253,14 @@ def graph_selection(file_location):
                         if graph_type == "H":
                             title = input("Enter title for histogram plot: ")
                             y_label = 'Count'
-                            View_Charts.histogram(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts.histogram()
                             break
                         elif graph_type == "B":
-                            title = input("Enter title for line plot: ")
+                            title = input("Enter title for boxplot: ")
                             y_label = x_label
-                            View_Charts.single_line(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
+                            View_Charts.boxplot()
                             break
                         else:
                             print("Invalid input")
@@ -265,6 +268,7 @@ def graph_selection(file_location):
                 else:
                     print("Invalid input")
                     continue
+                break
         elif int(no_x_vars) > 1:
             x_variables = []
             x_variable_names = []
@@ -273,7 +277,10 @@ def graph_selection(file_location):
                x_variable = var_choice.variable_finder() 
                x_variables.append(x_variable.to_numpy())
                x_label = input("Input x variable label: ")
-            x_variables = np.vstack(x_variables, axis = 0)
+               x_variable_names.append(x_label)
+            #x_variables = np.vstack(x_variables)
+            print(x_variables)
+            print(x_variable_names)
             x_label = input("Enter x-axis label: ")
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
@@ -282,14 +289,17 @@ def graph_selection(file_location):
                     y_variable = var_choice.variable_finder()
                     y_label = input("Input y variable label: ")
                     title = input("Enter title for line plot: ")
-                    View_Charts.multi_line(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    #x_variable_names = np.vstack(x_variable_names)
+                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    View_Charts.multi_line()
                     break
                     
                 elif no_y_vars == 'N':
                     y_variable = None
                     title = input("Enter title for boxplot: ")
                     y_label = input("Enter y-axis label: ")
-                    View_Charts.multi_boxplot(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+                    View_Charts.multi_boxplot()
                     break
                 else:
                     print("Invalid input")
@@ -297,6 +307,7 @@ def graph_selection(file_location):
         else:
             print("Invalid input")
             continue
+        break
 
 class Data_Viz():
     def __init__(self, x_data, y_data, x_variable_names, x_label, y_label, title):
@@ -307,6 +318,13 @@ class Data_Viz():
         self.y_label = y_label
         self.title = title
         
+    def boxplot(self):
+        plt.boxplot(self.x_data)
+        plt.title(self.title) #Plot the given title   
+        plt.xlabel(self.x_label)#Plot the given x-axis label
+        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.show()
+    
     def multi_boxplot(self):
         plt.boxplot(self.x_data,labels=self.x_variable_names)
         plt.rcParams["figure.figsize"] = [7.50, 3.50]
@@ -361,9 +379,9 @@ class Data_Viz():
         When called, the function returns a single linegraph plot.
         """
         fig, ax = plt.subplots(figsize = (15,5))
-        for i in self.x_data:
+        for i in range(len(self.x_data)):
             label = self.x_variable_names[i]
-            plt.plot(i, self.y_data, label=label, alpha=0.3)
+            plt.plot(self.x_data[i], self.y_data, label=label, alpha=0.3)
             ax.set(title=self.title) #Plot the given title
             plt.legend()
         plt.xlabel(self.x_label)#Plot the given x-axis label
