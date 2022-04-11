@@ -34,5 +34,5 @@ while function != "stop":
         break
     else:
         print("Invalid input")
-        break 
+        continue
     
