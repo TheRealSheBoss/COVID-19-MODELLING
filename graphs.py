@@ -134,6 +134,30 @@ def graphs(file_location):
                 plt.xlabel(xlabel)#Plot the given x-axis label
                 plt.ylabel(ylabel) #Plot the given y-axis label
                 plt.show()
+# =============================================================================
+#                 number_x_vars = input('How many x variables are you looking at? Enter integer only: ')
+#                 xlabel = input('Enter label for x axis: ') #Ask user to input x-axis label
+#                 ylabel = input('Enter label for y axis: ') #Ask user to input y-axis label
+#                 title = input('Enter figure title: ') #Ask user to input title for figure
+#                 if number_x_vars == '1':
+#                     plt.boxplot(self.X)
+#                     plt.title(title)
+#                 else:
+#                     box_plot_data=[]
+#                     labels = []
+#                     for i in self.X:
+#                         label = input('Enter label for line for x variable in list position {index(i)} : ')
+#                         labels.append(label)
+#                         box_plot_data.append(i)
+#                     plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegressor'])
+#                     ax.set(title=title) #Plot the given title
+#                     plt.legend()    
+#                 plt.xlabel(xlabel)#Plot the given x-axis label
+#                 plt.ylabel(ylabel) #Plot the given y-axis label
+#                 plt.title(title) #Plot the given title 
+#                 plt.show()
+# =============================================================================
+                
 
 
     """
