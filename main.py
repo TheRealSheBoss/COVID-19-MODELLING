@@ -15,7 +15,8 @@ function = ''
 
 
 while function != "stop":
-    print("Type G for graph function, I for variable information, A for AI modelling, E for eda, S for simulation, "
+    print("This is case-sensitive! \n\n Type G for graph function \n\n I for variable information \n\n A for AI modelling"
+          "\n\n E for eda \n\n S for simulation, "
           "or type stop to quit the program")
     function = input("What do you want to do? ")
     print(f'Input was {function}')
