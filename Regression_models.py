@@ -13,7 +13,7 @@ def regression(file_location):
     from sklearn.model_selection import train_test_split
     import numpy as np
     import variable_finder as VF
-    import graphs 
+    import graphs as Gph
     
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
@@ -137,19 +137,30 @@ def regression(file_location):
             mse_poly.append(mean_squared_error(Ytst, poly_pred))
             r2_poly.append(r2_score(Ytst, poly_pred))
         
-        box_plot_data=[mse_LR,mse_DTR, mse_poly]
-        plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression'])
-        plt.rcParams["figure.figsize"] = [7.50, 3.50]
-        plt.rcParams["figure.autolayout"] = True
-        plt.title('Comparison of AI model performances', fontsize=18) #Plot the given title   
-        plt.xlabel('AI models', fontsize=14)#Plot the given x-axis label
-        plt.ylabel('Mean Squared Error', fontsize=14) #Plot the given y-axis label
-        plt.show()
-        
 # =============================================================================
-#         Boxplot = Histo_Boxplot.boxplot()
-#         Boxplot([mse_LR, mse_DTR])
+#         box_plot_data=[mse_LR,mse_DTR, mse_poly]
+#         plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression'])
+#         plt.rcParams["figure.figsize"] = [7.50, 3.50]
+#         plt.rcParams["figure.autolayout"] = True
+#         plt.title('Comparison of AI model performances', fontsize=18) #Plot the given title   
+#         plt.xlabel('AI models', fontsize=14)#Plot the given x-axis label
+#         plt.ylabel('Mean Squared Error', fontsize=14) #Plot the given y-axis label
+#         plt.show()
 # =============================================================================
+        AllMSE = []
+        AllMSE.append(mse_LR)
+        AllMSE.append(mse_DTR)
+        AllMSE.append(mse_poly)
+        labels = ['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression']
+        xlabel = 'AI models'
+        ylabel = 'Mean Squared Error'
+        title = 'Comparison of AI model performances'
+        Plots = Gph.Data_Viz(AllMSE, None, labels, xlabel, ylabel, title)
+        Plots.multi_boxplot()
+        #Data_Visualisation.multi_boxplot(AllMSE)
+        #Boxplot = Histo_Boxplot.boxplot()
+        #Boxplot([mse_LR, mse_DTR])
+
         
         print(f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
         print(f'LR r2: mean={np.mean(r2_LR)}, sd={np.std(r2_LR)}')
