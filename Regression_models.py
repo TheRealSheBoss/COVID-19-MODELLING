@@ -72,9 +72,18 @@ def regression(file_location):
         
 
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
-        
-        poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
-        
+        while True:
+            try:
+                poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model (maximum number is 5) : "))
+                if poly_degree_test > 5 or poly_degree_test < 1:
+                    print("Degree must be between 1 and 5") 
+                    continue
+                else:
+                    break
+            except ValueError:
+                print("Degree must be an integer betweeen 1 and 5")
+                continue
+
         MSE_test_data = []
         MSE_train_data = []
         
@@ -196,7 +205,7 @@ def regression(file_location):
     
  
     while True:
-        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D) or compare all (C)? ")
+        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to main.py (main)? ")
         if regression_type == "L":
             linear(Xtraining, Xtesting, Ytraining, Ytesting)
             info_stay = input("Do you want to stay in regression models? (Y or N) ")
@@ -237,6 +246,8 @@ def regression(file_location):
             else:
                 print("Invalid input")
                 continue
+        elif regression_type == "main":
+            break
         else:
             print("Invalid input")
             continue
