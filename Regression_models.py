@@ -2,7 +2,47 @@
 
 #!/usr/bin/env python
 
+'''
+
+AI REGRESSION MODELLING: 
+
+Our dataset contains numeric variables relevant to the Covid pandemic across all regions in the UK. 
+This data includes information about deaths, population vaccinated 1st, 2nd and 3rd doses, and many more data points.
+Our team decided to apply AI/Machine Learnining regression algorithms to give us an understanding of the data. 
+
+Thus, in this code, we have a main function called regresssion(). To split our data into test and training data, we use the traintestsplit function. 
+Depending on the type of regression algorithms the user wants to fit to the data, we created subfunctions for Linear Regression, Polynomial Regression, and Decision Tree Regression.
+Lastly, we have a function to compare all these models to see which ones performed best. 
+
+PERFORMANCE METRICS: 
+
+The performance metrics used are the Mean Squared Error(MSE) and R-squared. 
+A model with a lower MSE is a better performning data and the closer R-squared value is to 1, the better the model's fit to the data. 
+Hence, better performing. However, to prevent our model from over-fitting to the data and ensure model generalizability to new unseen data, we 
+had to optimize for parameters, especially in our polynomial model. 
+
+A polynomial degree value more than 5 is likely to produce overfitting or crash the program, so in order to prevent this, we introduced a While loop to 
+operate the code only if the conditional that poly_degree_test has to be less than or equal to 5 is met. 
+
+
+THIS SCRIPT CAN BE USED TO: 
+
+    1. Fit 3 AI regression models imported from the scikit-learn library to the data. 
+    2. Evaluate each model's performance(fit to data) using metrics such as Mean Squared Error(MSE) and R-squared. Produce line graphs, scatters plots and box plots
+    that give us a visual representation of performance of each model.
+    3. Use the CompareAllModels function to compare the performance of each model to each other using box plot files as the visualization method.
+    
+TO RUN THIS SCRIPT, 
+    1. clone the github repository : https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
+    2. run ./main,py from your terminal
+    3. Install libraries and environments listed in ReadMe file, Generate Masterdata. 
+    4. Enter A, for AI modelling, follow prompts for specific models you wish to run or to compare all models. 
+
+
+'''
+
 def regression(file_location):
+    
     
     import matplotlib.pyplot as plt
     import pandas as pd
@@ -71,6 +111,13 @@ def regression(file_location):
         plt.show()
         
 
+<<<<<<< HEAD
+    def Polynomial(Xtr, Xtest, Ytr, Ytest): 
+        
+        
+        poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
+        
+=======
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
         while True:
             try:
@@ -84,6 +131,7 @@ def regression(file_location):
                 print("Degree must be an integer betweeen 1 and 5")
                 continue
 
+>>>>>>> 4e08962e707ffab4768dae67e03b2c57e049d077
         MSE_test_data = []
         MSE_train_data = []
         

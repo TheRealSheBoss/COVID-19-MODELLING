@@ -216,11 +216,12 @@ def graphs(file_location):
 def graph_selection(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     while True:
-        no_x_vars = input('How many X variables do you want to visualise (must be integer greater than zero?): ')
         try:
+            no_x_vars = input('How many X variables do you want to visualise (must be integer greater than zero?): ')
             no_x_vars = int(no_x_vars)
         except ValueError:
             print("Invalid input")
+            continue
         if no_x_vars == 1:
             var_choice = Variable_Finder("", master_data)          
             x_variable = var_choice.variable_finder() 
