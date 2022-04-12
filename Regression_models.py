@@ -22,10 +22,14 @@ def regression(file_location):
     def traintestsplit(X_data, Y_data):
         while True:
             try:
-                size_test = int(input("What test size do you want? "))
-                break
+                size_test = float(input("What test size do you want? "))
+                if size_test > 1 or size_test < 0:
+                    print("Test size must be less than 1 and greater than 0")
+                    continue
+                else:
+                    break
             except ValueError:
-                print("Test size must be an integer value")
+                print("Test size must be a float value between 0 and 1")
                 continue
         
         while True:
@@ -195,7 +199,7 @@ def regression(file_location):
         regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D) or compare all (C)? ")
         if regression_type == "L":
             linear(Xtraining, Xtesting, Ytraining, Ytesting)
-            info_stay = input("Do you want to stay in info? (Y or N) ")
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
             elif info_stay == "N":
@@ -205,7 +209,7 @@ def regression(file_location):
                 continue
         elif regression_type == "P":
             Polynomial(Xtraining, Xtesting, Ytraining, Ytesting)
-            info_stay = input("Do you want to stay in info? (Y or N) ")
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
             elif info_stay == "N":
@@ -214,7 +218,7 @@ def regression(file_location):
                 print("Invalid input")
                 continue
         elif regression_type == "D":
-            info_stay = input("Do you want to stay in info? (Y or N) ")
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
             if info_stay == "Y":
                 continue
@@ -225,7 +229,7 @@ def regression(file_location):
                 continue
         elif regression_type == "C":
             CompareAllModels(Xtraining, Xtesting, Ytraining, Ytesting)
-            info_stay = input("Do you want to stay in info? (Y or N) ")
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
             elif info_stay == "N":
