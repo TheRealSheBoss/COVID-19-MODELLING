@@ -321,6 +321,21 @@ class Data_Viz():
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                plt.boxplot(self.x_data)
+                plt.title(self.title) #Plot the given title   
+                plt.xlabel(self.x_label)#Plot the given x-axis label
+                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.savefig('boxplot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
+        
     
     def multi_boxplot(self):
         plt.boxplot(self.x_data,labels=self.x_variable_names)
@@ -330,6 +345,22 @@ class Data_Viz():
         plt.ylabel(self.y_label, fontsize=12) 
         plt.title(self.title, fontsize=18) 
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                plt.boxplot(self.x_data,labels=self.x_variable_names)
+                plt.rcParams["figure.figsize"] = [7.50, 3.50]
+                plt.rcParams["figure.autolayout"] = True 
+                plt.xlabel(self.x_label, fontsize=12)
+                plt.ylabel(self.y_label, fontsize=12) 
+                plt.title(self.title, fontsize=18)
+                plt.savefig('multi_boxplot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
         
     def scatter(self):
         """
@@ -345,6 +376,21 @@ class Data_Viz():
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
+                ax.scatter(self.x_data, self.y_data, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
+                plt.title(self.title) #Plot the given title
+                plt.xlabel(self.x_label)#Plot the given x-axis label
+                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.savefig('scatter_plot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
     
     def single_line(self):
         """
@@ -361,6 +407,21 @@ class Data_Viz():
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                fig, ax = plt.subplots(figsize = (15,5))
+                plt.plot(self.x_data, self.y_data, alpha=0.3)
+                plt.title(self.title)
+                plt.xlabel(self.x_label)#Plot the given x-axis label
+                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.savefig('single_line_plot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
         
     def multi_line(self):
         """
@@ -384,6 +445,24 @@ class Data_Viz():
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                fig, ax = plt.subplots(figsize = (15,5))
+                for i in range(len(self.x_data)):
+                    label = self.x_variable_names[i]
+                    plt.plot(self.y_data, self.x_data[i], label=label, alpha=0.3)
+                    ax.set(title=self.title) #Plot the given title
+                    plt.legend()
+                plt.xlabel(self.x_label)#Plot the given x-axis label
+                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.savefig('multi_line_plot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
         
         
     def histogram(self):
@@ -392,6 +471,20 @@ class Data_Viz():
         plt.ylabel('Count')
         plt.title(self.title)    
         plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                plt.hist(self.x_data, bins=30)
+                plt.xlabel(self.x_label)
+                plt.ylabel('Count')
+                plt.title(self.title)
+                plt.savefig('histogram_plot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
         
     def bargraph(self):
         """
@@ -405,7 +498,21 @@ class Data_Viz():
         x_bar_y = pd.concat([self.x_data, self.y_data], axis=1)
         x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
-        plt.show()    
+        plt.show()   
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                fig, ax = plt.subplots(figsize=(15, 5))
+                x_bar_y = pd.concat([self.x_data, self.y_data], axis=1)
+                x_bar_y.plot(kind="bar", color='b', label="auto", ax=ax)
+                ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
+                plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
+            elif save_image == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+            break
         
         
         
