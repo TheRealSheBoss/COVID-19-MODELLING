@@ -381,7 +381,7 @@ class Data_Viz():
         fig, ax = plt.subplots(figsize = (15,5))
         for i in range(len(self.x_data)):
             label = self.x_variable_names[i]
-            plt.plot(self.x_data[i], self.y_data, label=label, alpha=0.3)
+            plt.plot(self.y_data, self.x_data[i], label=label, alpha=0.3)
             ax.set(title=self.title) #Plot the given title
             plt.legend()
         plt.xlabel(self.x_label)#Plot the given x-axis label
