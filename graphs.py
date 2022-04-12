@@ -278,9 +278,6 @@ def graph_selection(file_location):
                x_variables.append(x_variable.to_numpy())
                x_label = input("Input x variable label: ")
                x_variable_names.append(x_label)
-            #x_variables = np.vstack(x_variables)
-            print(x_variables)
-            print(x_variable_names)
             x_label = input("Enter x-axis label: ")
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
