@@ -225,7 +225,7 @@ def graph_selection(file_location):
         if no_x_vars == 1:
             var_choice = Variable_Finder("", master_data)          
             x_variable = var_choice.variable_finder() 
-            x_label = input("Input x variable label: "
+            x_label = input("Input x variable label: ")
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
                 if no_y_vars == 'Y':
