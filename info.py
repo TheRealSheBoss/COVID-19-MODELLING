@@ -6,9 +6,11 @@ def info(file_location):
 
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     
-    info_choice = input("What information would you like to know? (N for column names, H for head of a variable, T for tail of a variable, M for mean of variable) ")
-
+   
     while True:
+        
+        info_choice = input("What information would you like to know? (N for column names, H for head of a variable, T for tail of a variable, M for mean of variable) ")
+        
         if info_choice == "N":
             print(master_data.columns)
             break
@@ -35,3 +37,7 @@ def info(file_location):
             print("Invalid input")
             continue
             
+        
+        
+        
+        
