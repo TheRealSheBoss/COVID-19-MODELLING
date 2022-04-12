@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/env python
 
 def regression(file_location):
@@ -18,10 +20,22 @@ def regression(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
     def traintestsplit(X_data, Y_data):
-    
-        size_test = input("What test size do you want? ")
-    
-        state_random = input("What random state do you want? ")
+        while True:
+            try:
+                size_test = int(input("What test size do you want? "))
+                break
+            except ValueError:
+                print("Test size must be an integer value")
+                continue
+        
+        while True:
+            try:
+                state_random = int(input("What random state do you want? "))
+                break
+            except ValueError:
+                print("Test size must be an integer value")
+                continue
+       
         
         Xtr, Xtest, Ytr, Ytest = train_test_split(X_data, Y_data, test_size = float(size_test), random_state = int(state_random))
         
@@ -176,15 +190,52 @@ def regression(file_location):
     Ytesting = Ytesting.to_numpy()
     
     
+ 
+    while True:
+        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D) or compare all (C)? ")
+        if regression_type == "L":
+            linear(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in info? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "P":
+            Polynomial(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in info? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "D":
+            info_stay = input("Do you want to stay in info? (Y or N) ")
+            DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "C":
+            CompareAllModels(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in info? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        else:
+            print("Invalid input")
+            continue
     
-    regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D) or compare all (C)? ")
-    if regression_type == "L":
-        linear(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "P":
-         Polynomial(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "D":
-        DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "C":
-        CompareAllModels(Xtraining, Xtesting, Ytraining, Ytesting)
     
     
