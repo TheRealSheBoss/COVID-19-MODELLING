@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/env python
 
 '''
@@ -30,7 +32,7 @@ THIS SCRIPT CAN BE USED TO:
     that give us a visual representation of performance of each model.
     3. Use the CompareAllModels function to compare the performance of each model to each other using box plot files as the visualization method.
     
-TO RUN THIS SPECIFIC SCRIPT, 
+TO RUN THIS SCRIPT, 
     1. clone the github repository : https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
     2. run ./main,py from your terminal
     3. Install libraries and environments listed in ReadMe file, Generate Masterdata. 
@@ -58,10 +60,26 @@ def regression(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
     def traintestsplit(X_data, Y_data):
-    
-        size_test = input("What test size do you want? ")
-    
-        state_random = input("What random state do you want? ")
+        while True:
+            try:
+                size_test = float(input("What test size do you want? "))
+                if size_test > 1 or size_test < 0:
+                    print("Test size must be less than 1 and greater than 0")
+                    continue
+                else:
+                    break
+            except ValueError:
+                print("Test size must be a float value between 0 and 1")
+                continue
+        
+        while True:
+            try:
+                state_random = int(input("What random state do you want? "))
+                break
+            except ValueError:
+                print("Test size must be an integer value")
+                continue
+       
         
         Xtr, Xtest, Ytr, Ytest = train_test_split(X_data, Y_data, test_size = float(size_test), random_state = int(state_random))
         
@@ -93,11 +111,27 @@ def regression(file_location):
         plt.show()
         
 
+<<<<<<< HEAD
     def Polynomial(Xtr, Xtest, Ytr, Ytest): 
         
         
         poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
         
+=======
+    def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
+        while True:
+            try:
+                poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model (maximum number is 5) : "))
+                if poly_degree_test > 5 or poly_degree_test < 1:
+                    print("Degree must be between 1 and 5") 
+                    continue
+                else:
+                    break
+            except ValueError:
+                print("Degree must be an integer betweeen 1 and 5")
+                continue
+
+>>>>>>> 4e08962e707ffab4768dae67e03b2c57e049d077
         MSE_test_data = []
         MSE_train_data = []
         
@@ -115,25 +149,16 @@ def regression(file_location):
             
             MSE_train_data.append(mean_squared_error(Ytr, pred_tr))
             MSE_test_data.append(mean_squared_error(Ytest, pred_tst))
-        
-        plt.plot(range(1, poly_degree_test+1), MSE_train_data, label='Training Data')
-        plt.plot(range(1, poly_degree_test+1), MSE_test_data, label='Test Data')
-        plt.ylabel('MSE')
-        plt.xlabel('Degree')
-        plt.legend()
-        plt.show()
 
-# =============================================================================
-#         AllXVars = np.vstack((MSE_train_data, MSE_test_data))
-#         print(len(AllXVars))
-#         y_var = list(range(1, poly_degree_test+1))
-#         labels = ['Training', 'Validation']
-#         xlabel = 'Degree'
-#         ylabel = 'MSE'
-#         title = 'Parameter optimisation and cross validation for Polynomial Regression'
-#         Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
-#         Plots.multi_line()
-# =============================================================================
+        AllXVars = [MSE_train_data, MSE_test_data]
+        print(len(AllXVars))
+        y_var = list(range(1, poly_degree_test+1))
+        labels = ['Training', 'Validation']
+        xlabel = 'Degree'
+        ylabel = 'MSE'
+        title = 'Parameter optimisation and cross validation for Polynomial Regression'
+        Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
+        Plots.multi_line()
 
         
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
@@ -191,16 +216,6 @@ def regression(file_location):
             mse_poly.append(mean_squared_error(Ytst, poly_pred))
             r2_poly.append(r2_score(Ytst, poly_pred))
         
-# =============================================================================
-#         box_plot_data=[mse_LR,mse_DTR, mse_poly]
-#         plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression'])
-#         plt.rcParams["figure.figsize"] = [7.50, 3.50]
-#         plt.rcParams["figure.autolayout"] = True
-#         plt.title('Comparison of AI model performances', fontsize=18) #Plot the given title   
-#         plt.xlabel('AI models', fontsize=14)#Plot the given x-axis label
-#         plt.ylabel('Mean Squared Error', fontsize=14) #Plot the given y-axis label
-#         plt.show()
-# =============================================================================
         AllMSE = []
         AllMSE.append(mse_LR)
         AllMSE.append(mse_DTR)
@@ -211,9 +226,6 @@ def regression(file_location):
         title = 'Comparison of AI model performances'
         Plots = Gph.Data_Viz(AllMSE, None, labels, xlabel, ylabel, title)
         Plots.multi_boxplot()
-        #Data_Visualisation.multi_boxplot(AllMSE)
-        #Boxplot = Histo_Boxplot.boxplot()
-        #Boxplot([mse_LR, mse_DTR])
 
         
         print(f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
@@ -239,15 +251,54 @@ def regression(file_location):
     Ytesting = Ytesting.to_numpy()
     
     
+ 
+    while True:
+        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to main.py (main)? ")
+        if regression_type == "L":
+            linear(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "P":
+            Polynomial(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "D":
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
+            DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "C":
+            CompareAllModels(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
+            if info_stay == "Y":
+                continue
+            elif info_stay == "N":
+                break
+            else:
+                print("Invalid input")
+                continue
+        elif regression_type == "main":
+            break
+        else:
+            print("Invalid input")
+            continue
     
-    regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D) or compare all (C)? ")
-    if regression_type == "L":
-        linear(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "P":
-         Polynomial(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "D":
-        DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
-    elif regression_type == "C":
-        CompareAllModels(Xtraining, Xtesting, Ytraining, Ytesting)
     
     

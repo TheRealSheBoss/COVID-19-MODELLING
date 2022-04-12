@@ -4,7 +4,7 @@ from graphs import graphs
 from graphs import graph_selection
 from data_generation import data_generation
 from info import info
-from ai_models import model_choice
+from Regression_models import regression
 from ExploratoryDataAnalysis import eda
 from simulation import Main_function
 
@@ -16,7 +16,7 @@ function = ''
 
 
 while function != "stop":
-    print("This is case-sensitive! \n\n Type G for graph function \n\n I for variable information \n\n A for AI modelling"
+    print("This is case-sensitive! \n\n Type G for graph function \n\n I for variable information \n\n R for machine learning regression modelling"
           "\n\n E for eda \n\n S for simulation, or T for graph test "
           "or type stop to quit the program")
     function = input("What do you want to do? ")
@@ -30,8 +30,8 @@ while function != "stop":
     if function == "I":
         info(file_location)
         continue
-    if function == "A":
-        model_choice(file_location)
+    if function == "R":
+        regression(file_location)
         continue
     if function == "E":
         eda(file_location)
