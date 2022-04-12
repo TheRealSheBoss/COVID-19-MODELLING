@@ -21,9 +21,9 @@ black = (0, 0, 0)  # third dose
 COVID_19 = {
     'r0': 2.28,
     'infected': 5,
-    'first_dose': 0.8,
+    'first_dose': 0.7,
     'second_dose': 0.2,
-    'third_dose': 7,
+    'third_dose': 0.1,
     'start': 0.034,
     'end': (21, 42),
     'serial_interval': 7,
