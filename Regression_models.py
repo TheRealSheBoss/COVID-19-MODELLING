@@ -74,25 +74,16 @@ def regression(file_location):
             
             MSE_train_data.append(mean_squared_error(Ytr, pred_tr))
             MSE_test_data.append(mean_squared_error(Ytest, pred_tst))
-        
-        plt.plot(range(1, poly_degree_test+1), MSE_train_data, label='Training Data')
-        plt.plot(range(1, poly_degree_test+1), MSE_test_data, label='Test Data')
-        plt.ylabel('MSE')
-        plt.xlabel('Degree')
-        plt.legend()
-        plt.show()
 
-# =============================================================================
-#         AllXVars = np.vstack((MSE_train_data, MSE_test_data))
-#         print(len(AllXVars))
-#         y_var = list(range(1, poly_degree_test+1))
-#         labels = ['Training', 'Validation']
-#         xlabel = 'Degree'
-#         ylabel = 'MSE'
-#         title = 'Parameter optimisation and cross validation for Polynomial Regression'
-#         Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
-#         Plots.multi_line()
-# =============================================================================
+        AllXVars = [MSE_train_data, MSE_test_data]
+        print(len(AllXVars))
+        y_var = list(range(1, poly_degree_test+1))
+        labels = ['Training', 'Validation']
+        xlabel = 'Degree'
+        ylabel = 'MSE'
+        title = 'Parameter optimisation and cross validation for Polynomial Regression'
+        Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
+        Plots.multi_line()
 
         
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
@@ -150,16 +141,6 @@ def regression(file_location):
             mse_poly.append(mean_squared_error(Ytst, poly_pred))
             r2_poly.append(r2_score(Ytst, poly_pred))
         
-# =============================================================================
-#         box_plot_data=[mse_LR,mse_DTR, mse_poly]
-#         plt.boxplot(box_plot_data,labels=['Linear \nRegression', 'Decision Tree \nRegression', 'Polynomial \nRegression'])
-#         plt.rcParams["figure.figsize"] = [7.50, 3.50]
-#         plt.rcParams["figure.autolayout"] = True
-#         plt.title('Comparison of AI model performances', fontsize=18) #Plot the given title   
-#         plt.xlabel('AI models', fontsize=14)#Plot the given x-axis label
-#         plt.ylabel('Mean Squared Error', fontsize=14) #Plot the given y-axis label
-#         plt.show()
-# =============================================================================
         AllMSE = []
         AllMSE.append(mse_LR)
         AllMSE.append(mse_DTR)
@@ -170,9 +151,6 @@ def regression(file_location):
         title = 'Comparison of AI model performances'
         Plots = Gph.Data_Viz(AllMSE, None, labels, xlabel, ylabel, title)
         Plots.multi_boxplot()
-        #Data_Visualisation.multi_boxplot(AllMSE)
-        #Boxplot = Histo_Boxplot.boxplot()
-        #Boxplot([mse_LR, mse_DTR])
 
         
         print(f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
