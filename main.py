@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from graphs import graphs
 from graphs import graph_selection
 from data_generation import data_generation
 from info import info
