@@ -1,9 +1,6 @@
 # # THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN BRISTOL
 
 import matplotlib.pyplot as plt
-#these codes represent the simultaneous spread of COVID-19 with the adoption of vaccines over 50days in BRISTOL
-
-
 import numpy as np
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as ani
@@ -33,7 +30,6 @@ COVID_19 = {
 }
 
 # # Create a class to Hold all functionality
-
 #A class was created to contain several different functions
 # The class was first initialized with a sample polar plot with size 5, and certain hypothetical parameters were created
 # Real data was tested in the simulation, however, we experienced RunTime errors and the simulation was very slow
@@ -41,6 +37,14 @@ COVID_19 = {
 
 class Vaccine():
     def __init__(self, params):
+        '''The class was created to Hold all relevant functions, it was first initialized with a sample polar plot
+        with size 5 and certain hypothetical parameters such as the serial_interval (predicting the interval between the spread of the infection
+        and the adoption of the vaccines) were used.'''
+        ''' The simulation is a realistic video representation of the progressive acceptance of vaccinations during the COVID-19 Crises in Bristol.
+         The data set used in this project contained information on the number of doses of vaccines distributed in each region and
+         the cumulative number of infections. For Bristol, this was about 150,647, with the ratio of first dose, second and third dose being 7:2:1.
+          These data were used in the creation of parameters necessary for building the class in which functions for the simulation were to run.'''
+
         # params: dictionary with all relevant information
         # create a polar histogram using theta, radii and width (dimensions)
 
@@ -107,6 +111,10 @@ class Vaccine():
 
 
     def first_wave(self):
+        '''The first_wave() function is responsible for depicting how the infections spread through iterations, after it had been initialized to zero.
+        It initializes our plot with the set population of 10,000.
+        The GOLDEN SPIRAL METHOD discussed on stackoverflow: https://stackoverflow.com/questions/9600801/evenly-distributing-n-points-on-a-sphere was the principle behind the sections witnessed in the polar plot.
+        It generates a 2D-spiral algorithm'''
         #spread of the infection versus vaccine adoption rate
         pop = 10000
         # let us represent the first patient
@@ -132,6 +140,8 @@ class Vaccine():
     # Let us check how the vaccine was disseminated
 
     def Vaccine_share(self, i):
+        '''The Vaccine_share() function would calculate the number of newly infected people while vaccinations are out,
+         a serial interval of 7days was used, however, this value can be changed/adjusted. '''
         #calculate the number of newly infected people during vaccine roll
         self.vaccinated_before = self.vaccinated_after
         if self.day % self.serial_interval == 0 and self.vaccinated_before < pop:
@@ -188,7 +198,7 @@ class Vaccine():
 
 
     def Doses(self):
-        #calculate the doses given during each wave of the infection
+        '''calculate the doses given during each wave of the infection'''
         first = round(self.first_dose * self.new_vaccine)
         second = round(self.second_dose * self.new_vaccine)
 
@@ -214,10 +224,10 @@ class Vaccine():
             self.fs_indices = np.random.choice(balance, success, replace=False)
             self.ss_indices = [i for i in balance if i not in self.fs_indices]
 
-        # optimum rate of dissemination of vaccine while infection spreads
+        '''optimum rate of dissemination of vaccine while infection spreads
         # These are done for positive persons (first indices)
         # persons who have taken the first and second dose and who are still positive (fs indices)
-        # Persons who have contracted the disease multiple times but still went to have a third dose (ss indices)
+        # Persons who have contracted the disease multiple times but still went to have a third dose (ss indices)'''
 
         optimum = self.day + self.rate
         optimum1 = self.day + self.rate2
@@ -251,7 +261,7 @@ class Vaccine():
 
 
     def updates(self):
-        # This would update the color of plot points when infections occur, whether or not they have been vaccinated
+        '''This would update the color of plot points when infections occur, whether or not they have been vaccinated'''
         if self.day >= self.rate:
             recovery_theta = self.mind[self.day]['thetas']
             recovery_r = self.mind[self.day]['rs']
@@ -272,7 +282,8 @@ class Vaccine():
             self.first_dose_people -= len(recovery_theta2)
 
     def update_annotation(self):
-        # The annotations created have to be updated with the dynamic data created
+        '''The update_annotation function would make changes to the annotations created at the beginning on the polar plot,
+         so that each data would change and reflect on the plot. Formatted strings were used to make changes'''
         self.day_text.set_text(f'Day {self.day}')
         self.infected_text.set_text(f'Infected: {self.infected_people}')
         self.first_dose_text.set_text(f'\n Second Dose: {self.first_dose}')
@@ -286,11 +297,11 @@ class Vaccine():
 
 
     def animate(self):
-        # The animation would look like a circle, starting with a centralized red dot signifying an infected person
-        # The disease would spread, and vaccine adoption rates can be spotted during the proliferation of the disease
-        # This does not necessarily mean that infections have reduced/have been curbed
-        # The simulation stops at day 50, but if it were to continue, it would show a phase of equilibria between vaccinations and infections
-        # And then a decline in infectious rates
+        '''-The animation would look like a circle, starting with a centralized red dot signifying an infected person
+        - The disease would spread, and vaccine adoption rates can be spotted during the proliferation of the disease
+        - This does not necessarily mean that infections have reduced/have been curbed
+        - The simulation would run until it shows a phase of equilibria between vaccinations and infections
+        And then a decline in infectious rates'''
         self.animation = ani.FuncAnimation(self.fig, self.Vaccine_share, frames = self.gen , repeat=True)
 
 
