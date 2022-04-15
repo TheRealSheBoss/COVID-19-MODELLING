@@ -46,9 +46,10 @@ class Vaccine():
           These data were used in the creation of parameters necessary for building the class in which functions for the simulation were to run.'''
 
         # params: dictionary with all relevant information
-        # create a polar histogram using theta, radii and width (dimensions)
+        # create a polar histogram using theta, radii and width (dimensions) instead of x and y
 
         self.fig = plt.figure()
+        #instantiate a polar plot, 111 means a 1 x 1 grid
         self.axes = self.fig.add_subplot(111, projection='polar')
         self.axes.grid(False)
         # modify axes to remove grid lines and tick marks
@@ -61,6 +62,9 @@ class Vaccine():
         # pi is the ratio of a circumference of a circle to its diameter
 
         self.day_text = self.axes.annotate('Day ', xy=[np.pi / 2, 1], ha='center', va='bottom')
+        #centred at the top of the plot... theta value is pi/2 and r value is 1
+        #create annotations to show at the bottom of the plot, and the colours of these annotations must correspond
+        #with the color grid above
         self.infected_text = self.axes.annotate('Infected: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top', color=red)
         self.first_dose_text = self.axes.annotate('\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                              color=green)
@@ -77,6 +81,7 @@ class Vaccine():
         self.second_dose_people = 0
         self.third_dose_people = 0
         self.r0 = params['r0']
+        #r0 is the measurement of the contagiousness of the disease
         self.infected = params['infected']
         self.first_dose = params['first_dose']
         self.second_dose = params['second_dose']
@@ -96,6 +101,7 @@ class Vaccine():
         self.rate6 = params['infected'] + params['half_way'][1]
 
         # The code is written in such a way that iterations for an entire year are possible/trackable
+        # the thetas and rs dictionaries would become populated with dimensions which would be useful for creating the polar plot
         self.mind = {i: {'thetas': [], 'rs': []} for i in range(self.rate, 365)}
         self.mind2 = {'next_batch': {i: {'thetas': [], 'rs': []} for i in range(self.rate3, 365)},
                       'another_batch': {i: {'thetas': [], 'rs': []} for i in range(self.rate5, 365)}}
@@ -103,7 +109,7 @@ class Vaccine():
 
         # create a control, 1 person at a time
         # restrictions to the extent to which vaccinations were accepted, the virus/vaccination rates would therefore spread in waves
-
+        # That you are vaccinated does not mean you may not get infected
         self.vaccinated_before = 0
         self.vaccinated_after = 1
 
@@ -115,6 +121,7 @@ class Vaccine():
         It initializes our plot with the set population of 10,000.
         The GOLDEN SPIRAL METHOD discussed on stackoverflow: https://stackoverflow.com/questions/9600801/evenly-distributing-n-points-on-a-sphere was the principle behind the sections witnessed in the polar plot.
         It generates a 2D-spiral algorithm'''
+        '''This function initializes our plot with a population of 10,000'''
         #spread of the infection versus vaccine adoption rate
         pop = 10000
         # let us represent the first patient
@@ -157,6 +164,7 @@ class Vaccine():
             self.first_dose_people += self.new_vaccine
             self.infected_people += self.new_vaccine
 
+            #randomly select newly vaccinated people and pass in ranges, and replace with False so we dont get the same values multiple times
             self.new_vaccine_indices = list(np.random.choice(range(self.vaccinated_before, self.vaccinated_after),
                                                              self.new_vaccine, replace=False))
             thetas = [self.thetas[i] for i in self.new_vaccine_indices]
@@ -202,14 +210,16 @@ class Vaccine():
         first = round(self.first_dose * self.new_vaccine)
         second = round(self.second_dose * self.new_vaccine)
 
-        #
+        #randomly choose a set of indices
         self.first_indices = np.random.choice(self.new_vaccine_indices, first,
                                               replace=False)
+        #use list comprehension to get remaining indices
         balance = [
             i for i in self.new_vaccine_indices if i not in self.first_indices
         ]
 
         # after vaccine dissemination, some people would still fall sick and would be enthusiastic about the third dose
+        # this would give us a percentage of successful vaccinations
         checking_work = 1 - (self.start / self.second_dose)
         success = round(checking_work * second)
 

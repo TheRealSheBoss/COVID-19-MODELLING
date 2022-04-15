@@ -6,6 +6,7 @@ from info import info
 from Regression_models import regression
 from ExploratoryDataAnalysis import eda
 from simulation import Main_function
+from ExploratoryDataAnalysis import EDA
 
 file_location = input("Where have you saved the non-master data? ")
 
@@ -33,7 +34,19 @@ while function != "stop":
         regression(file_location)
         continue
     if function == "E":
-        eda(file_location)
+        print ("Type 'P' for profile, \n 'H' for histplot, \n'L' for lineplot, \n and 'S' for scatterplot"
+               "\n Remember, code is case-sensitive")
+        eda = str(input('Select an option: '))
+        if eda == 'P':
+            EDA.master_data_profile()
+        if eda == 'H':
+            EDA.histplot_master_data()
+        if eda == 'L':
+            EDA.lineplot_master_data()
+        if eda == 'S':
+            EDA.scatterplot_master_data()
+        else:
+            EDA.heatmap_master_data()
         continue
     if function == "S":
         Main_function()
