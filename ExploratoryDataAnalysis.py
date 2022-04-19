@@ -18,22 +18,14 @@ def eda_selection(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
     #plt.figure(figsize=(25, 15))
-    View_charts = ExploreMasterData(master_data)
-    # View_charts.master_data_profile()
-    #View_charts.histplot_master_data()
-    #View_charts.lineplot_master_data()
-    #View_charts.scatterplot_master_data()
-    View_charts.heatmap_master_data()
-    #View_charts.barchart_master_data()
-
     master_data_copy = master_data.copy()
     master_data_copy = master_data_copy.drop(columns=['Region name'])
     View_charts2 = ExploreMasterData(master_data_copy)
-    # View_charts.master_data_profile()
     View_charts2.histplot_master_data()
-    # View_charts2.lineplot_master_data()
-    # View_charts2.scatterplot_master_data()
     View_charts2.barchart_master_data()
+    
+    View_charts = ExploreMasterData(master_data)
+    View_charts.heatmap_master_data()
 
 class ExploreMasterData:
     def __init__(self, x):
@@ -55,7 +47,7 @@ class ExploreMasterData:
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
             #sea.histplot(data=master_data[column])
-            # plt.tight_layout()
+            #plt.tight_layout()
             sea.histplot(data=self.x[column])
             plt.xticks(rotation=30, fontsize=6)
             plt.title(column)
