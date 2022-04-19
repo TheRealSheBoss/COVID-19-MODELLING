@@ -7,9 +7,17 @@ import seaborn as sea
 import pandas as pd
 
 def eda_selection(file_location):
+    # !pip install pandas-profiling if not on system
+    from pandas_profiling import ProfileReport
+    import pandas_profiling as pdp
+    import matplotlib
+    matplotlib.use('TkAgg')
+    import matplotlib.pyplot as plt
+    import seaborn as sea
+    import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
-    plt.figure(figsize=(25, 15))
+    #plt.figure(figsize=(25, 15))
     View_charts = ExploreMasterData(master_data)
     # View_charts.master_data_profile()
     #View_charts.histplot_master_data()
@@ -91,8 +99,8 @@ class ExploreMasterData:
         correlation = self.x.corr()
         fig, ax = plt.subplots(figsize=(10, 10))
         sea.heatmap(data=correlation, annot=False, cmap="seismic", center=0, linewidths=0.9)
-        plt.savefig('Master Data.png')
-        plt.savefig('Master Data.pdf')
+        plt.savefig('Correlations.png')
+        plt.savefig('Correlations.pdf')
         plt.show()
 
     def barchart_master_data(self):
