@@ -10,12 +10,13 @@ def eda_selection(file_location):
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import seaborn as sea
+    sea.set(font_scale=0.5)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
     #plt.figure(figsize=(25, 15))
     master_data_copy = master_data.copy()
-    master_data_copy = master_data_copy.drop(columns=['Region name'])
+    master_data_copy = master_data_copy.drop(columns=['Region name', 'Local Authority'])
     View_charts2 = ExploreMasterData(master_data_copy)
     View_charts2.histplot_master_data()
     View_charts2.barchart_master_data()
