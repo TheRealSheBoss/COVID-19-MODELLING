@@ -111,14 +111,8 @@ def regression(file_location):
         plt.show()
         
 
-<<<<<<< HEAD
     def Polynomial(Xtr, Xtest, Ytr, Ytest): 
-        
-        
-        poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
-        
-=======
-    def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
+       
         while True:
             try:
                 poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model (maximum number is 5) : "))
@@ -131,7 +125,6 @@ def regression(file_location):
                 print("Degree must be an integer betweeen 1 and 5")
                 continue
 
->>>>>>> 4e08962e707ffab4768dae67e03b2c57e049d077
         MSE_test_data = []
         MSE_train_data = []
         
@@ -158,9 +151,7 @@ def regression(file_location):
         ylabel = 'MSE'
         title = 'Parameter optimisation and cross validation for Polynomial Regression'
         Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
-        Plots.multi_line()
 
-        
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
         print('and test data. Please identify it.')
         
@@ -169,6 +160,7 @@ def regression(file_location):
         print('2. Compare the MSE of the ideal polynomial order here with the testing MSE you get when predicting the same') 
         print('variable with Linear Regression. Which MSE is lower, that is the better model for that specific prediction')
         
+        Plots.multi_line()
         
     
     def DecisionTree(Xtr, Xtest, Ytr, Ytest):
