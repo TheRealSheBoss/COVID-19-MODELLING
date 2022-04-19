@@ -85,11 +85,11 @@ class ExploreMasterData:
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
-            #sea.barplot(data=master_data[column])
             # plt.tight_layout()
-            plt.xticks(rotation=30, fontsize=6)
-            sea.boxplot(data=self.x[column])
+            plt.xticks(rotation=30, fontsize=6) 
+            box_plt = sea.boxplot(data=self.x[column], linewidth = 2, width = 0.6, showfliers = False)
             plt.title(column)
+            box_plt.set(xticks = [])
 
         plt.savefig('Boxplot of all variables.png')
         plt.savefig('Boxplots of all variables.pdf')

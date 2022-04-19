@@ -21,7 +21,8 @@ def graph_selection(file_location):
             self.file_location = file_location
             
         def boxplot(self):
-            plt.boxplot(self.x_data)
+            box_plt = plt.boxplot(self.x_data)
+            plt.xticks([])
             plt.title(self.title) #Plot the given title   
             plt.xlabel(self.x_label)#Plot the given x-axis label
             plt.ylabel(self.y_label) #Plot the given y-axis label
@@ -30,6 +31,7 @@ def graph_selection(file_location):
                 save_image = input("Do you want to save the image? (Y/N): ")
                 if save_image == "Y":
                     plt.boxplot(self.x_data)
+                    plt.ticks([])
                     plt.title(self.title) #Plot the given title   
                     plt.xlabel(self.x_label)#Plot the given x-axis label
                     plt.ylabel(self.y_label) #Plot the given y-axis label
@@ -325,7 +327,7 @@ def graph_selection(file_location):
                         elif graph_type == "B":
                             title = input("Enter title for boxplot: ")
                             y_label = x_label
-                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title, file_location)
+                            View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
                             View_Charts.boxplot()
                             break
                         else:
@@ -344,7 +346,13 @@ def graph_selection(file_location):
                x_variables.append(x_variable.to_numpy())
                x_label = input("Input x variable label: ")
                x_variable_names.append(x_label)
-            x_label = input("Enter x-axis label: ")
+            x_label = input("Enter x-axis label: ")   
+            y_variable = None
+            title = input("Enter title for boxplot: ")
+            y_label = input("Enter y-axis label: ")
+            View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+            View_Charts.multi_boxplot()
+            """
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
                 if no_y_vars == 'Y':
@@ -367,6 +375,7 @@ def graph_selection(file_location):
                 else:
                     print("Invalid input")
                     continue
+                """
         else:
             print("Invalid input")
             continue
