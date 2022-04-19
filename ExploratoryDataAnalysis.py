@@ -93,7 +93,6 @@ class ExploreMasterData:
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
-            #sea.barplot(data=master_data[column])
             # plt.tight_layout()
             plt.xticks(rotation=30, fontsize=5)
             sea.boxplot(data=self.x[column], palette='pastel',saturation=0.5,linewidth=0.4,fliersize=0.3 )
