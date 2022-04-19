@@ -111,13 +111,12 @@ def regression(file_location):
         plt.show()
         
 
-<<<<<<< HEAD
-    def Polynomial(Xtr, Xtest, Ytr, Ytest): 
+
+   # def Polynomial(Xtr, Xtest, Ytr, Ytest): 
         
         
-        poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
+        #poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model : "))
         
-=======
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
         while True:
             try:
@@ -130,8 +129,6 @@ def regression(file_location):
             except ValueError:
                 print("Degree must be an integer betweeen 1 and 5")
                 continue
-
->>>>>>> 4e08962e707ffab4768dae67e03b2c57e049d077
         MSE_test_data = []
         MSE_train_data = []
         
@@ -238,7 +235,7 @@ def regression(file_location):
         var_choice = VF.Variable_Finder("", master_data)
         Y_var = var_choice.variable_finder()
         master_data_copy = master_data.copy()
-        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority Name', 'Region name'])
+        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
         return X, Y_var    
     
 
