@@ -19,7 +19,7 @@ def eda_selection(file_location):
     master_data_copy = master_data_copy.drop(columns=['Region name', 'Local Authority'])
     View_charts2 = ExploreMasterData(master_data_copy)
     View_charts2.histplot_master_data()
-    View_charts2.barchart_master_data()
+    View_charts2.boxplot_master_data()
     
     View_charts = ExploreMasterData(master_data)
     View_charts.heatmap_master_data()
@@ -81,18 +81,18 @@ class ExploreMasterData:
         plt.savefig('Correlations.pdf')
         plt.show()
 
-    def barchart_master_data(self):
+    def boxplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
             #sea.barplot(data=master_data[column])
             # plt.tight_layout()
             plt.xticks(rotation=30, fontsize=6)
-            sea.barplot(data=self.x[column])
+            sea.boxplot(data=self.x[column])
             plt.title(column)
 
-        plt.savefig('Barplots of all variables.png')
-        plt.savefig('Barplots of all variables.pdf')
+        plt.savefig('Boxplot of all variables.png')
+        plt.savefig('Boxplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
 
