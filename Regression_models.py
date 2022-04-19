@@ -64,7 +64,7 @@ def regression(file_location):
     def traintestsplit(X_data, Y_data):
         while True:
             try:
-                size_test = float(input("What test size do you want? "))
+                size_test = float(input("What test size do you want? This has to take the form of a float between 0.1 - 0.5:"))
                 if size_test > 1 or size_test < 0:
                     print("Test size must be less than 1 and greater than 0")
                     continue
@@ -76,7 +76,7 @@ def regression(file_location):
         
         while True:
             try:
-                state_random = int(input("What random state do you want? "))
+                state_random = int(input("What random state do you want? Enter any integer number:"))
                 break
             except ValueError:
                 print("Test size must be an integer value")
@@ -159,13 +159,7 @@ def regression(file_location):
         Plots = Gph.Data_Viz(AllXVars, y_var, labels, xlabel, ylabel, title)
 
         print('1. The ideal polynomial degree for this model is the point where our MSE is lowest for both training') 
-        print('and test data. Please identify it.')
-        
-        print('                                                                                                     ')
-        
-        print('2. Compare the MSE of the ideal polynomial order here with the testing MSE you get when predicting the same') 
-        print('variable with Linear Regression. Which MSE is lower, that is the better model for that specific prediction')
-        
+        print('and test data. Please identify it in figure produced.')
         Plots.multi_line()
         
     
