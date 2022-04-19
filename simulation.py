@@ -288,9 +288,9 @@ class Vaccine():
          so that each data would change and reflect on the plot. Formatted strings were used to make changes'''
         self.day_text.set_text(f'Day {self.day}')
         self.infected_text.set_text(f'Infected: {self.infected_people}')
-        self.first_dose_text.set_text(f'\n Second Dose: {self.first_dose}')
-        self.second_dose_text.set_text(f'\n\n Third Dose: {self.second_dose}')
-        self.third_dose_text.set_text(f'\n\n\n First Dose: {self.third_dose}')
+        self.first_dose_text.set_text(f'\n First Dose: {self.first_dose}')
+        self.second_dose_text.set_text(f'\n\n Second Dose: {self.second_dose}')
+        self.third_dose_text.set_text(f'\n\n\n Third Dose: {self.third_dose}')
 
     def gen(self):
         while self.third_dose_people + self.second_dose_people < self.infected_people:
