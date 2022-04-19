@@ -1,25 +1,22 @@
 #Basic Data Exploration without comparisons
 # !pip install pandas-profiling if not on system
-from pandas_profiling import ProfileReport
-import pandas_profiling as pdp
 import matplotlib.pyplot as plt
 import seaborn as sea
 import pandas as pd
 
 def eda_selection(file_location):
     # !pip install pandas-profiling if not on system
-    from pandas_profiling import ProfileReport
-    import pandas_profiling as pdp
     import matplotlib
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import seaborn as sea
+    sea.set(font_scale=0.5)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
     #plt.figure(figsize=(25, 15))
     master_data_copy = master_data.copy()
-    master_data_copy = master_data_copy.drop(columns=['Region name'])
+    master_data_copy = master_data_copy.drop(columns=['Region name', 'Local Authority'])
     View_charts2 = ExploreMasterData(master_data_copy)
     View_charts2.histplot_master_data()
     View_charts2.barchart_master_data()
@@ -30,17 +27,6 @@ def eda_selection(file_location):
 class ExploreMasterData:
     def __init__(self, x):
         self.x = x
-
-    # def master_data_profile(self):
-    #     '''This function returns an overview of the dataset, a definition of each attribute in the dataset,and
-    #                 correlations between each attribute. Final profile is produced in a html format that can be used for general assessment'''
-    #
-    #     PROFILE = ProfileReport(self.x, title='Profiling Report of COVID-19 data', minimal=True, progress_bar=False,
-    #                             missing_diagrams={
-    #                                 'heatmap': True,
-    #                                 'dendrogram': False,
-    #                             })
-    #     PROFILE.to_file(output_file="Master Data.html")
 
     def histplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
