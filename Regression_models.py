@@ -111,8 +111,7 @@ def regression(file_location):
         plt.show()
         
 
-    def Polynomial(Xtr, Xtest, Ytr, Ytest): 
-       
+    def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
         while True:
             try:
                 poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model (maximum number is 5) : "))
@@ -230,7 +229,7 @@ def regression(file_location):
         var_choice = VF.Variable_Finder("", master_data)
         Y_var = var_choice.variable_finder()
         master_data_copy = master_data.copy()
-        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority Name', 'Region name'])
+        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
         return X, Y_var    
     
 

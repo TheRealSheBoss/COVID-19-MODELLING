@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-from graphs import graphs
 from graphs import graph_selection
 from data_generation import data_generation
 from info import info
 from Regression_models import regression
-from ExploratoryDataAnalysis import eda
 from simulation import Main_function
+from ExploratoryDataAnalysis import eda_selection
+from ExploratoryDataAnalysis import ExploreMasterData
 
 file_location = input("Where have you saved the non-master data? ")
 
@@ -34,7 +34,7 @@ while function != "stop":
         regression(file_location)
         continue
     if function == "E":
-        eda(file_location)
+        eda_selection(file_location)
         continue
     if function == "S":
         Main_function()
