@@ -66,11 +66,11 @@ class Vaccine():
         #create annotations to show at the bottom of the plot, and the colours of these annotations must correspond
         #with the color grid above
         self.infected_text = self.axes.annotate('Infected: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top', color=red)
-        self.first_dose_text = self.axes.annotate('\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+        self.first_dose_text = self.axes.annotate('\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                              color=green)
-        self.second_dose_text = self.axes.annotate('\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+        self.second_dose_text = self.axes.annotate('\n\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                               color=grey)
-        self.third_dose_text = self.axes.annotate('\n\n\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+        self.third_dose_text = self.axes.annotate('\n\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                              color=black)
 
         # create member variables for the parameters defined so that they can be called
