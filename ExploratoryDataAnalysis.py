@@ -10,15 +10,16 @@ def eda_selection(file_location):
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import seaborn as sea
+    sea.set(font_scale=0.5)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
     #plt.figure(figsize=(25, 15))
     master_data_copy = master_data.copy()
-    master_data_copy = master_data_copy.drop(columns=['Region name'])
+    master_data_copy = master_data_copy.drop(columns=['Region name', 'Local Authority'])
     View_charts2 = ExploreMasterData(master_data_copy)
     View_charts2.histplot_master_data()
-    View_charts2.barchart_master_data()
+    View_charts2.boxplot_master_data()
     
     View_charts = ExploreMasterData(master_data)
     View_charts.heatmap_master_data()
@@ -34,8 +35,12 @@ class ExploreMasterData:
             #sea.histplot(data=master_data[column])
             #plt.tight_layout()
             sea.histplot(data=self.x[column])
-            plt.xticks(rotation=30, fontsize=6)
+            plt.xticks(rotation=30, fontsize=5)
             plt.title(column)
+            plt.xlabel(None)
+            plt.tick_params(axis='both', which='both',length=0.1, pad=2)
+            plt.margins(0.2)
+        plt.suptitle('Histograms of all variables in the COVID data set', fontsize=12)
         plt.savefig('Histograms of all variables.png')
         plt.savefig('Histograms of all variables.pdf')
         plt.tight_layout()
@@ -76,22 +81,28 @@ class ExploreMasterData:
         correlation = self.x.corr()
         fig, ax = plt.subplots(figsize=(10, 10))
         sea.heatmap(data=correlation, annot=False, cmap="seismic", center=0, linewidths=0.9)
+        plt.xlabel(None)
+        plt.tick_params(axis='both', which='both',length=0.1, pad=2, labelsize=5)
+        plt.margins(0.2)
+        plt.title('Correlation matrix of all variables in COVID data set', fontsize=25)
         plt.savefig('Correlations.png')
         plt.savefig('Correlations.pdf')
         plt.show()
 
-    def barchart_master_data(self):
+    def boxplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
-            #sea.barplot(data=master_data[column])
             # plt.tight_layout()
-            plt.xticks(rotation=30, fontsize=6)
-            sea.barplot(data=self.x[column])
+            plt.xticks(rotation=30, fontsize=5)
+            sea.boxplot(data=self.x[column], palette='pastel',saturation=0.5,linewidth=0.4,fliersize=0.3 )
             plt.title(column)
-
-        plt.savefig('Barplots of all variables.png')
-        plt.savefig('Barplots of all variables.pdf')
+            plt.xlabel(None)
+            plt.tick_params(axis='both', which='both',length=0.1, pad=2)
+            plt.margins(0.2)
+        plt.suptitle('Boxplots of all variables in the COVID data set', fontsize=12)
+        plt.savefig('Boxplot of all variables.png')
+        plt.savefig('Boxplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
 

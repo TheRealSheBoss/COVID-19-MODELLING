@@ -5,7 +5,6 @@ import numpy as np
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as ani
 
-
 pop = 10000
 
 # set colours for animation representation using RGB tuples
@@ -25,12 +24,13 @@ COVID_19 = {
     'end': (21, 42),
     'serial_interval': 7,
     'mid': 0.2,
-    'mild_rec': (7,14),
-    'half_way': (14,56)
+    'mild_rec': (7, 14),
+    'half_way': (14, 56)
 }
 
+
 # # Create a class to Hold all functionality
-#A class was created to contain several different functions
+# A class was created to contain several different functions
 # The class was first initialized with a sample polar plot with size 5, and certain hypothetical parameters were created
 # Real data was tested in the simulation, however, we experienced RunTime errors and the simulation was very slow
 # Because we were dealing with a tonne of data
@@ -49,7 +49,7 @@ class Vaccine():
         # create a polar histogram using theta, radii and width (dimensions) instead of x and y
 
         self.fig = plt.figure()
-        #instantiate a polar plot, 111 means a 1 x 1 grid
+        # instantiate a polar plot, 111 means a 1 x 1 grid
         self.axes = self.fig.add_subplot(111, projection='polar')
         self.axes.grid(False)
         # modify axes to remove grid lines and tick marks
@@ -62,16 +62,16 @@ class Vaccine():
         # pi is the ratio of a circumference of a circle to its diameter
 
         self.day_text = self.axes.annotate('Day ', xy=[np.pi / 2, 1], ha='center', va='bottom')
-        #centred at the top of the plot... theta value is pi/2 and r value is 1
-        #create annotations to show at the bottom of the plot, and the colours of these annotations must correspond
-        #with the color grid above
+        # centred at the top of the plot... theta value is pi/2 and r value is 1
+        # create annotations to show at the bottom of the plot, and the colours of these annotations must correspond
+        # with the color grid above
         self.infected_text = self.axes.annotate('Infected: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top', color=red)
-        self.first_dose_text = self.axes.annotate('\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                             color=green)
-        self.second_dose_text = self.axes.annotate('\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                              color=grey)
-        self.third_dose_text = self.axes.annotate('\n\n\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                             color=black)
+        self.first_dose_text = self.axes.annotate('\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+                                                  color=green)
+        self.second_dose_text = self.axes.annotate('\n\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+                                                   color=grey)
+        self.third_dose_text = self.axes.annotate('\n\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
+                                                  color=black)
 
         # create member variables for the parameters defined so that they can be called
         # The day, infected and vaccinated persons are initialized at zero so that iterations could make the numbers increase
@@ -81,12 +81,12 @@ class Vaccine():
         self.second_dose_people = 0
         self.third_dose_people = 0
         self.r0 = params['r0']
-        #r0 is the measurement of the contagiousness of the disease
+        # r0 is the measurement of the contagiousness of the disease
         self.infected = params['infected']
         self.first_dose = params['first_dose']
         self.second_dose = params['second_dose']
         self.third_dose = params['third_dose']
-        self.serial_interval = params ['serial_interval']
+        self.serial_interval = params['serial_interval']
         self.start = params['start']
         self.mid = params['mid']
         self.end = params['end']
@@ -106,7 +106,6 @@ class Vaccine():
         self.mind2 = {'next_batch': {i: {'thetas': [], 'rs': []} for i in range(self.rate3, 365)},
                       'another_batch': {i: {'thetas': [], 'rs': []} for i in range(self.rate5, 365)}}
 
-
         # create a control, 1 person at a time
         # restrictions to the extent to which vaccinations were accepted, the virus/vaccination rates would therefore spread in waves
         # That you are vaccinated does not mean you may not get infected
@@ -115,19 +114,18 @@ class Vaccine():
 
         self.first_wave()
 
-
     def first_wave(self):
         '''The first_wave() function is responsible for depicting how the infections spread through iterations, after it had been initialized to zero.
         It initializes our plot with the set population of 10,000.
         The GOLDEN SPIRAL METHOD discussed on stackoverflow: https://stackoverflow.com/questions/9600801/evenly-distributing-n-points-on-a-sphere was the principle behind the sections witnessed in the polar plot.
         It generates a 2D-spiral algorithm'''
         '''This function initializes our plot with a population of 10,000'''
-        #spread of the infection versus vaccine adoption rate
+        # spread of the infection versus vaccine adoption rate
         pop = 10000
         # let us represent the first patient
         self.first_dose_people = 1
         self.infected_people = 1
-        #golden spiral method
+        # golden spiral method
         indices = np.arange(0, pop) + 0.5
         self.thetas = np.pi * (1 + 5 ** 0.5) * indices
         self.rs = np.sqrt(indices / pop)
@@ -142,14 +140,12 @@ class Vaccine():
     # plt.show()
     # This is to check if the polar histogram has any problems
 
-
-
     # Let us check how the vaccine was disseminated
 
     def Vaccine_share(self, i):
         '''The Vaccine_share() function would calculate the number of newly infected people while vaccinations are out,
          a serial interval of 7days was used, however, this value can be changed/adjusted. '''
-        #calculate the number of newly infected people during vaccine roll
+        # calculate the number of newly infected people during vaccine roll
         self.vaccinated_before = self.vaccinated_after
         if self.day % self.serial_interval == 0 and self.vaccinated_before < pop:
             self.new_vaccine = round(self.r0 * self.infected_people)
@@ -160,11 +156,10 @@ class Vaccine():
                 self.new_vaccine = round((pop - self.vaccinated_before) * 0.9)
                 self.vaccinated_after = pop
 
-
             self.first_dose_people += self.new_vaccine
             self.infected_people += self.new_vaccine
 
-            #randomly select newly vaccinated people and pass in ranges, and replace with False so we dont get the same values multiple times
+            # randomly select newly vaccinated people and pass in ranges, and replace with False so we dont get the same values multiple times
             self.new_vaccine_indices = list(np.random.choice(range(self.vaccinated_before, self.vaccinated_after),
                                                              self.new_vaccine, replace=False))
             thetas = [self.thetas[i] for i in self.new_vaccine_indices]
@@ -204,16 +199,15 @@ class Vaccine():
         for i in range(0, len(a_list), n):
             yield a_list[i:i + n]
 
-
     def Doses(self):
         '''calculate the doses given during each wave of the infection'''
         first = round(self.first_dose * self.new_vaccine)
         second = round(self.second_dose * self.new_vaccine)
 
-        #randomly choose a set of indices
+        # randomly choose a set of indices
         self.first_indices = np.random.choice(self.new_vaccine_indices, first,
                                               replace=False)
-        #use list comprehension to get remaining indices
+        # use list comprehension to get remaining indices
         balance = [
             i for i in self.new_vaccine_indices if i not in self.first_indices
         ]
@@ -223,8 +217,7 @@ class Vaccine():
         checking_work = 1 - (self.start / self.second_dose)
         success = round(checking_work * second)
 
-
-        #These indices represent those who had severe cases and still remained infectious(fs)
+        # These indices represent those who had severe cases and still remained infectious(fs)
         # and those who even in this state went for third vaccine shot
 
         self.fs_indices = []
@@ -242,7 +235,7 @@ class Vaccine():
         optimum = self.day + self.rate
         optimum1 = self.day + self.rate2
         for each in self.first_indices:
-            recovery_day = np.random.randint(optimum, optimum1 )
+            recovery_day = np.random.randint(optimum, optimum1)
             recovery_theta = self.thetas[each]
             recovery_r = self.rs[each]
 
@@ -268,7 +261,6 @@ class Vaccine():
 
             self.mind2['another_batch'][recovery_day1]['thetas'].append(recovery_theta2)
             self.mind2['another_batch'][recovery_day1]['rs'].append(recovery_r2)
-
 
     def updates(self):
         '''This would update the color of plot points when infections occur, whether or not they have been vaccinated'''
@@ -296,15 +288,13 @@ class Vaccine():
          so that each data would change and reflect on the plot. Formatted strings were used to make changes'''
         self.day_text.set_text(f'Day {self.day}')
         self.infected_text.set_text(f'Infected: {self.infected_people}')
-        self.first_dose_text.set_text(f'\n Second Dose: {self.first_dose}')
-        self.second_dose_text.set_text(f'\n\n Third Dose: {self.second_dose}')
-        self.third_dose_text.set_text(f'\n\n\n First Dose: {self.third_dose}')
-
+        self.first_dose_text.set_text(f'\n First Dose: {self.first_dose}')
+        self.second_dose_text.set_text(f'\n\n Second Dose: {self.second_dose}')
+        self.third_dose_text.set_text(f'\n\n\n Third Dose: {self.third_dose}')
 
     def gen(self):
         while self.third_dose_people + self.second_dose_people < self.infected_people:
             yield
-
 
     def animate(self):
         '''-The animation would look like a circle, starting with a centralized red dot signifying an infected person
@@ -312,7 +302,7 @@ class Vaccine():
         - This does not necessarily mean that infections have reduced/have been curbed
         - The simulation would run until it shows a phase of equilibria between vaccinations and infections
         And then a decline in infectious rates'''
-        self.animation = ani.FuncAnimation(self.fig, self.Vaccine_share, frames = self.gen , repeat=True)
+        self.animation = ani.FuncAnimation(self.fig, self.Vaccine_share, frames=self.gen, repeat=True)
 
 
 def Main_function():
@@ -320,7 +310,8 @@ def Main_function():
     covid.animate()
     plt.show()
 
+
 if __name__ == '__main__':
     Main_function()
-    
-#simulation complete 
+
+# simulation complete

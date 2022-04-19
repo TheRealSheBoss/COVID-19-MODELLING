@@ -43,7 +43,8 @@ TO RUN THIS SCRIPT,
 
 def regression(file_location):
     
-    
+    import matplotlib
+    matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import pandas as pd
     from sklearn.metrics import mean_squared_error, r2_score  #from sklearn.metrics import mean_squared_error, r2_score
@@ -56,6 +57,7 @@ def regression(file_location):
     import numpy as np
     import variable_finder as VF
     import graphs as Gph
+    from matplotlib.backends.backend_pdf import PdfPages
     
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
@@ -91,7 +93,7 @@ def regression(file_location):
         #Xtr, Xtest, Ytr, Ytest = train_test_split(X, Y, test_size = float(size_test), random_state = int(state_random))
 
         
-    def linear(Xtr, Xtest, Ytr, Ytest):
+    def linear(Xtr, Xtest, Ytr, Ytest, AllX, AllY):
         regr = linear_model.LinearRegression()
         regr_model = regr.fit(Xtr, Ytr)
     
@@ -107,8 +109,13 @@ def regression(file_location):
         print(f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
         print(f'Training R2 score is {r2_score(ypred_train, Ytr)}')
         
-        plt.scatter(ypred_test, Ytest,color='black')
-        plt.show()
+        
+        xlabel = 'Predicted values'
+        ylabel = 'True values'
+        title = 'Linear Regression model, predicted vs. true values'
+        Plots = Gph.Data_Viz(ypred_test, Ytest, None, xlabel, ylabel, title)
+        Plots.scatter()
+        
         
 
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
@@ -172,6 +179,23 @@ def regression(file_location):
         ypred_test = DTR_model.predict(Xtest)
         print(f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
         print(f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
+        
+        fig, axs = plt.subplots()
+        axs.xaxis.set_visible(False) 
+        axs.yaxis.set_visible(False)
+        prediction_data = [[mean_squared_error(ypred_train, Ytr), r2_score(ypred_train, Ytr)], 
+                           [mean_squared_error(ypred_test, Ytest), r2_score(ypred_test, Ytest)]]
+        columns = ('MSE', 'R squared')
+        rows = ['Training', 'Test']
+        axs.axis('tight')
+        axs.axis('off')
+        the_table = axs.table(cellText=prediction_data,rowLabels = rows, colLabels=columns,loc='center')
+        the_table.auto_set_font_size(False)
+        the_table.set_fontsize(8)
+        pp = PdfPages("DTR_Errors.pdf")
+        pp.savefig(fig, bbox_inches='tight')
+        pp.close()
+        plt.show()
     
     
     def CompareAllModels(Xtr, Xtest, Ytr, Ytest):
@@ -246,7 +270,7 @@ def regression(file_location):
     while True:
         regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to main.py (main)? ")
         if regression_type == "L":
-            linear(Xtraining, Xtesting, Ytraining, Ytesting)
+            linear(Xtraining, Xtesting, Ytraining, Ytesting, Parameters, Target)
             info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
@@ -266,8 +290,8 @@ def regression(file_location):
                 print("Invalid input")
                 continue
         elif regression_type == "D":
-            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
             elif info_stay == "N":
