@@ -22,7 +22,7 @@ while function != "stop":
     function = input("What do you want to do? ")
     print(f'Input was {function}')
     if function == "G":
-        graphs(file_location)
+        graph_selection(file_location)
         continue
     if function == "T":
         graph_selection(file_location)
