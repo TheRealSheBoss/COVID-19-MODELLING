@@ -1,15 +1,11 @@
 #Basic Data Exploration without comparisons
 # !pip install pandas-profiling if not on system
-from pandas_profiling import ProfileReport
-import pandas_profiling as pdp
 import matplotlib.pyplot as plt
 import seaborn as sea
 import pandas as pd
 
 def eda_selection(file_location):
     # !pip install pandas-profiling if not on system
-    from pandas_profiling import ProfileReport
-    import pandas_profiling as pdp
     import matplotlib
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
@@ -30,17 +26,6 @@ def eda_selection(file_location):
 class ExploreMasterData:
     def __init__(self, x):
         self.x = x
-
-    # def master_data_profile(self):
-    #     '''This function returns an overview of the dataset, a definition of each attribute in the dataset,and
-    #                 correlations between each attribute. Final profile is produced in a html format that can be used for general assessment'''
-    #
-    #     PROFILE = ProfileReport(self.x, title='Profiling Report of COVID-19 data', minimal=True, progress_bar=False,
-    #                             missing_diagrams={
-    #                                 'heatmap': True,
-    #                                 'dendrogram': False,
-    #                             })
-    #     PROFILE.to_file(output_file="Master Data.html")
 
     def histplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
