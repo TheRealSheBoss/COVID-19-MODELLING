@@ -43,7 +43,8 @@ TO RUN THIS SCRIPT,
 
 def regression(file_location):
     
-    
+    import matplotlib
+    matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import pandas as pd
     from sklearn.metrics import mean_squared_error, r2_score  #from sklearn.metrics import mean_squared_error, r2_score
@@ -272,8 +273,8 @@ def regression(file_location):
                 print("Invalid input")
                 continue
         elif regression_type == "D":
-            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             DecisionTree(Xtraining, Xtesting, Ytraining, Ytesting)
+            info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
             elif info_stay == "N":
