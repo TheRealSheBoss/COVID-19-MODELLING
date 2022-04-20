@@ -244,12 +244,17 @@ def regression(file_location):
         print(f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}')
     
     def SelectTargetVariable():
-        var_choice = VF.Variable_Finder("", master_data)
-        Y_var = var_choice.variable_finder()
-        master_data_copy = master_data.copy()
-        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
-        return X, Y_var    
-    
+        while True:
+            var_choice = VF.Variable_Finder("", master_data)
+            Y_var = var_choice.variable_finder()
+            if Y_var.dtype != float:
+                continue
+            else:
+                master_data_copy = master_data.copy()
+                X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
+                return X, Y_var
+                break
+
 
     Parameters, Target = SelectTargetVariable()
     
