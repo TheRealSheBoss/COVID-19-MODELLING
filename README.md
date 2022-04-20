@@ -1,10 +1,13 @@
 # EMAT10006COURSE (Daniel Joinson, Kate E, Tim A. , Adetutu S. )
-This repository contains a simulation titled , 'THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN THE UK'.
-The codes for the simulation have been tested using PyCharm and the video was downloaded. Ensure you have the required encoder to view and download the created simulation.
-The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
+This repository contains all the code we created for our program, including a video of our simulation. 
+Our program is highly functional and designed to perform the following tasks:  
 
-//SIMULATION.py
+
 **SIMULATION: THE PROGRESSIVE ACCEPTANCE OF VACCINATIONS DURING THE COVID-19 CRISES IN THE UK:**
+*The simulation code is contained in simulation.py*
+The codes for the simulation have been tested using PyCharm and the video was downloaded(SIMULATION.mp4). 
+Ensure you have the required encoder to view and download the created simulation.
+The ffmpeg encoder is one of the most popular. Else, please run the code on PyCharm so as to get the exact same results that we did.
 1. A class containing several reusable functions was created
 2. Population was set to 10,000 and it could be extrapolated to fit a larger population (The population density in the raw dataset was extremely heavy and led to RunTime errors and poor indexing, hence the choice for an arbitrary figure)
 3. Parameters representing infected persons, as well as the first, second and third dose of the vaccine were set
@@ -31,17 +34,15 @@ It generates a 2D-spiral algorithm.
 2. Like the EDA, users are free to select their input data
 3. The Boxplot function was written independently in order to prevent errors in the general class, in which functions were required to have two variables
 
-**SIMULATION VIDEO**
-MP4 video of the simulation
-
-**PHOTOS**
-Pictures of the graphs plotted
-
 **DATA GENERATION**
-The data is pre-processed, cleaned and stored in the users desired path
+The data is pre-processed, cleaned and stored in the users desired path.
 
 **HOW TO RUN THE PROGRAM FROM YOUR TERMINAL**
-    *First step is to clone the github repository:* 
+
+    *Before running the program, download the folder containing the seperate CSV files to be combined and cleaned to create master data. See link below: *     
+https://uob.sharepoint.com/:f:/t/grp-FurtherProgrammingCoursework/Elm_8zRglvdJg0r3E23DoHgBe4ZyNMLiWmiJBpDUED31zA?e=JQHDbP
+
+    *Clone the github repository:* 
 git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
 
 
@@ -50,22 +51,36 @@ git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git
 
  
     *Install relevant libraries using pip install*
-e.g.  
+    
 pip install virtualenv 
+
+
 virtualenv venv 
+
+
 source venv/bin/activate 
+
+
 pip install pandas 
+
+
 pip install matplotlib 
+
+
 pip install numpy
+
+
 pip install seaborn
+
+
 pip install sklearn
 
  
     *Generating Masterdata*
 You have to have downloaded the CSV files folder we used to generate Masterdata.  
-Once the program asks where have you saved the non-master data?, enter the folder in which the CSV folder is contained in. e.g.,   
-/Users/adetutusadiq/Downloads (you have to have downloaded the CSV files). Click Enter.  
-
+Once the program asks where have you saved the non-master data?, enter the folder in which the CSV folder is contained in. 
+For my computer, the folder was located in this directory: /Users/adetutusadiq/Downloads. 
+Click Enter.  
 Master Data should have been saved in folder with the CSV folder.
 
  
@@ -75,7 +90,6 @@ Type G for graph function, I for variable information, A for AI modelling, E for
 Note that this instruction is case sensitive. A while loop would run until the correct options are inputed.
 
 
- 
 Keep entering inputs relevant to task you want to perform (e.g. A for AI modelling)
 In some cases, graph images will mostly be produced as results  
 
