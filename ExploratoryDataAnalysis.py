@@ -100,6 +100,7 @@ class ExploreMasterData:
             plt.xlabel(None)
             plt.tick_params(axis='both', which='both',length=0.1, pad=2)
             plt.margins(0.2)
+            box_plt.set(xticks = [])
         plt.suptitle('Boxplots of all variables in the COVID data set', fontsize=12)
         plt.savefig('Boxplot of all variables.png')
         plt.savefig('Boxplots of all variables.pdf')
