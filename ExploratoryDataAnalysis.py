@@ -95,7 +95,7 @@ class ExploreMasterData:
             plt.subplot(4, 6, all + 1)
             # plt.tight_layout()
             plt.xticks(rotation=30, fontsize=5)
-            sea.boxplot(data=self.x[column], palette='pastel',saturation=0.5,linewidth=0.4,fliersize=0.3 )
+            sea.boxplot(data=self.x[column], palette='pastel',saturation=0.5,linewidth=0.4,fliersize=0.3, wiidth = 0.3 )
             plt.title(column)
             plt.xlabel(None)
             plt.tick_params(axis='both', which='both',length=0.1, pad=2)
