@@ -65,8 +65,8 @@ def regression(file_location):
         while True:
             try:
                 size_test = float(input("What test size do you want? This has to take the form of a float between 0.1 - 0.5:"))
-                if size_test > 1 or size_test < 0:
-                    print("Test size must be less than 1 and greater than 0")
+                if size_test > 0.5 or size_test < 0.1:
+                    print("Test size must be less than 0.5 and greater than 0.1")
                     continue
                 else:
                     break
