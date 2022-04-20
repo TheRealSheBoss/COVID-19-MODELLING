@@ -51,8 +51,11 @@ def info(file_location):
         
         if info_choice == "M":
             var_choice = Variable_Finder("", master_data)         
-            X = var_choice.variable_finder()    
-            print(X.mean()) 
+            X = var_choice.variable_finder()   
+            if X.dtype != Float:
+                print("Invalid input - please choose a numeric variable")
+                break
+            print(X.mean())
             info_stay = input("Do you want to stay in info? (Y or N) ")
             if info_stay == "Y":
                 continue
