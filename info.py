@@ -52,7 +52,7 @@ def info(file_location):
         if info_choice == "M":
             var_choice = Variable_Finder("", master_data)         
             X = var_choice.variable_finder()   
-            if X.dtype != Float:
+            if X.dtype != float:
                 print("Invalid input - please choose a numeric variable")
                 break
             print(X.mean())
