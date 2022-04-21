@@ -8,8 +8,36 @@ import seaborn as sea
 import variable_finder
 from variable_finder import Variable_Finder
 
+"""
+To allow the user to explore the data and specific variables of interest, the
+function graph_selection() has been designed to be interactive via the terminal
+when run from main.py, this allows the user to input the variables of interest
+which they wish to visualise and, based on the number of variables of interest,
+the function returns options to the user as to which type of graph they wish to
+plot. graph_selection() then calls the relevant function from the class 
+Data_Viz() to return the plot of interest to the user. 
+
+The class Data_Viz() has been designed in such a way that it can be used
+in different combinations with functions across modules within this program, 
+or indeed any other module of interest. 
+For example, the multi_boxplot(), multi_line() and scatter() functions are     
+also called into the Regression_models.py module within this program.
+
+The class BarChart() is defined within the graph_selection() function as, given 
+the nature of the data this program is intended to be used with, processing of 
+some variables is required before a bargraph can be plot. Therefore, the 
+bargraph() function is defined and called within the confines of 
+graph_selection() and has not been designed for reuse in the class Data_Viz().
+"""
 
 def graph_selection(file_location):
+    """
+    Function returns interactive interface with the user via the terminal to
+    allow the user to input variables of interest. Dependent on the number of 
+    variables entered, the function calls the relevant graph funtion from 
+    Data_Viz() or BarChart() which displays the resulting graph. 
+
+    """
     import matplotlib
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
@@ -35,11 +63,11 @@ def graph_selection(file_location):
         
         def bargraph(self):
             """
-            Function to produce bar graph for given input values.
-            the x_variables will be plotted against the y-variable,
-            x-variables are typically non-numerical variables such as area name, etc.
-            the y-variable which should be a numerical variable so our bar graph
-            represents bars as high or low as its count.
+            If chosen X variable is Local Authority, user required to try 
+            Region as an alternative, as Local Authority has too many x-ticks 
+            to return a meaningful graph. 
+            Creates quartiles of the X variable of interest, if numerical.
+            Displays (and saves) a bargraph plot.
             """
             fig, ax = plt.subplots(figsize=(15, 5))
             
@@ -215,6 +243,46 @@ def graph_selection(file_location):
 
 
 class Data_Viz():
+    """
+    The Data_Viz class defines reusable functions to produce boxplots, 
+    multi-variable boxplots, scatter plots, single- and multi-line plots, and
+    histograms. 
+    The class takes as input:
+        x_data = a list, array or multiple array of data for the X variables 
+                of interest.
+        y_data = a list or array of data for the Y variable of interest.
+        x_variable_names = a list of strings with the name for each X variable, 
+                in the same order as the X variable data provided in x_data.
+        x_label = a string, providing the label for the x-axis
+        y_label = a string, providing the label for the y-axis
+        title = a string, providing the title for the plot
+    
+    The class should be called with all arguments listed above. If an argument 
+    isn't relevant for the plot the user wishes to make None should be entered 
+    instead.  
+    
+    Example
+    =======
+    Create a multi-boxplot graph comparing the mean squared errors of three 
+    regression models.
+    
+    mean_squared_errors = [[3.11, 4.23, 8.96], [5.77, 9.11, 7.33], 
+                           [12.35, 10.67, 15.22]]
+    X_variables = ['Decision tree regression', 'Linear regression', 
+                   'Polynomial regression']
+    XLabel = 'Regression models'
+    YLabel = 'Mean Squared Error'
+    Title = 'Comparison of regression models'
+    Charts = Data_Viz(mean_squared_errors, X_variables, None, XLabel, YLabel, 
+                      Title)
+    Charts.multi_boxplot()
+    
+    Output: GUI display of the graph. User asked to input Y/N as to whether 
+    they want to save the plot as a PDF. If 'Y', plot saved as PDF to the PATH
+    the program is being run from.
+    """
+    
+    
     def __init__(self, x_data, y_data, x_variable_names, x_label, y_label, title):
         self.x_data = x_data
         self.y_data = y_data
@@ -225,6 +293,7 @@ class Data_Viz():
         #self.file_location = file_location
             
     def boxplot(self):
+        """Displays (and saves) a single variable boxplot."""
             box_plt = plt.boxplot(self.x_data)
             plt.xticks([])
             plt.title(self.title) #Plot the given title   
@@ -249,6 +318,7 @@ class Data_Viz():
         
         
     def multi_boxplot(self):
+        """Displays (and saves) a multi-variable boxplot."""
             plt.boxplot(self.x_data,labels=self.x_variable_names)
             plt.rcParams["figure.figsize"] = [7.50, 3.50]
             plt.rcParams["figure.autolayout"] = True 
@@ -274,13 +344,7 @@ class Data_Viz():
                 break
             
     def scatter(self):
-        """
-        Function to create a scatter plot for the variables of interest.
-        The function should be called on the X and Y variables previously defined by the user.
-        The function then creates the figure and axis on which to plot the scatter graph.
-        The user is asked to input the title for the figure and the x- and y-axis labels.
-        The function then outputs the defined scatter plot.
-        """
+        """Displays (and saves) a scatter plot."""
         fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
         ax.scatter(self.x_data, self.y_data, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
         plt.title(self.title) #Plot the given title
@@ -304,14 +368,7 @@ class Data_Viz():
             break
         
     def single_line(self):
-        """
-        Function to produce line graph for given input values. 
-        x_variable should be a 1-D array. 
-        y_variable should be a 1-D array.
-        The function creates a single figure and axis. 
-        The 1-D arrays of x_variables and y_variable are plotted on a single line graph. 
-        When called, the function returns a single linegraph plot.
-        """
+        """Displays (and saves) a single x variable linegraph plot."""
         fig, ax = plt.subplots(figsize = (15,5))
         plt.plot(self.x_data, self.y_data, alpha=0.3)
         plt.title(self.title)
@@ -335,18 +392,7 @@ class Data_Viz():
             break
             
     def multi_line(self):
-        """
-        Function to produce line graph for given input values. 
-        x_variables should be a 1-D or multi-D array. 
-        y_variable should be a 1-D array.
-        The function creates a single figure and axis. 
-        The function asks the user how many x-variables are being looked at; if only 1 then the 1-D arrays of 
-        x_variables and y_variable are plotted on a single line graph. If more than 1 then the function iterates
-        through the arrays of x_variables, plotting each against the y_variable array.
-        The user is asked to input the label for each x_variable, the y_variable, the x- and y-axis labels 
-        and the title.
-        When called, the function returns a single linegraph plot.
-        """
+        """Displays (and saves) a multi-x variable linegraph plot.""" 
         from matplotlib.ticker import MaxNLocator
         fig, ax = plt.subplots(figsize = (15,5))
         for i in range(len(self.x_data)):
@@ -379,6 +425,7 @@ class Data_Viz():
             
             
     def histogram(self):
+        """Displays (and saves) a histogram plot."""
         plt.hist(self.x_data, bins=30)
         plt.xlabel(self.x_label)
         plt.ylabel('Count')
