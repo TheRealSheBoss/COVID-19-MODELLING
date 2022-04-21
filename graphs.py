@@ -128,13 +128,13 @@ def graph_selection(file_location):
             print("Invalid input")
             continue
         if no_x_vars == 1:
-            var_choice = Variable_Finder("", master_data)          
+            var_choice = Variable_Finder("x", master_data)          
             x_variable = var_choice.variable_finder() 
             x_label = input("Input x variable label: ")
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
                 if no_y_vars == 'Y':
-                    var_choice = Variable_Finder("", master_data)
+                    var_choice = Variable_Finder("y", master_data)
                     y_variable = var_choice.variable_finder()
                     y_label = input("Input y variable label: ")
                     while True: 
@@ -179,7 +179,7 @@ def graph_selection(file_location):
             x_variables = []
             x_variable_names = []
             for i in range(int(no_x_vars)):
-               var_choice = Variable_Finder("", master_data)          
+               var_choice = Variable_Finder("x", master_data)          
                x_variable = var_choice.variable_finder() 
                x_variables.append(x_variable.to_numpy())
                x_label = input("Input x variable label: ")
@@ -188,7 +188,7 @@ def graph_selection(file_location):
             while True:
                 no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
                 if no_y_vars == 'Y':
-                    var_choice = Variable_Finder("", master_data)
+                    var_choice = Variable_Finder("y", master_data)
                     y_variable = var_choice.variable_finder()
                     y_label = input("Input y variable label: ")
                     title = input("Enter title for line plot: ")
