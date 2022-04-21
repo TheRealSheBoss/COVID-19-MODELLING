@@ -23,17 +23,6 @@ It generates a 2D-spiral algorithm.
 12.The class was assigned to a variabe covid, after the COVID_19 parameter had been passed, the animate function was called. And the simulation appeared
 
 
-**EXPLORATORY DATA ANALYSIS**
-1. Users are permitted to enter any dataset of their choice in .csv format
-2. There are six functions, each would independently generate a graph or chart when called
-3. A data profile of the dataset could be generated: (a profile is a set of statistics that describe how often and how long parts of a program are executed)
-4. There are no comparisons contained in this class...
-
-**GRAPHS**
-1. A variety of graphs would be generated from the functions in the class
-2. Like the EDA, users are free to select their input data
-3. The Boxplot function was written independently in order to prevent errors in the general class, in which functions were required to have two variables
-
 **DATA GENERATION**
 The data is pre-processed, cleaned and stored in the users desired path.
 
@@ -82,13 +71,50 @@ Once the program asks where have you saved the non-master data?, enter the PATH 
 For my computer, the folder was located in this directory: /Users/adetutusadiq/Downloads. 
 Click Enter.  
 Master Data should have been saved in folder with the CSV folder.
+Once the PATH for the non-master data has been input by the user, the program automatically runs data_generation.py. This module reads each of the csv files saved in the PATH given. Note, each file must be saved under the specific names and with the same number and names of parameter as the files provided here. The data_generation.py then reads the csv files and combines them into a master csv file. During this process, parameters are renamed, repeated columns are dropped, parameters with numerical data as string data type are converted to float, duplicates are dropped and rows with null values are dropped. The decision to drop null values was based on analysis of the data we obtained and provide for use in this program. The null values are sufficiently small for this action to be appropriate. data_generation.py then saves the processed 'Master Data'.csv file to the same PATH as given by the user.
 
  
     *Program functionality/tasks you can ask it to do:*  
-Program will give you the following options: 
-Type G for graph function, I for variable information, A for AI modelling, E for eda(Exploratory Data Analysis), S for Simulation, or type stop to quit the program.
+The program will then give you the following options: 
+Type G for graph function, I for variable information, R for machine learning regression modelling, E for eda(Exploratory Data Analysis), S for Simulation, or type stop to quit the program.
 Note that this instruction is case sensitive. A while loop would run until the correct options are inputed.
 
+*User input: 'I'*
+We recommend the user inputs I in the terminal when first running the program as this enables the user to gain an understanding of the variables in the data set and some initial descriptive statistics of the data. Inputting I runs the function info() from the module info.py. The user is then asked whether they want information on the variable names (user inputs 'N'), the first 5 observations of a particular variable (user in puts 'H', then the name of the variable of interest), the last 5 observations of a particular variable (user in puts 'T', then the name of the variable of interest), the mean of a variable of interest (user inputs 'M', then the name of the variable of interest). 
+We recomment the user looks at the names of the variables before moving back to the main module, this way exact variable names can easily be copied into the command line of the terminal throughout the rest of the program. 
+Once each command has been carried out, the user is asked whether they want to remain in info and input another command (user input: 'Y') or return to main.py (user input: 'N').
+
+**EXPLORATORY DATA ANALYSIS**
+============================
+**User input from main.py: 'E'**
+Summary:
+1. Runs on output of data_generation.py 'Master Data'.csv
+2. There are six potential functions, each would independently generate a graph or chart when called
+3. A data profile of the dataset could be generated: (a profile is a set of statistics that describe how often and how long parts of a program are executed)
+4. There are no comparisons contained in this class.
+
+Detailed user instruction: 
+We recommend the user then performs exploratory data analysis by inputting 'E' in the terminal command line. This calls the eda_selection() function from ExploratoryDataAnalysis.py and automatically displays and saves histograms of all variables, boxplots of all variables and a correlation matrix of all variables. The pdf files will be saved to the same PATH the programm is being run from. The histograms and boxplots are not meant for use in a formal report or paper and are intended to give the user an indication of the distribution of each variable. Once the graphs have been displayed and saved to PDF, the user is returned to the main.py interface.
+
+**GRAPHS**
+==========
+**User input from main.py: 'G'**
+Summary:
+1. Allows user to input varibales of interest 
+2. Defines a class of functions producing a variety of plots. Class can be called into other modules for reuse. 
+3. Defines a class to generate a bar chart (necessary given additional processing of variables in 'Master Data'.csv to plot a bar chart)
+4. Returns predefined plots based on number of input variables
+
+Detailed user instruction:
+The user is then recommended to investigate indiviual or groups of varibles. Once the user inputs 'G' from main.py, the graph_selction function is run from the module graphs.py. The user is then asked how many X variables they want to visualise, the user should input the appropriate integer in the terminal command line. Based on the integer entered by the user, the user is then asked to input the exact name of the variable in the 'Master Data'.csv and input their own preferred label name for the X variables of interest, again input via the terminal command line. (Note, the program will only accept X variables of the exact name saved in the csv file; use info.py by inputting 'I' from the main interface to get the exact variable names). The user is then asked whether they want to investigate a Y-variable (user input: 'Y' or 'N'). If 'Y' the user is asked to input the name of the variable of interest and input their preferred label for the variable. Depending on the number of X- and Y- variables being investigated, graph_selection() will either request the user select between one of two graph plotting options by inputting the first letter of the type of plot into the terminal command line, or if only one plotting option is available graph_selection will continue with that plot. A summary of the graph options available is presented below: 
+   1 X-variable, no Y-variable: histogram or boxplot
+   1 X-variable, 1 Y-variable: scatter plot or barchart
+   >1 X-variables, no Y-variable: boxplot
+   >1 X-variables, 1 Y-variable: line plot
+The selected graph is then displayed as a GUI to the user. Once the user closes the GUI, the program then asks whether the user wishes to save the plot as a PDF (user input: 'Y'/'N'). If 'Y' the plot is saved as a PDF to the same PATH the program is being run from. Then the user is returned to the main interface (main.py). If 'N' the user is redirected to the main interface. 
+
+*User input: 'R'* 
+Having investigated the variables of interest, the user is then recommended to investigate the regression models by entering 'R' from the main interface (main.py). 
 
 Keep entering inputs relevant to task you want to perform (e.g. A for AI modelling)
 In some cases, graph images will mostly be produced as results  
