@@ -245,7 +245,7 @@ def regression(file_location):
     
     def SelectTargetVariable():
         while True:
-            var_choice = VF.Variable_Finder("", master_data)
+            var_choice = VF.Variable_Finder("target", master_data)
             Y_var = var_choice.variable_finder()
             if Y_var.dtype != float:
                 print("Invalid input, please select a numeric variable")
