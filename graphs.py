@@ -36,6 +36,12 @@ def graph_selection(file_location):
     allow the user to input variables of interest. Dependent on the number of 
     variables entered, the function calls the relevant graph funtion from 
     Data_Viz() or BarChart() which displays the resulting graph. 
+    
+    Graph plotting options:
+        1 X variable, no Y variable: histogram or boxplot
+        1 X variable, 1 Y variable: scatter plot or barchart
+        >1 X variables, no Y variable: boxplot
+        >1 X variables, 1 Y variable: line plot
 
     """
     import matplotlib
