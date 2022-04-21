@@ -78,7 +78,7 @@ pip install sklearn
  
     *Generating Masterdata*
 You have to have downloaded the CSV files folder we used to generate Masterdata.  
-Once the program asks where have you saved the non-master data?, enter the folder in which the CSV folder is contained in. 
+Once the program asks where have you saved the non-master data?, enter the PATH for the folder in which the CSV files are contained. 
 For my computer, the folder was located in this directory: /Users/adetutusadiq/Downloads. 
 Click Enter.  
 Master Data should have been saved in folder with the CSV folder.
