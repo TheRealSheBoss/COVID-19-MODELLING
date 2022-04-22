@@ -14,31 +14,37 @@ Thus, in this code, we have a main function called regresssion(). To split our d
 Depending on the type of regression algorithms the user wants to fit to the data, we created subfunctions for Linear Regression, Polynomial Regression, and Decision Tree Regression.
 Lastly, we have a function to compare all these models to see which ones performed best. 
 
+The other sub-functions are SelectTargetVariable(), and traintestsplit(). These help the user compare peformance of each model and select a target variable as well as split data before 
+running the regression algorithms through the data. 
+
 PERFORMANCE METRICS: 
 
 The performance metrics used are the Mean Squared Error(MSE) and R-squared. 
 A model with a lower MSE is a better performning data and the closer R-squared value is to 1, the better the model's fit to the data. 
 Hence, better performing. However, to prevent our model from over-fitting to the data and ensure model generalizability to new unseen data, we 
-had to optimize for parameters, especially in our polynomial model. 
-
+had to optimize for parameters, specifically in our polynomial model, so you will see parameter testing happening within the polynomial algorithm. 
 A polynomial degree value more than 5 is likely to produce overfitting or crash the program, so in order to prevent this, we introduced a While loop to 
 operate the code only if the conditional that poly_degree_test has to be less than or equal to 5 is met. 
 
+WHILE TRUE LOOPS: 
+    
+In order to prevent our program from crashing, we implemented a while true loop with if, else statements that will only run the functions within Regression_models.py if the user enter the 
+correct input value. 
+
+We set conditions for the value of the input parameter a user enters to run the linear regression function. If user enters L in response to the regression_type input variable, the program is 
+instructed to run a linear regression model denoted with the linear() function. Once the linear regression algorithm runs, the user is then asked if they wish to continue in regression models 
+and run other models. If the answer is no, the program breaks. If yes, the program continues. If user enters something else, the program prints ‘Invalid input’. 
+
+We also apply a While True loop to the train_test_split() function for the purpose of ensuring our test size input values are between 0.1 and 0.5, and to make sure the input value entered to 
+represent random state is actually an integer. The program minimizes the possibility of crashing by only running when the right input has been entered. 
 
 THIS SCRIPT CAN BE USED TO: 
-
+    
     1. Fit 3 AI regression models imported from the scikit-learn library to the data. 
     2. Evaluate each model's performance(fit to data) using metrics such as Mean Squared Error(MSE) and R-squared. Produce line graphs, scatters plots and box plots
     that give us a visual representation of performance of each model.
     3. Use the CompareAllModels function to compare the performance of each model to each other using box plot files as the visualization method.
     
-TO RUN THIS SCRIPT, 
-    1. clone the github repository : https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
-    2. run ./main,py from your terminal
-    3. Install libraries and environments listed in ReadMe file, Generate Masterdata. 
-    4. Enter A, for AI modelling, follow prompts for specific models you wish to run or to compare all models. 
-
-
 '''
 
 def regression(file_location):
@@ -268,7 +274,7 @@ def regression(file_location):
     
  
     while True:
-        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to main.py (main)? ")
+        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to covid_project.py(main)? ")
         if regression_type == "L":
             linear(Xtraining, Xtesting, Ytraining, Ytesting, Parameters, Target)
             info_stay = input("Do you want to stay in regression models? (Y or N) ")
