@@ -25,7 +25,7 @@ function = ''
 
 
 while function != "stop":
-    print("This is case-sensitive! \n\n Type G for graph function \n\n I for variable information \n\n R for machine learning regression modelling"
+    print("\n\n This is case-sensitive! \n\n Type G for graph function \n\n I for variable information \n\n R for machine learning regression modelling"
           "\n\n E for eda \n\n or S for simulation "
           "or type stop to quit the program")
     function = input("What do you want to do? ")
