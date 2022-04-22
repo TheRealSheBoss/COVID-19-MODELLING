@@ -268,7 +268,7 @@ def regression(file_location):
     
  
     while True:
-        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to main.py (main)? ")
+        regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to covid_project.py (main)? ")
         if regression_type == "L":
             linear(Xtraining, Xtesting, Ytraining, Ytesting, Parameters, Target)
             info_stay = input("Do you want to stay in regression models? (Y or N) ")
