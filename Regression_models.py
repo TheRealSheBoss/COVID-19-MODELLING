@@ -102,12 +102,12 @@ def regression(file_location):
         print(f'Intercept is {regr.intercept_}')
         
         ypred_test = regr_model.predict(Xtest)
-        print(f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
-        print(f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
+        print("\n" f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
+        print("\n" f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
         
         ypred_train = regr_model.predict(Xtr)
-        print(f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
-        print(f'Training R2 score is {r2_score(ypred_train, Ytr)}')
+        print("\n" f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
+        print("\n" f'Training R2 score is {r2_score(ypred_train, Ytr)}')
         
         
         xlabel = 'Predicted values'
@@ -167,12 +167,12 @@ def regression(file_location):
         DTR = DecisionTreeRegressor()
         DTR_model = DTR.fit(Xtr, Ytr)
         ypred_train = DTR_model.predict(Xtr)
-        print(f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
-        print(f'Training R2 score is {r2_score(ypred_train, Ytr)}')
+        print("\n" f'Training MSE is {mean_squared_error(ypred_train, Ytr)}')
+        print("\n" f'Training R2 score is {r2_score(ypred_train, Ytr)}')
         
         ypred_test = DTR_model.predict(Xtest)
-        print(f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
-        print(f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
+        print("\n" f'Testing MSE is {mean_squared_error(ypred_test, Ytest)}')
+        print("\n" f'Testing R2 score is {r2_score(ypred_test, Ytest)}')
         
         fig, axs = plt.subplots()
         axs.xaxis.set_visible(False) 
@@ -237,11 +237,11 @@ def regression(file_location):
         Plots.multi_boxplot()
 
         
-        print(f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
-        print(f'LR r2: mean={np.mean(r2_LR)}, sd={np.std(r2_LR)}')
-        print(f'DTR mse: mean={np.mean(mse_DTR)}, sd={np.std(mse_DTR)}')
-        print(f'DTR r2: mean={np.mean(r2_DTR)}, sd={np.std(r2_DTR)}') 
-        print(f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}')
+        print("\n" f'LR mse: mean={np.mean(mse_LR)}, sd={np.std(mse_LR)}')
+        print("\n" f'LR r2: mean={np.mean(r2_LR)}, sd={np.std(r2_LR)}')
+        print("\n" f'DTR mse: mean={np.mean(mse_DTR)}, sd={np.std(mse_DTR)}')
+        print("\n" f' DTR r2: mean={np.mean(r2_DTR)}, sd={np.std(r2_DTR)}') 
+        print("\n" f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}'"\n")
     
     def SelectTargetVariable():
         while True:
