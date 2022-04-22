@@ -99,6 +99,7 @@ def graph_selection(file_location):
                         fig, ax = plt.subplots(figsize=(15, 5))
                         plt.bar(X_bar,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
+                        plt.savefig('bargraph_plot.png', bbox_inches='tight')
                         plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
                     elif save_image == "N":
                         break
