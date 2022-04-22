@@ -10,7 +10,7 @@ from ExploratoryDataAnalysis import ExploreMasterData
 
 """
 This program prompts the user to input the location they saved the relevant files - and then the data_generation program 
-is used to generate the master data. After this, a while loop is used to generate an interface where the user choices which
+is used to generate the master data. After this, a while loop is used to generate an interface where the user chooses which
 function of the program to use. This loop breaks only if the user inputs stop. 
 
 Each file which the user can select to use contains a function which file_location is passed to. This means that these files 
