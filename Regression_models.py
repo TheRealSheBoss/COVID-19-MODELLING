@@ -150,7 +150,6 @@ def regression(file_location):
             MSE_test_data.append(mean_squared_error(Ytest, pred_tst))
 
         AllXVars = [MSE_train_data, MSE_test_data]
-        print(len(AllXVars))
         y_var = list(range(1, poly_degree_test+1))
         labels = ['Training', 'Validation']
         xlabel = 'Degree'
