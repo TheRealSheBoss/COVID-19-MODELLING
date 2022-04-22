@@ -219,28 +219,12 @@ def graph_selection(file_location):
                x_label = input("Input x variable label: ")
                x_variable_names.append(x_label)
             x_label = input("Enter x-axis label: ")
-            while True:
-                no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
-                if no_y_vars == 'Y':
-                    var_choice = Variable_Finder("y", master_data)
-                    y_variable = var_choice.variable_finder()
-                    y_label = input("Input y variable label: ")
-                    title = input("Enter title for line plot: ")
-                    #x_variable_names = np.vstack(x_variable_names)
-                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
-                    View_Charts.multi_line()
-                    break
-                    
-                elif no_y_vars == 'N':
-                    y_variable = None
-                    title = input("Enter title for boxplot: ")
-                    y_label = input("Enter y-axis label: ")
-                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
-                    View_Charts.multi_boxplot()
-                    break
-                else:
-                    print("Invalid input")
-                    continue
+            y_variable = None
+            title = input("Enter title for boxplot: ")
+            y_label = input("Enter y-axis label: ")
+            View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+            View_Charts.multi_boxplot()
+            
         else:
             print("Invalid input")
             continue
