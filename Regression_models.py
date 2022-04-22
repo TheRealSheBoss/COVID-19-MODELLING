@@ -21,17 +21,18 @@ A model with a lower MSE is a better performning data and the closer R-squared v
 Hence, better performing. However, to prevent our model from over-fitting to the data and ensure model generalizability to new unseen data, we 
 had to optimize for parameters, especially in our polynomial model. 
 
+THIS SCRIPT CAN BE USED TO:
+
+    1. Fit 3 AI regression models imported from the scikit-learn library to the data.
+    2. Evaluate each model's performance(fit to data) using metrics such as Mean Squared Error(MSE) and R-squared. Produce line graphs, scatters plots and box plots
+    that give us a visual representation of performance of each model.
+    3. Use the CompareAllModels function to compare the performance of each model to each other using box plot files as the visualization method.
+
+
 A polynomial degree value more than 5 is likely to produce overfitting or crash the program, so in order to prevent this, we introduced a While loop to 
 operate the code only if the conditional that poly_degree_test has to be less than or equal to 5 is met. 
 
 
-THIS SCRIPT CAN BE USED TO: 
-
-    1. Fit 3 AI regression models imported from the scikit-learn library to the data. 
-    2. Evaluate each model's performance(fit to data) using metrics such as Mean Squared Error(MSE) and R-squared. Produce line graphs, scatters plots and box plots
-    that give us a visual representation of performance of each model.
-    3. Use the CompareAllModels function to compare the performance of each model to each other using box plot files as the visualization method.
-    
 TO RUN THIS SCRIPT, 
     1. clone the github repository : https://github.com/TheRealSheBoss/EMAT10006COURSE.git 
     2. run ./main,py from your terminal
@@ -86,11 +87,6 @@ def regression(file_location):
         Xtr, Xtest, Ytr, Ytest = train_test_split(X_data, Y_data, test_size = float(size_test), random_state = int(state_random))
         
         return Xtr, Xtest, Ytr, Ytest 
-    
-        #from sklearn.model_selection import train_testT_split
-        #size_test = input("What test size do you want? ")
-        #state_random = input("What random state do you want? ")
-        #Xtr, Xtest, Ytr, Ytest = train_test_split(X, Y, test_size = float(size_test), random_state = int(state_random))
 
         
     def linear(Xtr, Xtest, Ytr, Ytest, AllX, AllY):
