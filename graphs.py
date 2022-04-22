@@ -99,6 +99,7 @@ def graph_selection(file_location):
                         fig, ax = plt.subplots(figsize=(15, 5))
                         plt.bar(X_bar,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
+                        plt.savefig('bargraph_plot.png', bbox_inches='tight')
                         plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
                     elif save_image == "N":
                         break
@@ -143,7 +144,8 @@ def graph_selection(file_location):
                         fig, ax = plt.subplots(figsize=(15, 5))
                         plt.bar(Y_bar.index,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
-                        plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
+                        plt.savefig('bargraph_plot.png', bbox_inches='tight')
+                        plt.savefig('bargraph_plot.pdf', bbox_inches='tight')    
                     elif save_image == "N":
                         break
                     else:
@@ -198,7 +200,7 @@ def graph_selection(file_location):
                             break
                         elif graph_type == "B":
                             title = input("Enter title for boxplot: ")
-                            y_label = x_label
+                            y_label = input("Enter label for y-axis: ")
                             View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
                             View_Charts.boxplot()
                             break
@@ -219,28 +221,12 @@ def graph_selection(file_location):
                x_label = input("Input x variable label: ")
                x_variable_names.append(x_label)
             x_label = input("Enter x-axis label: ")
-            while True:
-                no_y_vars = input('Do you want to look at a Y variable? (Y / N): ')
-                if no_y_vars == 'Y':
-                    var_choice = Variable_Finder("y", master_data)
-                    y_variable = var_choice.variable_finder()
-                    y_label = input("Input y variable label: ")
-                    title = input("Enter title for line plot: ")
-                    #x_variable_names = np.vstack(x_variable_names)
-                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
-                    View_Charts.multi_line()
-                    break
-                    
-                elif no_y_vars == 'N':
-                    y_variable = None
-                    title = input("Enter title for boxplot: ")
-                    y_label = input("Enter y-axis label: ")
-                    View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
-                    View_Charts.multi_boxplot()
-                    break
-                else:
-                    print("Invalid input")
-                    continue
+            y_variable = None
+            title = input("Enter title for boxplot: ")
+            y_label = input("Enter y-axis label: ")
+            View_Charts = Data_Viz(x_variables, y_variable, x_variable_names, x_label, y_label, title)
+            View_Charts.multi_boxplot()
+            
         else:
             print("Invalid input")
             continue
@@ -300,54 +286,56 @@ class Data_Viz():
             
     def boxplot(self):
         """Displays (and saves) a single variable boxplot."""
-            box_plt = plt.boxplot(self.x_data)
-            plt.xticks([])
-            plt.title(self.title) #Plot the given title   
-            plt.xlabel(self.x_label)#Plot the given x-axis label
-            plt.ylabel(self.y_label) #Plot the given y-axis label
-            plt.show()
-            while True:
-                save_image = input("Do you want to save the image? (Y/N): ")
-                if save_image == "Y":
-                    plt.boxplot(self.x_data)
-                    plt.ticks([])
-                    plt.title(self.title) #Plot the given title   
-                    plt.xlabel(self.x_label)#Plot the given x-axis label
-                    plt.ylabel(self.y_label) #Plot the given y-axis label
-                    plt.savefig('boxplot.pdf', bbox_inches='tight')
-                elif save_image == "N":
-                    break
-                else:
-                    print("Invalid input")
-                    continue
+        box_plt = plt.boxplot(self.x_data)
+        plt.xticks([])
+        plt.title(self.title) #Plot the given title   
+        plt.xlabel(self.x_label)#Plot the given x-axis label
+        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                plt.boxplot(self.x_data)
+                plt.xticks([])
+                plt.title(self.title) #Plot the given title   
+                plt.xlabel(self.x_label)#Plot the given x-axis label
+                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.savefig('boxplot.pdf', bbox_inches='tight')
+                plt.savefig('boxplot.png', bbox_inches='tight')
+            elif save_image == "N":
                 break
+            else:
+                print("Invalid input")
+                continue
+            break
         
         
     def multi_boxplot(self):
         """Displays (and saves) a multi-variable boxplot."""
-            plt.boxplot(self.x_data,labels=self.x_variable_names)
-            plt.rcParams["figure.figsize"] = [7.50, 3.50]
-            plt.rcParams["figure.autolayout"] = True 
-            plt.xlabel(self.x_label, fontsize=12)
-            plt.ylabel(self.y_label, fontsize=12) 
-            plt.title(self.title, fontsize=18) 
-            plt.show()
-            while True:
-                save_image = input("Do you want to save the image? (Y/N): ")
-                if save_image == "Y":
-                    plt.boxplot(self.x_data,labels=self.x_variable_names)
-                    plt.rcParams["figure.figsize"] = [7.50, 3.50]
-                    plt.rcParams["figure.autolayout"] = True 
-                    plt.xlabel(self.x_label, fontsize=12)
-                    plt.ylabel(self.y_label, fontsize=12) 
-                    plt.title(self.title, fontsize=18)
-                    plt.savefig('multi_boxplot.pdf', bbox_inches='tight')
-                elif save_image == "N":
-                    break
-                else:
-                    print("Invalid input")
-                    continue
+        plt.boxplot(self.x_data,labels=self.x_variable_names)
+        plt.rcParams["figure.figsize"] = [7.50, 3.50]
+        plt.rcParams["figure.autolayout"] = True 
+        plt.xlabel(self.x_label, fontsize=12)
+        plt.ylabel(self.y_label, fontsize=12) 
+        plt.title(self.title, fontsize=18) 
+        plt.show()
+        while True:
+            save_image = input("Do you want to save the image? (Y/N): ")
+            if save_image == "Y":
+                plt.boxplot(self.x_data,labels=self.x_variable_names)
+                plt.rcParams["figure.figsize"] = [7.50, 3.50]
+                plt.rcParams["figure.autolayout"] = True 
+                plt.xlabel(self.x_label, fontsize=12)
+                plt.ylabel(self.y_label, fontsize=12) 
+                plt.title(self.title, fontsize=18)
+                plt.savefig('multi_boxplot.pdf', bbox_inches='tight')
+                plt.savefig('multi_boxplot.png', bbox_inches='tight')
+            elif save_image == "N":
                 break
+            else:
+                print("Invalid input")
+                continue
+            break
             
     def scatter(self):
         """Displays (and saves) a scatter plot."""
@@ -366,6 +354,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('scatter_plot.pdf', bbox_inches='tight')
+                plt.savefig('scatter_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -390,6 +379,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('single_line_plot.pdf', bbox_inches='tight')
+                plt.savefig('single_line_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -422,6 +412,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('multi_line_plot.pdf', bbox_inches='tight')
+                plt.savefig('multi_line_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -445,6 +436,7 @@ class Data_Viz():
                 plt.ylabel('Count')
                 plt.title(self.title)
                 plt.savefig('histogram_plot.pdf', bbox_inches='tight')
+                plt.savefig('histogram_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
