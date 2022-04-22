@@ -10,7 +10,7 @@ def eda_selection(file_location):
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import seaborn as sea
-    sea.set(font_scale=0.8)
+    sea.set(font_scale=0.6)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
@@ -34,7 +34,7 @@ class ExploreMasterData:
             plt.subplot(5, 4, all + 1)
             #sea.histplot(data=master_data[column])
             #plt.tight_layout()
-            sea.histplot(data=self.x[column])
+            sea.histplot(data=self.x[column], palette='husl')
             plt.xticks(rotation=30,fontsize=5)
             plt.yticks(rotation=30,fontsize=5)
             plt.title(column)
@@ -48,7 +48,7 @@ class ExploreMasterData:
                     top=0.9, 
                     wspace=0.8, 
                     hspace=0.9)
-        plt.suptitle('Histograms of all variables in the COVID data set', fontsize=12)
+        plt.suptitle('Histograms of all variables', fontsize=12)
         plt.savefig('Histograms of all variables.png')
         plt.savefig('Histograms of all variables.pdf')
         plt.tight_layout()
@@ -58,11 +58,20 @@ class ExploreMasterData:
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
-            #sea.lineplot(data=master_data[column])
-            # plt.tight_layout()
-            plt.xticks(rotation=30, fontsize=6)
             sea.lineplot(data=self.x[column])
+            plt.xticks(rotation=30,fontsize=5)
+            plt.yticks(rotation=30,fontsize=5)
             plt.title(column)
+            plt.xlabel(None)
+            plt.ylabel('Count',fontsize=6)
+            plt.tick_params(axis='both', which='both',length=0.1, pad=2)
+            plt.margins(0.2)
+        plt.subplots_adjust(left=0.125,
+                    bottom=0.1, 
+                    right=0.9, 
+                    top=0.9, 
+                    wspace=0.8, 
+                    hspace=0.9)
 
         plt.savefig('Lineplots of all variables.png')
         plt.savefig('Lineplots of all variables.pdf')
@@ -73,11 +82,20 @@ class ExploreMasterData:
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
             plt.subplot(4, 6, all + 1)
-            #sea.scatterplot(data=master_data[column])
-            # plt.tight_layout()
-            plt.xticks(rotation=30, fontsize=6)
             sea.scatterplot(data=self.x[column])
+            plt.xticks(rotation=30,fontsize=5)
+            plt.yticks(rotation=30,fontsize=5)
             plt.title(column)
+            plt.xlabel(None)
+            plt.ylabel('Count',fontsize=6)
+            plt.tick_params(axis='both', which='both',length=0.1, pad=2)
+            plt.margins(0.2)
+        plt.subplots_adjust(left=0.125,
+                    bottom=0.1, 
+                    right=0.9, 
+                    top=0.9, 
+                    wspace=0.8, 
+                    hspace=0.9)
 
         plt.savefig('Scatterplots of all variables.png')
         plt.savefig('Scatterplots of all variables.pdf')
@@ -90,9 +108,9 @@ class ExploreMasterData:
         fig, ax = plt.subplots(figsize=(10, 10))
         sea.heatmap(data=correlation, annot=False, cmap="seismic", center=0, linewidths=0.9)
         plt.xlabel(None)
-        plt.tick_params(axis='both', which='both',length=0.1, pad=2, labelsize=5)
+        plt.tick_params(axis='both', which='both',length=0.1, pad=2, labelsize=7)
         plt.margins(0.2)
-        plt.title('Correlation matrix of all variables in COVID data set', fontsize=25)
+        plt.title('Correlation matrix of all variables', fontsize=25)
         plt.savefig('Correlations.png')
         plt.savefig('Correlations.pdf')
         plt.show()
@@ -116,7 +134,7 @@ class ExploreMasterData:
                     top=0.9, 
                     wspace=0.6, 
                     hspace=0.6)
-        plt.suptitle('Boxplots of all variables in the COVID data set', fontsize=12)
+        plt.suptitle('Boxplots of all variables', fontsize=12)
         plt.savefig('Boxplot of all variables.png')
         plt.savefig('Boxplots of all variables.pdf')
         plt.tight_layout()
