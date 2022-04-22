@@ -65,8 +65,8 @@ def regression(file_location):
         while True:
             try:
                 size_test = float(input("What test size do you want? This has to take the form of a float between 0.1 - 0.5:"))
-                if size_test > 1 or size_test < 0:
-                    print("Test size must be less than 1 and greater than 0")
+                if size_test > 0.5 or size_test < 0.1:
+                    print("Test size must be less than 0.5 and greater than 0.1")
                     continue
                 else:
                     break
@@ -244,12 +244,18 @@ def regression(file_location):
         print(f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}')
     
     def SelectTargetVariable():
-        var_choice = VF.Variable_Finder("", master_data)
-        Y_var = var_choice.variable_finder()
-        master_data_copy = master_data.copy()
-        X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
-        return X, Y_var    
-    
+        while True:
+            var_choice = VF.Variable_Finder("target", master_data)
+            Y_var = var_choice.variable_finder()
+            if Y_var.dtype != float:
+                print("Invalid input, please select a numeric variable")
+                continue
+            else:
+                master_data_copy = master_data.copy()
+                X = master_data_copy.drop(columns=[Y_var.name, 'Local Authority', 'Region name'])
+                return X, Y_var
+                break
+
 
     Parameters, Target = SelectTargetVariable()
     

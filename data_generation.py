@@ -151,14 +151,14 @@ def data_generation(file_location):
 
   ## RENAMING VARIABLES
 
-  master_data = master_data.rename(columns={"areaName": "Local Authority", "cumCasesByPublishDate": "Cumulative Cases", "Average Score ":"Deprivation Score", "cumPeopleVaccinatedFirstDoseByPublishDate":"First dose (cumulative)", "cumPeopleVaccinatedSecondDoseByPublishDate":"Second dose (cumulative)", "cumPeopleVaccinatedThirdInjectionByPublishDate":"Third dose (cumulative)", "cumDeaths28DaysByPublishDate":"Deaths (cumulative)"})
-  master_data = master_data.rename(columns={"% of the economically active population aged 16+ who are unemployed":"Unemployed (%)", "% of all people aged 16-64 who are employees": "Employees (%)", "% of all people aged 16-64 who are self-employed": "Self-employed (%)", "% of households with at least 1 early-years or school age child" : "Households with 1+ small child (%)"}) 
+  master_data = master_data.rename(columns={"areaName": "Local Authority", "cumCasesByPublishDate": "Cumulative Cases", "Average Score ":"Deprivation Score", "cumPeopleVaccinatedFirstDoseByPublishDate":"First dose (cum.)", "cumPeopleVaccinatedSecondDoseByPublishDate":"Second dose (cum.)", "cumPeopleVaccinatedThirdInjectionByPublishDate":"Third dose (cum.)", "cumDeaths28DaysByPublishDate":"Deaths (cum.)"})
+  master_data = master_data.rename(columns={"% of the economically active population aged 16+ who are unemployed":"Unemployed (%)", "% of all people aged 16-64 who are employees": "Employees (%)", "% of all people aged 16-64 who are self-employed": "Self-employed (%)", "% of households with at least 1 early-years or school age child" : "Households, 1+ child (%)"}) 
   ## CHANGING DATA TYPES
   master_data['People per sq. km'] = master_data['People per sq. km'].str.replace(',', '').astype(float)
 
   master_data["Cumulative Cases"] = master_data["Cumulative Cases"].astype(float)
 
-  master_data["Deaths (cumulative)"] = master_data["Deaths (cumulative)"].astype(float)
+  master_data["Deaths (cum.)"] = master_data["Deaths (cum.)"].astype(float)
 
   ## REMOVING DUPLICATE DATA
 

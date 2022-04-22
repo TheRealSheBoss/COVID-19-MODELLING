@@ -10,7 +10,7 @@ def eda_selection(file_location):
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import seaborn as sea
-    sea.set(font_scale=0.5)
+    sea.set(font_scale=0.8)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
     # % matplotlib inline  (uncomment if using Jupyter NB)
@@ -31,15 +31,23 @@ class ExploreMasterData:
     def histplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
-            plt.subplot(4, 6, all + 1)
+            plt.subplot(5, 4, all + 1)
             #sea.histplot(data=master_data[column])
             #plt.tight_layout()
             sea.histplot(data=self.x[column])
-            plt.xticks(rotation=30, fontsize=5)
+            plt.xticks(rotation=30,fontsize=5)
+            plt.yticks(rotation=30,fontsize=5)
             plt.title(column)
             plt.xlabel(None)
+            plt.ylabel('Count',fontsize=6)
             plt.tick_params(axis='both', which='both',length=0.1, pad=2)
             plt.margins(0.2)
+        plt.subplots_adjust(left=0.125,
+                    bottom=0.1, 
+                    right=0.9, 
+                    top=0.9, 
+                    wspace=0.8, 
+                    hspace=0.9)
         plt.suptitle('Histograms of all variables in the COVID data set', fontsize=12)
         plt.savefig('Histograms of all variables.png')
         plt.savefig('Histograms of all variables.pdf')
@@ -92,14 +100,22 @@ class ExploreMasterData:
     def boxplot_master_data(self):
         #for all, column in enumerate(master_data.columns):
         for all, column in enumerate(self.x.columns):
-            plt.subplot(4, 6, all + 1)
+            plt.subplot(5, 4, all + 1)
             # plt.tight_layout()
             plt.xticks(rotation=30, fontsize=5)
-            sea.boxplot(data=self.x[column], palette='pastel',saturation=0.5,linewidth=0.4,fliersize=0.3 )
+            plt.yticks(rotation=30,fontsize=5)
+            box_plt = sea.boxplot(data=self.x[column], linewidth = 0.8, width = 0.6, showfliers = False)
             plt.title(column)
             plt.xlabel(None)
             plt.tick_params(axis='both', which='both',length=0.1, pad=2)
             plt.margins(0.2)
+            box_plt.set(xticks = [])
+        plt.subplots_adjust(left=0.125,
+                    bottom=0.1, 
+                    right=0.9, 
+                    top=0.9, 
+                    wspace=0.6, 
+                    hspace=0.6)
         plt.suptitle('Boxplots of all variables in the COVID data set', fontsize=12)
         plt.savefig('Boxplot of all variables.png')
         plt.savefig('Boxplots of all variables.pdf')
