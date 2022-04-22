@@ -1,0 +1,315 @@
+Region code,Region name,Area code,Area name ,% of households with at least 1 early-years or school age child
+E12000001,North East,E06000047,County Durham,21.7
+E12000001,North East,E06000005,Darlington,21.7
+E12000001,North East,E06000001,Hartlepool,17.4
+E12000001,North East,E06000002,Middlesbrough,25
+E12000001,North East,E06000057,Northumberland,17.9
+E12000001,North East,E06000003,Redcar and Cleveland,17.7
+E12000001,North East,E06000004,Stockton-on-Tees,21.1
+E12000001,North East,E08000037,Gateshead,19.5
+E12000001,North East,E08000021,Newcastle upon Tyne,20.9
+E12000001,North East,E08000022,North Tyneside,16.4
+E12000001,North East,E08000023,South Tyneside,21
+E12000001,North East,E08000024,Sunderland,19.7
+E12000002,North West,E06000008,Blackburn with Darwen,24.6
+E12000002,North West,E06000009,Blackpool,21.7
+E12000002,North West,E06000049,Cheshire East,21.2
+E12000002,North West,E06000050,Cheshire West and Chester,18.4
+E12000002,North West,E06000006,Halton,23.5
+E12000002,North West,E06000007,Warrington,26.9
+E12000002,North West,E07000026,Allerdale,21.4
+E12000002,North West,E07000027,Barrow-in-Furness,17.3
+E12000002,North West,E07000028,Carlisle,19.1
+E12000002,North West,E07000029,Copeland,19.9
+E12000002,North West,E07000030,Eden,17.9
+E12000002,North West,E07000031,South Lakeland,23.1
+E12000002,North West,E08000001,Bolton,24.9
+E12000002,North West,E08000002,Bury,22.8
+E12000002,North West,E08000003,Manchester,25.4
+E12000002,North West,E08000004,Oldham,24.9
+E12000002,North West,E08000005,Rochdale,29.7
+E12000002,North West,E08000006,Salford,21
+E12000002,North West,E08000007,Stockport,21.8
+E12000002,North West,E08000008,Tameside,21.7
+E12000002,North West,E08000009,Trafford,26
+E12000002,North West,E08000010,Wigan,22.8
+E12000002,North West,E07000117,Burnley,26.7
+E12000002,North West,E07000118,Chorley,30.3
+E12000002,North West,E07000119,Fylde,18.8
+E12000002,North West,E07000120,Hyndburn,23.3
+E12000002,North West,E07000121,Lancaster,23.1
+E12000002,North West,E07000122,Pendle,36.3
+E12000002,North West,E07000123,Preston,27.1
+E12000002,North West,E07000124,Ribble Valley,25.9
+E12000002,North West,E07000125,Rossendale,20.1
+E12000002,North West,E07000126,South Ribble,28.8
+E12000002,North West,E07000127,West Lancashire,29.7
+E12000002,North West,E07000128,Wyre,26.6
+E12000002,North West,E08000011,Knowsley,22
+E12000002,North West,E08000012,Liverpool,20
+E12000002,North West,E08000014,Sefton,17.6
+E12000002,North West,E08000013,St. Helens,20.4
+E12000002,North West,E08000015,Wirral,22.8
+E12000003,Yorkshire and The Humber,E06000011,East Riding of Yorkshire,19.7
+E12000003,Yorkshire and The Humber,E06000010,"Kingston upon Hull, City of",21.4
+E12000003,Yorkshire and The Humber,E06000012,North East Lincolnshire,20.1
+E12000003,Yorkshire and The Humber,E06000013,North Lincolnshire,17.9
+E12000003,Yorkshire and The Humber,E06000014,York,20.2
+E12000003,Yorkshire and The Humber,E07000163,Craven,22.3
+E12000003,Yorkshire and The Humber,E07000164,Hambleton,27
+E12000003,Yorkshire and The Humber,E07000165,Harrogate,17.9
+E12000003,Yorkshire and The Humber,E07000166,Richmondshire,17.7
+E12000003,Yorkshire and The Humber,E07000167,Ryedale,20.9
+E12000003,Yorkshire and The Humber,E07000168,Scarborough,26.7
+E12000003,Yorkshire and The Humber,E07000169,Selby,28.9
+E12000003,Yorkshire and The Humber,E08000016,Barnsley,22.2
+E12000003,Yorkshire and The Humber,E08000017,Doncaster,22.1
+E12000003,Yorkshire and The Humber,E08000018,Rotherham,22.9
+E12000003,Yorkshire and The Humber,E08000019,Sheffield,22.6
+E12000003,Yorkshire and The Humber,E08000032,Bradford,28.7
+E12000003,Yorkshire and The Humber,E08000033,Calderdale,22.4
+E12000003,Yorkshire and The Humber,E08000034,Kirklees,25
+E12000003,Yorkshire and The Humber,E08000035,Leeds,22.8
+E12000003,Yorkshire and The Humber,E08000036,Wakefield,22.2
+E12000004,East Midlands,E06000015,Derby,22.9
+E12000004,East Midlands,E06000016,Leicester,26.5
+E12000004,East Midlands,E06000018,Nottingham,22.4
+E12000004,East Midlands,E06000017,Rutland,17.1
+E12000004,East Midlands,E07000032,Amber Valley,11.4
+E12000004,East Midlands,E07000033,Bolsover,17.1
+E12000004,East Midlands,E07000034,Chesterfield,24.9
+E12000004,East Midlands,E07000035,Derbyshire Dales,22.9
+E12000004,East Midlands,E07000036,Erewash,25.9
+E12000004,East Midlands,E07000037,High Peak,26.5
+E12000004,East Midlands,E07000038,North East Derbyshire,21.4
+E12000004,East Midlands,E07000039,South Derbyshire,29.1
+E12000004,East Midlands,E07000129,Blaby,27.1
+E12000004,East Midlands,E07000130,Charnwood,21.2
+E12000004,East Midlands,E07000131,Harborough,29.5
+E12000004,East Midlands,E07000132,Hinckley and Bosworth,23.5
+E12000004,East Midlands,E07000133,Melton,16.2
+E12000004,East Midlands,E07000134,North West Leicestershire,24.4
+E12000004,East Midlands,E07000135,Oadby and Wigston,26.7
+E12000004,East Midlands,E07000136,Boston,24.1
+E12000004,East Midlands,E07000137,East Lindsey,15.7
+E12000004,East Midlands,E07000138,Lincoln,22.8
+E12000004,East Midlands,E07000139,North Kesteven,23.5
+E12000004,East Midlands,E07000140,South Holland,17.5
+E12000004,East Midlands,E07000141,South Kesteven,27.4
+E12000004,East Midlands,E07000142,West Lindsey,24.9
+E12000004,East Midlands,E07000150,Corby,32.6
+E12000004,East Midlands,E07000151,Daventry,27.6
+E12000004,East Midlands,E07000152,East Northamptonshire,22.7
+E12000004,East Midlands,E07000153,Kettering,28.7
+E12000004,East Midlands,E07000154,Northampton,25.8
+E12000004,East Midlands,E07000155,South Northamptonshire,26.8
+E12000004,East Midlands,E07000156,Wellingborough,19.7
+E12000004,East Midlands,E07000170,Ashfield,26.9
+E12000004,East Midlands,E07000171,Bassetlaw,22.4
+E12000004,East Midlands,E07000172,Broxtowe,24.8
+E12000004,East Midlands,E07000173,Gedling,19.5
+E12000004,East Midlands,E07000174,Mansfield,20.1
+E12000004,East Midlands,E07000175,Newark and Sherwood,23.3
+E12000004,East Midlands,E07000176,Rushcliffe,21.8
+E12000005,West Midlands,E06000019,"Herefordshire, County of",17.5
+E12000005,West Midlands,E06000051,Shropshire,20.4
+E12000005,West Midlands,E06000021,Stoke-on-Trent,21.7
+E12000005,West Midlands,E06000020,Telford and Wrekin,20.7
+E12000005,West Midlands,E07000192,Cannock Chase,31
+E12000005,West Midlands,E07000193,East Staffordshire,20.1
+E12000005,West Midlands,E07000194,Lichfield,15.9
+E12000005,West Midlands,E07000195,Newcastle-under-Lyme,29.5
+E12000005,West Midlands,E07000196,South Staffordshire,23.1
+E12000005,West Midlands,E07000197,Stafford,16.7
+E12000005,West Midlands,E07000198,Staffordshire Moorlands,18.2
+E12000005,West Midlands,E07000199,Tamworth,29.5
+E12000005,West Midlands,E07000218,North Warwickshire,27.8
+E12000005,West Midlands,E07000219,Nuneaton and Bedworth,28.3
+E12000005,West Midlands,E07000220,Rugby,24.3
+E12000005,West Midlands,E07000221,Stratford-on-Avon,18.8
+E12000005,West Midlands,E07000222,Warwick,21.1
+E12000005,West Midlands,E08000025,Birmingham,26.8
+E12000005,West Midlands,E08000026,Coventry,23.3
+E12000005,West Midlands,E08000027,Dudley,23.7
+E12000005,West Midlands,E08000028,Sandwell,24.1
+E12000005,West Midlands,E08000029,Solihull,22.6
+E12000005,West Midlands,E08000030,Walsall,26.6
+E12000005,West Midlands,E08000031,Wolverhampton,21.8
+E12000005,West Midlands,E07000234,Bromsgrove,24.1
+E12000005,West Midlands,E07000235,Malvern Hills,8.2
+E12000005,West Midlands,E07000236,Redditch,30.4
+E12000005,West Midlands,E07000237,Worcester,23.5
+E12000005,West Midlands,E07000238,Wychavon,19.2
+E12000005,West Midlands,E07000239,Wyre Forest,17.7
+E12000006,East  ,E06000055,Bedford,21.5
+E12000006,East  ,E06000056,Central Bedfordshire,23
+E12000006,East  ,E06000032,Luton,31.2
+E12000006,East  ,E06000031,Peterborough,26.4
+E12000006,East  ,E06000033,Southend-on-Sea,23.9
+E12000006,East  ,E06000034,Thurrock,29.9
+E12000006,East  ,E07000008,Cambridge,20.9
+E12000006,East  ,E07000009,East Cambridgeshire,25.4
+E12000006,East  ,E07000010,Fenland,15.9
+E12000006,East  ,E07000011,Huntingdonshire,19.2
+E12000006,East  ,E07000012,South Cambridgeshire,24.8
+E12000006,East  ,E07000066,Basildon,27.8
+E12000006,East  ,E07000067,Braintree,24
+E12000006,East  ,E07000068,Brentwood,16.1
+E12000006,East  ,E07000069,Castle Point,19.4
+E12000006,East  ,E07000070,Chelmsford,18.1
+E12000006,East  ,E07000071,Colchester,23.6
+E12000006,East  ,E07000072,Epping Forest,27.5
+E12000006,East  ,E07000073,Harlow,26.7
+E12000006,East  ,E07000074,Maldon,30
+E12000006,East  ,E07000075,Rochford,22
+E12000006,East  ,E07000076,Tendring,17.2
+E12000006,East  ,E07000077,Uttlesford,24.9
+E12000006,East  ,E07000095,Broxbourne,25.3
+E12000006,East  ,E07000096,Dacorum,32.8
+E12000006,East  ,E07000242,East Hertfordshire,27.1
+E12000006,East  ,E07000098,Hertsmere,32.3
+E12000006,East  ,E07000099,North Hertfordshire,28.5
+E12000006,East  ,E07000240,St Albans,25.7
+E12000006,East  ,E07000243,Stevenage,33.6
+E12000006,East  ,E07000102,Three Rivers,22.9
+E12000006,East  ,E07000103,Watford,22.5
+E12000006,East  ,E07000241,Welwyn Hatfield,21.5
+E12000006,East  ,E07000143,Breckland,21.8
+E12000006,East  ,E07000144,Broadland,15.4
+E12000006,East  ,E07000145,Great Yarmouth,20.3
+E12000006,East  ,E07000146,King's Lynn and West Norfolk,23.4
+E12000006,East  ,E07000147,North Norfolk,14.8
+E12000006,East  ,E07000148,Norwich,24.6
+E12000006,East  ,E07000149,South Norfolk,18.8
+E12000006,East  ,E07000200,Babergh,23.2
+E12000006,East  ,E07000244,East Suffolk,21.9
+E12000006,East  ,E07000202,Ipswich,26.1
+E12000006,East  ,E07000203,Mid Suffolk,20.4
+E12000006,East  ,E07000245,West Suffolk,16.9
+E12000007,London,E09000007,Camden,18.4
+E12000007,London,E09000001,City of London,NA
+E12000007,London,E09000012,Hackney,25.3
+E12000007,London,E09000013,Hammersmith and Fulham,20
+E12000007,London,E09000014,Haringey,25.1
+E12000007,London,E09000019,Islington,16.2
+E12000007,London,E09000020,Kensington and Chelsea,17.8
+E12000007,London,E09000022,Lambeth,19.8
+E12000007,London,E09000023,Lewisham,24.4
+E12000007,London,E09000025,Newham,27.8
+E12000007,London,E09000028,Southwark,23.3
+E12000007,London,E09000030,Tower Hamlets,23.5
+E12000007,London,E09000032,Wandsworth,18.5
+E12000007,London,E09000033,Westminster,12.2
+E12000007,London,E09000002,Barking and Dagenham,36.3
+E12000007,London,E09000003,Barnet,25.4
+E12000007,London,E09000004,Bexley,27.1
+E12000007,London,E09000005,Brent,22.7
+E12000007,London,E09000006,Bromley,28.2
+E12000007,London,E09000008,Croydon,29.6
+E12000007,London,E09000009,Ealing,26.3
+E12000007,London,E09000010,Enfield,32.4
+E12000007,London,E09000011,Greenwich,30.4
+E12000007,London,E09000015,Harrow,29.6
+E12000007,London,E09000016,Havering,24.4
+E12000007,London,E09000017,Hillingdon,32
+E12000007,London,E09000018,Hounslow,27
+E12000007,London,E09000021,Kingston upon Thames,28.5
+E12000007,London,E09000024,Merton,26.2
+E12000007,London,E09000026,Redbridge,33.9
+E12000007,London,E09000027,Richmond upon Thames,30
+E12000007,London,E09000029,Sutton,31.3
+E12000007,London,E09000031,Waltham Forest,25.9
+E12000008,South East,E06000036,Bracknell Forest,23.1
+E12000008,South East,E06000043,Brighton and Hove,18.6
+E12000008,South East,E06000046,Isle of Wight,16.8
+E12000008,South East,E06000035,Medway,21.1
+E12000008,South East,E06000042,Milton Keynes,25.5
+E12000008,South East,E06000044,Portsmouth,21.6
+E12000008,South East,E06000038,Reading,24.5
+E12000008,South East,E06000039,Slough,36
+E12000008,South East,E06000045,Southampton,22.4
+E12000008,South East,E06000037,West Berkshire,23.6
+E12000008,South East,E06000040,Windsor and Maidenhead,23.8
+E12000008,South East,E06000041,Wokingham,25.6
+E12000008,South East,E06000060,Buckinghamshire,27.3
+E12000008,South East,E07000061,Eastbourne,28.6
+E12000008,South East,E07000062,Hastings,22.1
+E12000008,South East,E07000063,Lewes,18.8
+E12000008,South East,E07000064,Rother,16.1
+E12000008,South East,E07000065,Wealden,26.7
+E12000008,South East,E07000084,Basingstoke and Deane,28.5
+E12000008,South East,E07000085,East Hampshire,27.1
+E12000008,South East,E07000086,Eastleigh,29.4
+E12000008,South East,E07000087,Fareham,22.9
+E12000008,South East,E07000088,Gosport,18.7
+E12000008,South East,E07000089,Hart,36.2
+E12000008,South East,E07000090,Havant,17.6
+E12000008,South East,E07000091,New Forest,25
+E12000008,South East,E07000092,Rushmoor,23.3
+E12000008,South East,E07000093,Test Valley,24.9
+E12000008,South East,E07000094,Winchester,27.6
+E12000008,South East,E07000105,Ashford,18.5
+E12000008,South East,E07000106,Canterbury,22.5
+E12000008,South East,E07000107,Dartford,29.3
+E12000008,South East,E07000108,Dover,27.1
+E12000008,South East,E07000112,Folkestone and Hythe,19.9
+E12000008,South East,E07000109,Gravesham,21.6
+E12000008,South East,E07000110,Maidstone,20.5
+E12000008,South East,E07000111,Sevenoaks,26
+E12000008,South East,E07000113,Swale,34.7
+E12000008,South East,E07000114,Thanet,20.9
+E12000008,South East,E07000115,Tonbridge and Malling,27.8
+E12000008,South East,E07000116,Tunbridge Wells,32.1
+E12000008,South East,E07000177,Cherwell,21.2
+E12000008,South East,E07000178,Oxford,29.6
+E12000008,South East,E07000179,South Oxfordshire,22.9
+E12000008,South East,E07000180,Vale of White Horse,28.8
+E12000008,South East,E07000181,West Oxfordshire,23
+E12000008,South East,E07000207,Elmbridge,27.2
+E12000008,South East,E07000208,Epsom and Ewell,25.5
+E12000008,South East,E07000209,Guildford,21
+E12000008,South East,E07000210,Mole Valley,26.4
+E12000008,South East,E07000211,Reigate and Banstead,31
+E12000008,South East,E07000212,Runnymede,23.7
+E12000008,South East,E07000213,Spelthorne,29.1
+E12000008,South East,E07000214,Surrey Heath,33.7
+E12000008,South East,E07000215,Tandridge,28.6
+E12000008,South East,E07000216,Waverley,33.2
+E12000008,South East,E07000217,Woking,25.8
+E12000008,South East,E07000223,Adur,30.5
+E12000008,South East,E07000224,Arun,16.7
+E12000008,South East,E07000225,Chichester,23.8
+E12000008,South East,E07000226,Crawley,23.5
+E12000008,South East,E07000227,Horsham,22.9
+E12000008,South East,E07000228,Mid Sussex,25.2
+E12000008,South East,E07000229,Worthing,26.8
+E12000009,South West,E06000022,Bath and North East Somerset,20.8
+E12000009,South West,E06000058,"Bournemouth, Christchurch and Poole",17.2
+E12000009,South West,E06000023,"Bristol, City of",21.8
+E12000009,South West,E06000052,Cornwall,18.9
+E12000009,South West,E06000059,Dorset,20.7
+E12000009,South West,E06000053,Isles of Scilly,NA
+E12000009,South West,E06000024,North Somerset,25.4
+E12000009,South West,E06000026,Plymouth,19.5
+E12000009,South West,E06000025,South Gloucestershire,20.9
+E12000009,South West,E06000030,Swindon,25
+E12000009,South West,E06000027,Torbay,17.3
+E12000009,South West,E06000054,Wiltshire,19.3
+E12000009,South West,E07000040,East Devon,26.6
+E12000009,South West,E07000041,Exeter,21.6
+E12000009,South West,E07000042,Mid Devon,27.7
+E12000009,South West,E07000043,North Devon,24.8
+E12000009,South West,E07000044,South Hams,21.1
+E12000009,South West,E07000045,Teignbridge,21.8
+E12000009,South West,E07000046,Torridge,15.3
+E12000009,South West,E07000047,West Devon,25.9
+E12000009,South West,E07000078,Cheltenham,24.9
+E12000009,South West,E07000079,Cotswold,19.6
+E12000009,South West,E07000080,Forest of Dean,19.3
+E12000009,South West,E07000081,Gloucester,25.3
+E12000009,South West,E07000082,Stroud,14.6
+E12000009,South West,E07000083,Tewkesbury,19.8
+E12000009,South West,E07000187,Mendip,20
+E12000009,South West,E07000188,Sedgemoor,20.8
+E12000009,South West,E07000246,Somerset West and Taunton,20.5
+E12000009,South West,E07000189,South Somerset,23.8
