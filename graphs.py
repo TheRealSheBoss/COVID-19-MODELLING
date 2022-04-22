@@ -143,7 +143,9 @@ def graph_selection(file_location):
                         fig, ax = plt.subplots(figsize=(15, 5))
                         plt.bar(Y_bar.index,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
+                        plt.savefig('bargraph_plot.png', bbox_inches='tight')
                         plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
+                        
                     elif save_image == "N":
                         break
                     else:
@@ -198,7 +200,7 @@ def graph_selection(file_location):
                             break
                         elif graph_type == "B":
                             title = input("Enter title for boxplot: ")
-                            y_label = x_label
+                            y_label = input("Enter label for y-axis: ")
                             View_Charts = Data_Viz(x_variable, y_variable, x_label, x_label, y_label, title)
                             View_Charts.boxplot()
                             break
@@ -294,11 +296,12 @@ class Data_Viz():
             save_image = input("Do you want to save the image? (Y/N): ")
             if save_image == "Y":
                 plt.boxplot(self.x_data)
-                plt.ticks([])
+                plt.xticks([])
                 plt.title(self.title) #Plot the given title   
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('boxplot.pdf', bbox_inches='tight')
+                plt.savefig('boxplot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -326,6 +329,7 @@ class Data_Viz():
                 plt.ylabel(self.y_label, fontsize=12) 
                 plt.title(self.title, fontsize=18)
                 plt.savefig('multi_boxplot.pdf', bbox_inches='tight')
+                plt.savefig('multi_boxplot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -350,6 +354,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('scatter_plot.pdf', bbox_inches='tight')
+                plt.savefig('scatter_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -374,6 +379,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('single_line_plot.pdf', bbox_inches='tight')
+                plt.savefig('single_line_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -406,6 +412,7 @@ class Data_Viz():
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('multi_line_plot.pdf', bbox_inches='tight')
+                plt.savefig('multi_line_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -429,6 +436,7 @@ class Data_Viz():
                 plt.ylabel('Count')
                 plt.title(self.title)
                 plt.savefig('histogram_plot.pdf', bbox_inches='tight')
+                plt.savefig('histogram_plot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
