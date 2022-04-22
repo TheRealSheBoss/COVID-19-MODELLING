@@ -11,7 +11,7 @@ from variable_finder import Variable_Finder
 """
 To allow the user to explore the data and specific variables of interest, the
 function graph_selection() has been designed to be interactive via the terminal
-when run from covid_project.py, this allows the user to input the variables of interest
+when run from main.py, this allows the user to input the variables of interest
 which they wish to visualise and, based on the number of variables of interest,
 the function returns options to the user as to which type of graph they wish to
 plot. graph_selection() then calls the relevant function from the class 
@@ -144,8 +144,7 @@ def graph_selection(file_location):
                         plt.bar(Y_bar.index,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
                         plt.savefig('bargraph_plot.png', bbox_inches='tight')
-                        plt.savefig('bargraph_plot.pdf', bbox_inches='tight')
-                        
+                        plt.savefig('bargraph_plot.pdf', bbox_inches='tight')    
                     elif save_image == "N":
                         break
                     else:
