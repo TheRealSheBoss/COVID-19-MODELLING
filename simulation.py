@@ -10,8 +10,9 @@ pop = 10000
 # set colours for animation representation using RGB tuples
 red = (0.96, 0.15, 0.15)  # infected
 green = (0, 0.86, 0.03)  # first dose
-grey = (0.78, 0.78, 0.78)  # second dose
+orange = (0.90, 0.68, 0.18)  # second dose
 black = (0, 0, 0)  # third dose
+colors = (0.41, 0.70, 0.83) #background
 
 # Define the parameters
 COVID_19 = {
@@ -69,7 +70,7 @@ class Vaccine():
         self.first_dose_text = self.axes.annotate('\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=green)
         self.second_dose_text = self.axes.annotate('\n\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                                   color=grey)
+                                                   color=orange)
         self.third_dose_text = self.axes.annotate('\n\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=black)
 
@@ -129,7 +130,7 @@ class Vaccine():
         indices = np.arange(0, pop) + 0.5
         self.thetas = np.pi * (1 + 5 ** 0.5) * indices
         self.rs = np.sqrt(indices / pop)
-        self.plot = self.axes.scatter(self.thetas, self.rs, s=5, color=grey)
+        self.plot = self.axes.scatter(self.thetas, self.rs, s=5, color=colors)
         # first infected patients color changed to indicate movement
         self.axes.scatter(self.thetas[0], self.rs[0], s=3, color=red)
         self.mind[self.rate]['thetas'].append(self.thetas[0])
@@ -273,7 +274,7 @@ class Vaccine():
         if self.day >= self.rate3:
             recovery_theta1 = self.mind2['next_batch'][self.day]['thetas']
             recovery_r1 = self.mind2['next_batch'][self.day]['rs']
-            self.axes.scatter(recovery_theta1, recovery_r1, s=5, color=grey)
+            self.axes.scatter(recovery_theta1, recovery_r1, s=5, color=orange)
             self.second_dose_people += len(recovery_theta1)
             self.first_dose_people -= len(recovery_theta1)
         if self.day >= self.rate5:

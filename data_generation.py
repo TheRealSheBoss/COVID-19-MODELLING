@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
-## This script cleans the data files we provide to users of the code, and generates a master dataset that
-## analysis can be performed on. This dataset is then downloaded as an excel file. 
+"""
+This script cleans the data files we provide to users of the code, and generates a master dataset that
+analysis can be performed on. This dataset is then downloaded as a csv file. 
+
+The program merges together the different csv files into a large csv file called master data. Variables are then renamed, duplicated columns are dropped 
+and rows with missing data are dropped. 
+
+
+"""
 
 
 ## ADDING RELEVANT PACKAGES
