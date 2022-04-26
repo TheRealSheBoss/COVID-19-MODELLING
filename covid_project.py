@@ -17,7 +17,7 @@ Each file which the user can select to use contains a function which file_locati
 can have access to master_data, without the user having to input the file location repeatedly.
 """
 
-file_location = input("Where have you saved the non-master data? ")
+file_location = input("In which folder is the CSV data? ")
 
 data_generation(file_location)
 
