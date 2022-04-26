@@ -12,7 +12,7 @@ red = (0.96, 0.15, 0.15)  # infected
 green = (0, 0.86, 0.03)  # first dose
 orange = (0.90, 0.68, 0.18)  # second dose
 black = (0, 0, 0)  # third dose
-colors = (0.51, 0.30, 0.13) #background
+colors = (0.41, 0.70, 0.83) #background
 
 # Define the parameters
 COVID_19 = {
