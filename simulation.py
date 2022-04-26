@@ -69,7 +69,7 @@ class Vaccine():
         self.first_dose_text = self.axes.annotate('\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=green)
         self.second_dose_text = self.axes.annotate('\n\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                                   color=grey)
+                                                   color=yellow)
         self.third_dose_text = self.axes.annotate('\n\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=black)
 
