@@ -93,12 +93,6 @@ def regression(file_location):
         
         return Xtr, Xtest, Ytr, Ytest 
     
-        #from sklearn.model_selection import train_testT_split
-        #size_test = input("What test size do you want? ")
-        #state_random = input("What random state do you want? ")
-        #Xtr, Xtest, Ytr, Ytest = train_test_split(X, Y, test_size = float(size_test), random_state = int(state_random))
-
-        
     def linear(Xtr, Xtest, Ytr, Ytest, AllX, AllY):
         regr = linear_model.LinearRegression()
         regr_model = regr.fit(Xtr, Ytr)
