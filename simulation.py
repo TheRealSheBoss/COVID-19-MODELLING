@@ -69,7 +69,7 @@ class Vaccine():
         self.first_dose_text = self.axes.annotate('\n First Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=green)
         self.second_dose_text = self.axes.annotate('\n\n Second Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
-                                                   color=yellow)
+                                                   color=blue)
         self.third_dose_text = self.axes.annotate('\n\n\n Third Dose: 0', xy=[3 * np.pi / 2, 1], ha='center', va='top',
                                                   color=black)
 
@@ -129,7 +129,7 @@ class Vaccine():
         indices = np.arange(0, pop) + 0.5
         self.thetas = np.pi * (1 + 5 ** 0.5) * indices
         self.rs = np.sqrt(indices / pop)
-        self.plot = self.axes.scatter(self.thetas, self.rs, s=5, color=grey)
+        self.plot = self.axes.scatter(self.thetas, self.rs, s=5, color=blue)
         # first infected patients color changed to indicate movement
         self.axes.scatter(self.thetas[0], self.rs[0], s=3, color=red)
         self.mind[self.rate]['thetas'].append(self.thetas[0])
