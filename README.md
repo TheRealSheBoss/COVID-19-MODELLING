@@ -13,7 +13,8 @@ git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git
 ./covid_project.py 
 
  
-    *Install relevant libraries using pip install*
+    *Install relevant libraries using pip install* 
+    *Installation and use of virtual is only neccessary for Mac users*
     
 pip install virtualenv 
 
