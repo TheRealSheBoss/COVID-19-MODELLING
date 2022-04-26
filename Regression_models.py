@@ -68,6 +68,11 @@ def regression(file_location):
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
 
     def traintestsplit(X_data, Y_data):
+        """Function splits the dataset into training and test sets. The user is 
+        asked to input the required test size and random state for splitting 
+        the data.
+        Function returns the training and test sets for the pre-determined X 
+        and Y variables."""
         while True:
             try:
                 size_test = float(input("What test size do you want? This has to take the form of a float between 0.1 - 0.5:"))
@@ -93,7 +98,31 @@ def regression(file_location):
         
         return Xtr, Xtest, Ytr, Ytest 
     
-    def linear(Xtr, Xtest, Ytr, Ytest, AllX, AllY):
+    def linear(Xtr, Xtest, Ytr, Ytest):
+        """
+        Function takes the training and test split data of predefined X and Y 
+        variables.
+        Function uses LinearRegression function from sklearn and is trained on 
+        the training data sets.
+        The fitted linear regression model (regr) then predicts the Y variable 
+        of interest from the Xtest dataset. 
+        The function prints the mean squared error and R-squared scores for the 
+        models prediction from both the training and test sets. 
+        The function then calls the class Data_Viz from module graphs.py to display 
+        a scatterplot of the predicted vs actual values for the Y test set.
+
+        Parameters
+        ----------
+        Xtr : training dataset of predefined X variables.
+        Xtest : test dataset of predefined X variables.
+        Ytr : training dataset of predefined Y variable.
+        Ytest : test dataset of predefined Y variable.
+
+        Returns
+        -------
+        None.
+
+        """
         regr = linear_model.LinearRegression()
         regr_model = regr.fit(Xtr, Ytr)
     
@@ -119,6 +148,33 @@ def regression(file_location):
         
 
     def Polynomial(Xtr, Xtest, Ytr, Ytest): #cross validation happening inside this function too
+        """
+        Function takes the training and test split data of predefined X and Y 
+        variables.
+        The user is asked the number of degrees over which to transform the data.
+        Function uses PolynomialFeatures function from sklearn to perform 
+        cross-validation across each of the degrees by iteratively 
+        transforming the data sets across the range of degrees 
+        selected by the user.
+        For each iteration, the function then uses the LinearRegression from sklearn 
+        and is fit to the transformed training data sets.
+        The fitted linear regression model (regr) then predicts the Y variable 
+        of interest from the transformed Xtest dataset. 
+        The function plots the mean squared error for the training and test predictions
+        as a multi-line plot over each iteraction of the  data transformations. 
+
+        Parameters
+        ----------
+        Xtr : training dataset of predefined X variables.
+        Xtest : test dataset of predefined X variables.
+        Ytr : training dataset of predefined Y variable.
+        Ytest : test dataset of predefined Y variable.
+
+        Returns
+        -------
+        None.
+
+        """
         while True:
             try:
                 poly_degree_test = int(input("Please enter an integer as the maximum number of polynomial degree values you wish to test in this model (maximum number is 5) : "))
@@ -270,7 +326,7 @@ def regression(file_location):
 
         regression_type = input("Do you want to use a linear regression model (L), Polynomial regression (P), Decision Tree Regression (D), compare all (C) or return to covid_project.py (main)? ")
         if regression_type == "L":
-            linear(Xtraining, Xtesting, Ytraining, Ytesting, Parameters, Target)
+            linear(Xtraining, Xtesting, Ytraining, Ytesting)
             info_stay = input("Do you want to stay in regression models? (Y or N) ")
             if info_stay == "Y":
                 continue
