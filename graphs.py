@@ -65,7 +65,6 @@ def graph_selection(file_location):
             self.x_label = x_label
             self.y_label = y_label
             self.title = title
-            #self.file_location = file_location
         
         def bargraph(self):
             """
@@ -282,7 +281,7 @@ class Data_Viz():
         self.x_label = x_label
         self.y_label = y_label
         self.title = title
-        #self.file_location = file_location
+        
             
     def boxplot(self):
         """Displays (and saves) a single variable boxplot."""
