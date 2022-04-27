@@ -219,6 +219,30 @@ def regression(file_location):
         
     
     def DecisionTree(Xtr, Xtest, Ytr, Ytest):
+        """
+        Function takes the training and test split data of predefined X and Y 
+        variables.
+        Function uses DecisionTreeRegressor() function from sklearn and is 
+        fit to the training data sets.
+        The fitted decision tree regression model (DTR_model) then predicts 
+        the Y variable of interest from the Xtest dataset. 
+        The function prints the mean squared error and R-squared scores for the 
+        models prediction from both the training and test sets in the terminal.
+        The function also saves a simple table of the training and test mean 
+        squared errors.
+
+        Parameters
+        ----------
+        Xtr : training dataset of predefined X variables.
+        Xtest : test dataset of predefined X variables.
+        Ytr : training dataset of predefined Y variable.
+        Ytest : test dataset of predefined Y variable.
+
+        Returns
+        -------
+        None.
+        """
+        
         DTR = DecisionTreeRegressor()
         DTR_model = DTR.fit(Xtr, Ytr)
         ypred_train = DTR_model.predict(Xtr)
@@ -248,6 +272,39 @@ def regression(file_location):
     
     
     def CompareAllModels(Xtr, Xtest, Ytr, Ytest):
+        """
+        Function takes the training and test split data of predefined X and Y 
+        variables.
+        Function compares LinearRegression(), PolynomialFeatures (degree 2) and 
+        DecisionTreeRegressor() functions from sklearn by cross validation. 
+        The training and test data sets are split randomly into 10 cross-
+        validation samples using KFold() from sklearn. 
+        For each iteraction of the cross-validation samples:
+        LinearRegression() (regr) and DecisionTreeRegressor() (DTR) are fit to 
+        the training data sets (Xtr, Ytr). The fitted models 
+        PolynomialFeatures transforms the training and test data sets by degree
+        2. Subsequently, LinearRegression is fit to the transformed training 
+        data sets.
+        
+        fit to the training data sets.
+        The fitted decision tree regression model (DTR_model) then predicts 
+        the Y variable of interest from the Xtest dataset. 
+        The function prints the mean squared error and R-squared scores for the 
+        models prediction from both the training and test sets in the terminal.
+        The function also saves a simple table of the training and test mean 
+        squared errors.
+
+        Parameters
+        ----------
+        Xtr : training dataset of predefined X variables.
+        Xtest : test dataset of predefined X variables.
+        Ytr : training dataset of predefined Y variable.
+        Ytest : test dataset of predefined Y variable.
+
+        Returns
+        -------
+        None.
+        """
         mse_LR = []
         r2_LR = []
         mse_DTR = []
