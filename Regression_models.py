@@ -48,7 +48,16 @@ THIS SCRIPT CAN BE USED TO:
 '''
 
 def regression(file_location):
-    
+    """Asks users to select the target variable for prediction (using 
+    Variable_Finder() from variable_finder module). 
+    Calls traintestsplit() to split parameters and response into training 
+    and testing samples.
+    Subsequently, asks users to select which regression model they wish to 
+    apply and calls the appropriate corresponding function. See each function 
+    for description of functionality.
+    Once the regression model has been implemented, the user can either stay 
+    in this module to apply an alternative model or return to covid_project 
+    to implement another program functionality. """
     import matplotlib
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
@@ -281,18 +290,22 @@ def regression(file_location):
         validation samples using KFold() from sklearn. 
         For each iteraction of the cross-validation samples:
         LinearRegression() (regr) and DecisionTreeRegressor() (DTR) are fit to 
-        the training data sets (Xtr, Ytr). The fitted models 
-        PolynomialFeatures transforms the training and test data sets by degree
-        2. Subsequently, LinearRegression is fit to the transformed training 
-        data sets.
+        the training data sets (Xtrain, Ytrain). The fitted models 
+        PolynomialFeatures transforms the training and test validation samples
+        by degree 2. Subsequently, LinearRegression is fit to the transformed 
+        training data sets.
+        All three trained models (model_LR, model_FTR, model_poly), are then 
+        used to predict repsonse (Y) values on the Xtst validation sample.
+        For each cross validation sample, the mean squared error and R squared 
+        scores of the predicted vs actual values for the cross-valudation Ytst
+        set are then calculated and appended to the corresponding list for 
+        each model.
         
-        fit to the training data sets.
-        The fitted decision tree regression model (DTR_model) then predicts 
-        the Y variable of interest from the Xtest dataset. 
-        The function prints the mean squared error and R-squared scores for the 
-        models prediction from both the training and test sets in the terminal.
-        The function also saves a simple table of the training and test mean 
-        squared errors.
+        The function then calls multi_boxplot() from the class Data_Viz from 
+        module graphs.py to display the boxplots of cross-validation mean 
+        squared error scores for each model on the same plot.
+        The function prints the mean of the mean squared error and R-squared 
+        scores for each model in the terminal.  
 
         Parameters
         ----------
@@ -356,6 +369,8 @@ def regression(file_location):
         print("\n" f'LR vs. DTR: {ttest_rel(mse_LR,mse_DTR)}'"\n")
     
     def SelectTargetVariable():
+        """Asks user to select the appropriate response variable for prediction
+        and returns a DataFrame of the parameters and an array of the response."""
         while True:
             var_choice = VF.Variable_Finder("target", master_data)
             Y_var = var_choice.variable_finder()
