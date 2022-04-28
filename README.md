@@ -10,7 +10,7 @@ git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git
 
 
     *Enter the following into the terminal to run the program:*  
-./covid_project.py 
+python ./covid_project.py 
 
  
     *Install relevant libraries using pip install* 
@@ -44,7 +44,7 @@ pip install sklearn
  **User input from covid_project.py: PATH of csv files'**
 The data is pre-processed, cleaned and stored in the users desired path.
     *Generating Masterdata*
-Once the program asks where have you saved the non-master data?, input the PATH for the folder in which the CSV files are contained into the command line of the console. 
+Once the program asks where have you saved the CSV data?, input the PATH for the folder in which the CSV files are contained into the command line of the console. 
 For example, '/Users/adetutusadiq/Downloads'. 
 data_generation.py will then automatically run. This module reads each of the csv files saved in the PATH given. Note, each file must be saved under the specific names and with the same number and names of parameter as the files provided here. The data_generation.py then reads the csv files and combines them into a master csv file. During this process, parameters are renamed, repeated columns are dropped, parameters with numerical data as string data type are converted to float, duplicates are dropped and rows with null values are dropped. The decision to drop null values was based on analysis of the data we obtained and provide for use in this program. The null values are sufficiently small for this action to be appropriate. data_generation.py then saves the processed 'Master Data'.csv file to the same PATH as given by the user.
 
