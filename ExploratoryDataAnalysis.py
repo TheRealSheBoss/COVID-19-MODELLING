@@ -78,7 +78,7 @@ class ExploreMasterData:
                     wspace=0.8, 
                     hspace=0.9)
         plt.suptitle('Histograms of all variables', fontsize=12)
-        plt.savefig('Histograms of all variables.png')
+        plt.savefig('Histograms of all variables.png', format='png', dpi=800)
         plt.savefig('Histograms of all variables.pdf')
         plt.tight_layout()
         plt.show()
@@ -103,7 +103,7 @@ class ExploreMasterData:
                     wspace=0.8, 
                     hspace=0.9)
 
-        plt.savefig('Lineplots of all variables.png')
+        plt.savefig('Lineplots of all variables.png', format='png', dpi=800)
         plt.savefig('Lineplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
@@ -128,7 +128,7 @@ class ExploreMasterData:
                     wspace=0.8, 
                     hspace=0.9)
 
-        plt.savefig('Scatterplots of all variables.png')
+        plt.savefig('Scatterplots of all variables.png', format='png', dpi=800)
         plt.savefig('Scatterplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
@@ -143,7 +143,7 @@ class ExploreMasterData:
         plt.tick_params(axis='both', which='both',length=0.1, pad=2, labelsize=7)
         plt.margins(0.2)
         plt.title('Correlation matrix of all variables', fontsize=25)
-        plt.savefig('Correlations.png')
+        plt.savefig('Correlations.png', format='png', dpi=800)
         plt.savefig('Correlations.pdf')
         plt.show()
 
@@ -167,7 +167,7 @@ class ExploreMasterData:
                     wspace=0.6, 
                     hspace=0.6)
         plt.suptitle('Boxplots of all variables', fontsize=12)
-        plt.savefig('Boxplot of all variables.png')
+        plt.savefig('Boxplot of all variables.png', format='png', dpi=800)
         plt.savefig('Boxplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
