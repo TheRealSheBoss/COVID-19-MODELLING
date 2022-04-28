@@ -10,7 +10,7 @@ git clone https://github.com/TheRealSheBoss/EMAT10006COURSE.git
 
 
     *Enter the following into the terminal to run the program:*  
-./covid_project.py 
+python ./covid_project.py 
 
  
     *Install relevant libraries using pip install* 
