@@ -167,7 +167,7 @@ class ExploreMasterData:
                     wspace=0.6, 
                     hspace=0.6)
         plt.suptitle('Boxplots of all variables', fontsize=12)
-        plt.savefig('Boxplot of all variables.png', format='png', dpi=800)
+        plt.savefig('Boxplot of all variables.png', dpi=800)
         plt.savefig('Boxplots of all variables.pdf')
         plt.tight_layout()
         plt.show()
