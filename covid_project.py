@@ -7,6 +7,8 @@ from Regression_models import regression
 from simulation import Main_function
 from ExploratoryDataAnalysis import eda_selection
 from ExploratoryDataAnalysis import ExploreMasterData
+import pandas as pd
+
 
 """
 This program prompts the user to input the location they saved the relevant files - and then the data_generation program 
@@ -18,6 +20,13 @@ can have access to master_data, without the user having to input the file locati
 """
 
 file_location = input("In which folder is the CSV data? ")
+while True:
+    try:
+        file_test = pd.read_csv(f'{file_location}/Cumulative Cases.csv')
+        break
+    except FileNotFoundError:
+        print("File not find, try again")
+        file_location = input("In which folder is the CSV data? ")
 
 data_generation(file_location)
 
