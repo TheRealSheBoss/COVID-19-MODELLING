@@ -143,7 +143,7 @@ def graph_selection(file_location):
                         fig, ax = plt.subplots(figsize=(15, 5))
                         plt.bar(Y_bar.index,Y_bar, color='b', label ='auto')
                         ax.set(title=self.title, xlabel=self.x_label, ylabel=self.y_label)
-                        plt.savefig('bargraph_plot.png', bbox_inches='tight')
+                        plt.savefig('bargraph_plot.png',format='png', dpi=800, bbox_inches='tight')
                         plt.savefig('bargraph_plot.pdf', bbox_inches='tight')    
                     elif save_image == "N":
                         break
@@ -285,9 +285,10 @@ class Data_Viz():
             
     def boxplot(self):
         """Displays (and saves) a single variable boxplot."""
+        plt.clf()
         box_plt = plt.boxplot(self.x_data)
         plt.xticks([])
-        plt.title(self.title) #Plot the given title   
+        plt.title(self.title, pad=18.0) #Plot the given title   
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
@@ -296,10 +297,10 @@ class Data_Viz():
             if save_image == "Y":
                 plt.boxplot(self.x_data)
                 plt.xticks([])
-                plt.title(self.title) #Plot the given title   
+                plt.title(self.title, pad=18.0) #Plot the given title   
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
-                plt.savefig('boxplot.pdf', bbox_inches='tight')
+                plt.savefig('boxplot.pdf', format='png', dpi=800, bbox_inches='tight')
                 plt.savefig('boxplot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
@@ -311,12 +312,13 @@ class Data_Viz():
         
     def multi_boxplot(self):
         """Displays (and saves) a multi-variable boxplot."""
+        plt.clf()
         plt.boxplot(self.x_data,labels=self.x_variable_names)
         plt.rcParams["figure.figsize"] = [7.50, 3.50]
         plt.rcParams["figure.autolayout"] = True 
         plt.xlabel(self.x_label, fontsize=12)
         plt.ylabel(self.y_label, fontsize=12) 
-        plt.title(self.title, fontsize=18) 
+        plt.title(self.title, fontsize=18, pad=18.0) 
         plt.show()
         while True:
             save_image = input("Do you want to save the image? (Y/N): ")
@@ -326,8 +328,8 @@ class Data_Viz():
                 plt.rcParams["figure.autolayout"] = True 
                 plt.xlabel(self.x_label, fontsize=12)
                 plt.ylabel(self.y_label, fontsize=12) 
-                plt.title(self.title, fontsize=18)
-                plt.savefig('multi_boxplot.pdf', bbox_inches='tight')
+                plt.title(self.title, fontsize=18, pad=18.0)
+                plt.savefig('multi_boxplot.pdf', format='png', dpi=800, bbox_inches='tight')
                 plt.savefig('multi_boxplot.png', bbox_inches='tight')
             elif save_image == "N":
                 break
@@ -338,9 +340,10 @@ class Data_Viz():
             
     def scatter(self):
         """Displays (and saves) a scatter plot."""
+        plt.clf()
         fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
         ax.scatter(self.x_data, self.y_data, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
-        plt.title(self.title) #Plot the given title
+        plt.title(self.title, pad=18.0) #Plot the given title
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
@@ -349,11 +352,11 @@ class Data_Viz():
             if save_image == "Y":
                 fig, ax = plt.subplots(figsize = [10, 5]) #Create the figue, set the axes and figure size.
                 ax.scatter(self.x_data, self.y_data, color = 'b', marker = 'o', alpha=0.3) #Plot the scatter graph
-                plt.title(self.title) #Plot the given title
+                plt.title(self.title, pad=18.0) #Plot the given title
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('scatter_plot.pdf', bbox_inches='tight')
-                plt.savefig('scatter_plot.png', bbox_inches='tight')
+                plt.savefig('scatter_plot.png', format='png', dpi=800, bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -363,9 +366,10 @@ class Data_Viz():
         
     def single_line(self):
         """Displays (and saves) a single x variable linegraph plot."""
+        plt.clf()
         fig, ax = plt.subplots(figsize = (15,5))
         plt.plot(self.x_data, self.y_data, alpha=0.3)
-        plt.title(self.title)
+        plt.title(self.title, pad=18.0)
         plt.xlabel(self.x_label)#Plot the given x-axis label
         plt.ylabel(self.y_label) #Plot the given y-axis label
         plt.show()
@@ -374,11 +378,11 @@ class Data_Viz():
             if save_image == "Y":
                 fig, ax = plt.subplots(figsize = (15,5))
                 plt.plot(self.x_data, self.y_data, alpha=0.3)
-                plt.title(self.title)
+                plt.title(self.title, pad=18.0)
                 plt.xlabel(self.x_label)#Plot the given x-axis label
                 plt.ylabel(self.y_label) #Plot the given y-axis label
                 plt.savefig('single_line_plot.pdf', bbox_inches='tight')
-                plt.savefig('single_line_plot.png', bbox_inches='tight')
+                plt.savefig('single_line_plot.png', format='png', dpi=800, bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -389,15 +393,16 @@ class Data_Viz():
     def multi_line(self):
         """Displays (and saves) a multi-x variable linegraph plot.""" 
         from matplotlib.ticker import MaxNLocator
+        plt.clf()
         fig, ax = plt.subplots(figsize = (15,5))
         for i in range(len(self.x_data)):
             label = self.x_variable_names[i]
             plt.plot(self.y_data, self.x_data[i], label=label, alpha=0.3)
-            ax.set(title=self.title) #Plot the given title
+            ax.set(title=self.title) 
             plt.legend()
         ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-        plt.xlabel(self.x_label)#Plot the given x-axis label
-        plt.ylabel(self.y_label) #Plot the given y-axis label
+        plt.xlabel(self.x_label)
+        plt.ylabel(self.y_label) 
         plt.show()
         while True:
             save_image = input("Do you want to save the image? (Y/N): ")
@@ -406,12 +411,12 @@ class Data_Viz():
                 for i in range(len(self.x_data)):
                     label = self.x_variable_names[i]
                     plt.plot(self.y_data, self.x_data[i], label=label, alpha=0.3)
-                    ax.set(title=self.title) #Plot the given title
+                    ax.set(title=self.title) 
                     plt.legend()
-                plt.xlabel(self.x_label)#Plot the given x-axis label
-                plt.ylabel(self.y_label) #Plot the given y-axis label
+                plt.xlabel(self.x_label)
+                plt.ylabel(self.y_label) 
                 plt.savefig('multi_line_plot.pdf', bbox_inches='tight')
-                plt.savefig('multi_line_plot.png', bbox_inches='tight')
+                plt.savefig('multi_line_plot.png', format='png', dpi=800, bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
@@ -422,10 +427,11 @@ class Data_Viz():
             
     def histogram(self):
         """Displays (and saves) a histogram plot."""
+        plt.clf()
         plt.hist(self.x_data, bins=30)
         plt.xlabel(self.x_label)
         plt.ylabel('Count')
-        plt.title(self.title)    
+        plt.title(self.title, pad=18.0)    
         plt.show()
         while True:
             save_image = input("Do you want to save the image? (Y/N): ")
@@ -433,9 +439,9 @@ class Data_Viz():
                 plt.hist(self.x_data, bins=30)
                 plt.xlabel(self.x_label)
                 plt.ylabel('Count')
-                plt.title(self.title)
+                plt.title(self.title, pad=18.0)
                 plt.savefig('histogram_plot.pdf', bbox_inches='tight')
-                plt.savefig('histogram_plot.png', bbox_inches='tight')
+                plt.savefig('histogram_plot.png', format='png', dpi=800, bbox_inches='tight')
             elif save_image == "N":
                 break
             else:
