@@ -59,7 +59,8 @@ def regression(file_location):
     in this module to apply an alternative model or return to covid_project 
     to implement another program functionality. """
     import matplotlib
-    matplotlib.use('TkAgg')
+    #matplotlib.use('TkAgg') #comment out if using Jupyter notebook.
+    #%matplotlib inline  #(comment out if not using Jupyter NB)
     import matplotlib.pyplot as plt
     import pandas as pd
     from sklearn.metrics import mean_squared_error, r2_score  #from sklearn.metrics import mean_squared_error, r2_score
