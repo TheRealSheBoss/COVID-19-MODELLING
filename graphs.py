@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import matplotlib
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg') #comment out if using Jupyter notebook.
+#%matplotlib inline  #(comment out if not using Jupyter NB)
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -45,7 +46,8 @@ def graph_selection(file_location):
 
     """
     import matplotlib
-    matplotlib.use('TkAgg')
+    #matplotlib.use('TkAgg') #comment out if using Jupyter notebook.
+    #%matplotlib inline  #(comment out if not using Jupyter NB)
     import matplotlib.pyplot as plt
     import pandas as pd
     import numpy as np
