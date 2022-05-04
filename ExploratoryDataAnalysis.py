@@ -33,13 +33,13 @@ def eda_selection(file_location):
     subplots for each variable in the dataset. """
     # !pip install pandas-profiling if not on system
     import matplotlib
-    matplotlib.use('TkAgg')
+    #matplotlib.use('TkAgg') # comment out if using Jupyter Notebook
     import matplotlib.pyplot as plt
     import seaborn as sea
     sea.set(font_scale=0.6)
     import pandas as pd
     master_data = pd.read_csv(f'{file_location}/Master Data.csv')
-    # % matplotlib inline  #(uncomment if using Jupyter NB)
+    #%matplotlib inline  #(comment out if not using Jupyter NB)
     master_data_copy = master_data.copy()
     master_data_copy = master_data_copy.drop(columns=['Region name', 'Local Authority'])
     View_charts2 = ExploreMasterData(master_data_copy)
