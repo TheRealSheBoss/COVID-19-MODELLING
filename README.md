@@ -1,5 +1,4 @@
-# EMAT10006COURSE (Daniel Joinson, Kate E, Tim A. , Adetutu S. )
-This repository contains all the code we created for our program, including a video of our simulation.
+This repository contains all the code I created for our program, including a video of the simulation.
 
 **HOW TO RUN THE PROGRAM FROM YOUR TERMINAL**
 
